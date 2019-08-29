@@ -3,7 +3,7 @@ install:            # Install requirement as "Environment Setup Section"
 script:             # build sphinx document
 - make clean
 - make html
-deploy              # deploy to github page
+deploy:              # deploy to github page
 - provider: pages
   skip_cleanup: true
   local_dir: build/html
