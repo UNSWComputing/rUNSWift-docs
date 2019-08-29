@@ -1,10 +1,11 @@
-install:            # Install requirement as "Environment Setup Section"
-- pip install -r sphinx_root/requirements.txt
-script:             # build sphinx document
-- make clean
-- make html
-deploy:              # deploy to github page
-- provider: pages
-  skip_cleanup: true
-  local_dir: build/html
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+language: python
+# install:            # Install requirement as "Environment Setup Section"
+# - pip install -r sphinx_root/requirements.txt
+# script:             # build sphinx document
+# - make clean
+# - make html
+# deploy:              # deploy to github page
+# - provider: pages
+#   skip_cleanup: true
+#   local_dir: build/html
+#   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
