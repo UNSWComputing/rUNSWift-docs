@@ -211,7 +211,7 @@ Key directories relating to the python interface:
    python.
 
 Contact / Maintainer
-====================
+--------------------
 
 | For more information, contact
 | \* ijnek - kenjibrameld@gmail.com
