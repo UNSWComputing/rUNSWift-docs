@@ -1,6 +1,6 @@
 install:            # Install requirement as "Environment Setup Section"
-# - sudo apt-get install python3-sphinx
-- pip install -r requirements.txt
+- pip install -U sphinx
+- pip install sphinx_rtd_theme
 script:             # build sphinx document
 - make clean
 - make html

@@ -1,2 +1,2 @@
--U sphinx
+sphinx
 sphinx_rtd_theme
