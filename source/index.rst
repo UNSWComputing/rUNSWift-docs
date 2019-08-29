@@ -9,26 +9,22 @@ Welcome to rUNSWift's Documentation!
 rUNSWift is a team from the University of New South Wales that competes in the `Standard Platform League <https://spl.robocup.org/>`_ of RoboCup.
 
 
-Guide
-^^^^^
+.. image:: images/2019_big_team_photo.jpg
+
 
 .. toctree::
+   :hidden:
    :maxdepth: 1
 
    introduction
-   pc_setup
-   simulation_setup
-   nao_setup
+   setup
    architecture
    perception
-   state_estimation
-   behaviour
    motion
+   networking
    3d_simulation
    logs
-   networking
-   offnao
-   vatnao
+   tools
    faq
    contributing
    joining_runswift
