@@ -1,2 +1,2 @@
-pip install --user sphinx
+pip install -U Sphinx
 pip install sphinx_rtd_theme
