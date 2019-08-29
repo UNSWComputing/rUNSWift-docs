@@ -1,4 +1,5 @@
 install:            # Install requirement as "Environment Setup Section"
+- apt-get install python3-sphinx
 - pip install -r requirements.txt
 script:             # build sphinx document
 - make clean
