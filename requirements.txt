@@ -1,2 +1,2 @@
---user sphinx
+-U sphinx
 sphinx_rtd_theme
