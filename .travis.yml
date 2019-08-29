@@ -1,6 +1,6 @@
 language: python
-# install:            # Install requirement as "Environment Setup Section"
-# - pip install -r sphinx_root/requirements.txt
+install:            # Install requirement as "Environment Setup Section"
+- pip install -r sphinx_root/requirements.txt
 # script:             # build sphinx document
 # - make clean
 # - make html
