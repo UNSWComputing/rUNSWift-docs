@@ -6,7 +6,7 @@ State Estimation
 Architecture
 ************
 
-.. image:: images/state_estimation_architecture.png
+.. image:: draw.io/state_estimation.png
 
 State Estimation is structured in a way to allow off-board testing, since testing state estimation on-board the NAO is almost impossible. Off-board testing can be achieved by recording all the data from the blackboard that is required by the State Estimation Module, on the NAO while running,then copying this to your computer and feeding it through a state estimation simulator system off-board. For this structure, it is important that only StateEstimationAdapter can read to / write from the blackboard.
 
