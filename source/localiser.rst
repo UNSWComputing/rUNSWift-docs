@@ -2,4 +2,22 @@
 Localiser
 #########
 
-Localiser - testing testing
+******************
+canLocaliseInState
+******************
+
+
+*****************
+canDoObservations
+*****************
+
+
+
+************
+Transitioner
+************
+
+
+**************
+MultiModalCMKF
+**************

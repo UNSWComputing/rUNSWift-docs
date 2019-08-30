@@ -26,5 +26,6 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    logs
    tools
    faq
+   style_guide
    contributing
    joining_runswift
