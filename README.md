@@ -14,3 +14,7 @@ This is then uploaded to https://unswcomputing.github.io/rUNSWift-Manual/
 The instructions for setting up the CI were here:
 https://purduecam2project.github.io/CAM2WebUI/basicSetup/sphinx.html
 
+
+## Editing Flowcharts (with draw.io)
+source/draw.io contains **.png (with embedded XML)** that are saved from draw.io.
+This image format can be opened again by draw.io.
