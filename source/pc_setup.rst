@@ -35,4 +35,7 @@ Build Environment Setup
 
 Run :code:`bin/build_setup.sh` inside the cloned repository.
 
-* :doc:`simulation_setup`
+.. warning::
+    This setup only works at Uni.
+    Due to software licensing, rUNSWift can't publicly release some SDKs provided by Softbank.
+
