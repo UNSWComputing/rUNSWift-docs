@@ -5,6 +5,6 @@ Perception
 .. toctree::
    :maxdepth: 2
 
-   vision
-   state_estimation
+   vision/index
+   state_estimation/index
    behaviour
