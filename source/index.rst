@@ -17,14 +17,14 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    :maxdepth: 1
 
    introduction
-   setup
+   setup/index
    architecture
-   perception
-   motion
+   perception/index
+   motion/index
    networking
    3d_simulation
    logs
-   tools
+   tools/index
    faq
    style_guide
    contributing
