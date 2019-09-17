@@ -27,5 +27,6 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    tools/index
    faq
    style_guide
-   contributing
+   contributing/index
    joining_runswift
+   contact
