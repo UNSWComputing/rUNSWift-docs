@@ -17,7 +17,7 @@ VirtualBox Instructions
        Memory Size 4096MB
        =========== ======
 
-        .. note::
+        .. tip::
             Memory size of 4GB is a minimum.
             You also want to leave at least 4GB for your host machine.
             Recommendation is half your system memory.
@@ -39,7 +39,7 @@ VirtualBox Instructions
             Processor(s) 4 CPUs
             ============ ======
 
-            .. note::
+            .. tip::
                 The number of processors should be equal to the number of cores on your system.
                 Ignore the 'Invalid settings detected'.
     #. Storage

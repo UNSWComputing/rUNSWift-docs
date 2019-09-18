@@ -26,7 +26,7 @@ You can either use a virtual machine, or dual boot your computer.
     - `Ubuntu 19.04 <http://releases.ubuntu.com/19.04/>`_
     - `Debian 9 (64-bit & 32-bit) <https://www.debian.org/>`_
 
-.. note::
+.. tip::
     Have at least 50GB storage and 4GB RAM.
 
 .. warning::
