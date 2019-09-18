@@ -2,29 +2,26 @@
 Field Feature Detector
 ######################
 
-The field edge plays a vital role in the vision pipeline. The field edge
-is used to determine where the field starts so that we can save time
-when scanning the image for other features like the ball or field lines.
-The module sets an index for each column to indicate the pixel at the
-edge of the field for all other algorithms to use as a start when
-scanning.
+The new field feature detector takes advantage of the ability of the ROI system to
+locate line segments. All lines of the field are white, such that they are detected
+and segmented by the Connected Component Analysis. Some computationally efficient checks
+are performed on each region, allowing us to determine whether it contains a
+field feature. This is more efficient than the previous approach, which scanned
+the frame for candidate points and ran RANSAC on these points to locate field features. The new detector is compatible with the binarisation of vision as it
+considers the light pixels as white (for lines) and dark pixels as green (for the
+field).
 
-The algorithm for detecting the field edge starts at the top of the
-image and scans down until it finds a significant patch of green. This
-scan is run on every column and results in a set of points across the
-image. RANSAC is then applied to the set of points to attempt to extract
-straight lines out of it. We attempt to detect up to two lines in any
-one image, since there can be two field edges in view at any point in
-time. This algorithm is run in both the top and bottom cameras
-independently since the field edge may run across both images.
+Our system detects regions that appear to contain line segments, corners,
+T-intersections and curved line segments. Curved line segments are combined
+together to form centre circle candidates, which are further checked for a line
+passing through the middle of the candidate circle to provide confirmation and
+orientation. If line segments intersect near the detected corner and T-intersection
+features these features can be confirmed, or even new, possibly occluded, ones
+detected. These lines and more distinct field features are passed to localisation
+to determine the position of the robot.
 
-If no field edge is detected, then we guess if the field edge is above
-or below the current camera view. This guess is based on the amount of
-green present in the image. If the image contains a large portion of
-green, but no distinct field edge, the field edge is assumed to be above
-the camera view and the entire image is treated as being "on the field".
-If not enough green is present, then the robot is deemed to be looking
-off the field or into the sky.
+**The system is outlined below.**
 
-More details can be found
-`here <http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20100930-2010rUNSWiftTeamReport.pdf>`__.
+.. figure:: ../../draw.io/field_feature_detector.png
+
+**More details can be found in the** `Team Report 2018 <http://cgi.cse.unsw.edu.au/~robocup/2018/TeamPaper2018.pdf>`_.

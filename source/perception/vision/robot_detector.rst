@@ -2,23 +2,35 @@
 Robot Detector
 ##############
 
-The 2017 Robot Detection uses the Colour Rois to find clusters of white
-in the top camera. A cluster is defined as any collection of regions
-that overlap or touch each other. The cluster's boundary box is then
-classified as the cluster's heightest point to its lowest and its
-furthest left and right values.
+As robots are significantly larger than the other objects on the field the standard
+Connected Component Analysis does a poor job of finding candidates. To solve this
+the region finder is run again at a low resolution with different grid and merging
+settings. Clusters of these regions are grouped in order to generate candidate
+robot regions, containing all regions forming the cluster.
 
-These clusters have some rudimentary checks done on them to check size,
-percentage of area in them which is actually part of a colour roi, and
-its width to height ratio. Anything which is too small, does not have
-enough area covered by colour rois or is not taller than it is wide is
-discarded. Everything else is classified as a robot.
+The second part of the pipeline is the classifier. As with every component of
+vision the key factor here is balancing the constraints of accuracy and efficiency.
+Decision trees are extremely efficient, however, they struggle with the highly
+variable appearance of robots. A machine learning method, random forest, is
+used to bag the regions into the correct categories. In addition, careful feature
+engineering is essential to achieve good performance. A large variety of features
+were tested, and the following features were found to be the most informative:
 
-This is a simple detector and as such it often will get other objects on
-the field that are large and white (i.e. goal posts). It also misses
-robots that have fallen over or are very close as these do not usually
-match the width to height ratio. However as we check percentage of
-white, field features do not tend to be falsely classified.
+* Width/height ratio
+* White/black pixels ratio
+* Size of the bounding box
+* Mean of the pixels (binary image)
+* Variance of the pixels (binary image)
+* Scaled Mass Centre’s X
+* Scaled Mass Centre’s Y
+* Hu moments (`Visual pattern recognition by moment invariants <https://ieeexplore.ieee.org/document/1057692>`_)
+* Zernike moments (`Invariant image recognition by zernike moments <https://ieeexplore.ieee.org/document/55109/>`_)
 
-Details on robot detection prior to 2017 can be found
-`here <http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20140831-Jaiden.Ashmore-RobotDetectionReport.pdf>`__.
+The scaled mass centre is calculated by dividing the zero order moments by
+the first order moments. Hu and Zernike moments are values that relate to the
+shape of the pattern in the image.
+
+Each tree in the random forest is given access to a subset of these features.
+This results in a variety of different decision trees, which leverage different aspects of the region’s appearance. These trees are then composed together, with
+the vote of the “forest” giving a better classification quality than the individual
+trees.
