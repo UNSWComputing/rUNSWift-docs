@@ -2,6 +2,9 @@
 Architecture
 ############
 
+.. warning::
+    This page is outdated and is partially incorrect. Please don't 100% trust the information here. It will updated soon.
+
 The ``runswift`` infrastructure is fairly large, so this page lists some
 key aspects and summaries. The best way to understand these in detail is
 to read the reference papers and relevant code.
