@@ -11,7 +11,7 @@ Setup
     script to work. We should find a way to make it accessible from
     anywhere.
 
-Run ``$RUNSWIFT_CHECKOUT_DIR/bin/sim_setup``, in a terminal.
+Run ``$RUNSWIFT_CHECKOUT_DIR/bin/sim_setup.sh``, in a terminal.
 
 **********************
 Running the Simulation
