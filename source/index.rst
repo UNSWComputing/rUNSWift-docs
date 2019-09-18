@@ -24,7 +24,6 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    3d_simulation
    logs
    tools/index
-   faq
    style_guide
    contributing/index
    joining_runswift
