@@ -131,7 +131,7 @@ How It Works
     - `simswift`_
     - `RoboViz`_
 
-.. figure:: images/Simulator_Structure.png
+.. figure:: /images/Simulator_Structure.png
 
 
 rcssserver3d
@@ -147,7 +147,7 @@ simswift
 
 simswift is the rUNSWift build target on a Linux PC, and is the agent that connects to the simulation server.
 Refer to `Collette's (2017)
-thesis <../blob/master/docs/Collette-Using_3D_Simulation_to_Develop_Robot_Code/Collette-Using_3D_Simulation_to_Develop_Robot_Code.pdf>`__
+thesis <https://github.com/UNSWComputing/rUNSWift-2017-release/blob/master/docs/Collette-Using_3D_Simulation_to_Develop_Robot_Code/Collette-Using_3D_Simulation_to_Develop_Robot_Code.pdf>`_
 for more info.
 
 RoboViz

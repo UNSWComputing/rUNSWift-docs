@@ -22,6 +22,6 @@ to determine the position of the robot.
 
 **The system is outlined below.**
 
-.. figure:: ../../draw.io/field_feature_detector.png
+.. figure:: /draw.io/field_feature_detector.png
 
 **More details can be found in the** `Team Report 2018 <http://cgi.cse.unsw.edu.au/~robocup/2018/TeamPaper2018.pdf>`_.

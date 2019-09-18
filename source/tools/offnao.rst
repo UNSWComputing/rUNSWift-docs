@@ -13,7 +13,7 @@ All this information can be displayed through various visualisation methods,
 including annotated versions of the robot’s camera image and an overhead field
 view.
 
-.. figure:: ../images/offnao.png
+.. figure:: /images/offnao.png
 
 Kinematic offsets can be calibrated to compensate for differences in the head mounting
 and looseness in the robot’s joints. Debug logs recorded by the main code may

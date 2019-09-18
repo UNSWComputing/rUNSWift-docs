@@ -19,7 +19,7 @@ be performed efficiently, regardless of window size, with the integral image.
 An example of the adaptive thresholding process below.
 White pixels are considered light whilst green pixels are dark.
 
-.. figure:: ../../images/adaptive_thresholding.png
+.. figure:: /images/adaptive_thresholding.png
 
 As this method does not rely on specialised colour tables the exposure of the
 image may be allowed to vary. This has allowed us to enable auto exposure on the

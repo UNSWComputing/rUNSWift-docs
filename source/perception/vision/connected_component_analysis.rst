@@ -28,4 +28,4 @@ generated without grid splitting. Regions generated with grid splitting, culled
 to show only ball like regions. Final regions generated with grid splitting and
 merging, culled to show only ball like regions.
 
-.. figure:: ../../images/connected_component_analysis.png
+.. figure:: /images/connected_component_analysis.png
