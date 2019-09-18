@@ -1,6 +1,6 @@
-####
-Kick
-####
+#########
+Kick Lean
+#########
 
 Each robot has slightly different motion dynamics, and require a lean offset when kicking, to kick reliably.
 

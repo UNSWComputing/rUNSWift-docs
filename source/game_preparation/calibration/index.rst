@@ -1,6 +1,6 @@
-###########
-Calibration
-###########
+#################
+Robot Calibration
+#################
 
 .. toctree::
     :maxdepth: 2
