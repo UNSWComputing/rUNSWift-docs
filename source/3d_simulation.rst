@@ -39,34 +39,36 @@ Running the simulator (RCSSServer3d)
 ====================================
 
 To start the simulation server, in a new terminal, run ``rcssserver3d``
-.. note:: the following errors will show and **can be ignored**.
 
-::
+.. note::
+    the following errors will show and **can be ignored**.
 
-    (Light) ERROR: OpenGLServer not found
-    (Light) ERROR: OpenGLServer not found
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (Material2DTexture) ERROR: cannot find TextureServer
-    (Material2DTexture) ERROR: OpenGLServer not found.
-    (sparkgui.rb)  sparkRegisterMonitorCmdParser TrainerCommandParser
-    (InputControl) ERROR: no FPSController found at '/usr/scene/camera/physics/controller'
+    ::
+
+        (Light) ERROR: OpenGLServer not found
+        (Light) ERROR: OpenGLServer not found
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (Material2DTexture) ERROR: cannot find TextureServer
+        (Material2DTexture) ERROR: OpenGLServer not found.
+        (sparkgui.rb)  sparkRegisterMonitorCmdParser TrainerCommandParser
+        (InputControl) ERROR: no FPSController found at '/usr/scene/camera/physics/controller'
 
 Running the visualiser (RoboViz)
 ================================
