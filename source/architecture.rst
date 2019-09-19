@@ -212,9 +212,3 @@ Key directories relating to the python interface:
    architecture and can be customised to match some form of state
    machine / decision tree / other behaviour system implemented in
    python.
-
-Contact / Maintainer
---------------------
-
-| For more information, contact
-| \* ijnek - kenjibrameld@gmail.com
