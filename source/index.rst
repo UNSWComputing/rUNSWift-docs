@@ -17,6 +17,7 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    :maxdepth: 1
 
    setup/index
+   running/index
    architecture
    perception/index
    motion/index
