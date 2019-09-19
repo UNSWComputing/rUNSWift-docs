@@ -1,6 +1,11 @@
+.. _pc_setup:
+
 ########
 PC Setup
 ########
+
+.. warning::
+    Instructions here are not complete yet.
 
 .. note::
     If this is your first time using rUNSWift software, follow the instructions on this page.
@@ -16,7 +21,12 @@ Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 Import rUNSWift VM Image
 ************************
 
-Download VM Image from LINK HERE
+#. Download OVF file from LINK HERE
+#. Machine -> Import Appliance
+#. Select the Download OVA file
+#. Next
+#. Import
+
 
 .. note::
     For passwords, please :ref:`contact` us.
