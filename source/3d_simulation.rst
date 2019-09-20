@@ -28,7 +28,7 @@ It cannot be used for developing
 Installing Simulator
 ********************
 
-Run ``$RUNSWIFT_CHECKOUT_DIR/bin/sim_setup.sh``, in a terminal.
+Run ``$RUNSWIFT_CHECKOUT_DIR/bin/setup-simulation.sh``, in a terminal.
 
 
 *********************
