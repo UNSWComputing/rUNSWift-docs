@@ -6,7 +6,7 @@ Turning Robot On
 
 .. warning::
     *   Don't move the robot while its starting up, as the IMU is calibrated during boot.
-    *   Don't hold down the chest button, as this will cause the robot to start flash!
+    *   Don't hold down the chest button, as this will cause the robot to start doing a factory reset!
 
 .. seealso::
     :ref:`button_presses` for other button presses.

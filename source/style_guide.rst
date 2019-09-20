@@ -31,9 +31,10 @@ Style Guide for Python
 
 rUNSWift uses the Python community's standard
 `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__, as enforced by
-`flake8 <http://flake8.pycqa.org/>`__ in this `git
-hook <https://github.com/UNSWComputing/rUNSWift/blob/f8cb105/bin/build_setup.sh#L77-L87>`__.
-As PEP8 is strict, install a python linter for your IDE.
+`flake8 <http://flake8.pycqa.org/>`__ in a git hook.
+
+.. tip::
+    As PEP8 is strict, install a python linter for your IDE.
 
 .. seealso::
     :ref:`ide_addons` for linters for your IDE
