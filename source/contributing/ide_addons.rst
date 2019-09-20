@@ -1,3 +1,5 @@
+.. _ide_addons:
+
 ##########
 IDE Addons
 ##########

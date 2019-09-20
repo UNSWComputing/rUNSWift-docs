@@ -27,6 +27,26 @@ Import rUNSWift VM Image
 #. Next
 #. Import
 
+.. _setup_network:
+
+******************************
+Setup Wireless/Wired Network
+******************************
+
+For a VM, it is necessary to bridge wireless networks and wired networks (when using LAN)
+from the host machine to the VM. Follow these instructions in VirtualBox.
+
+#. Network
+    #. Adapter 2
+        #. Enable Network Adapter
+        #. Attached to Bridged Adapter
+        #. Name should be your wired adapter
+
+    #. Adapter 3
+        #. Enable Network Adapter
+        #. Attached to Bridged Adapter
+        #. Name should be your wired (usb) adapter
+
 
 .. note::
     For passwords, please :ref:`contact` us.

@@ -65,3 +65,5 @@ VirtualBox Instructions
 
     #. Continue
     #. Restart Now (after installation is complete)
+
+Refer to :ref:`setup_network` for bridging the networks between host machine and VM.

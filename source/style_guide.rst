@@ -29,12 +29,23 @@ for naming.
 Style Guide for Python
 **********************
 
-Context: `What is Flake8 and why we should use
-it? <https://medium.com/python-pandemonium/what-is-flake8-and-why-we-should-use-it-b89bd78073f2>`__
-
-UNSW Sydney uses the Python community's standard
+rUNSWift uses the Python community's standard
 `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__, as enforced by
 `flake8 <http://flake8.pycqa.org/>`__ in this `git
 hook <https://github.com/UNSWComputing/rUNSWift/blob/f8cb105/bin/build_setup.sh#L77-L87>`__.
-A quick Google search will usually find a plugin for your IDE of choice
-too.
+As PEP8 is strict, install a python linter for your IDE.
+
+.. seealso::
+    :ref:`ide_addons` for linters for your IDE
+
+*****************
+EditorConfig file
+*****************
+
+`EditorConfig <https://editorconfig.org/>`_ helps maintain consistent coding styles
+for multiple developers working on the same project across various editors and IDEs.
+
+``$RUNSWIFT_CHECKOUR_DIR/.editorconfig`` file contains the style settings for different languages.
+
+.. seealso::
+    :ref:`ide_addons` to see editorConfig addons for your IDE
