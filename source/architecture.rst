@@ -57,7 +57,7 @@ to allocate named memory that is shared with other processes.)
 Nao v6, OS 2.8, and later
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-LoLA is Aldebaran's communications bridge to Aldebaran's proprietary NaoQi SDK.  ``lola`` is a process separate to ``naoqi``.  Access is only available on special RoboCup versions of the OS.  To enable access, you need to have ``/home/nao/robocup.conf`` on the Nao.  This file can be empty.  ``lola`` will then create a socket file ``/tmp/robocup`` which support msgpack for read and write.  See ``robot/motion/LoLAData.cpp`` for more details.
+LoLA is Aldebaran's communications bridge to Aldebaran's proprietary NaoQi SDK.  ``lola`` is a process separate to ``naoqi``.  Access is only available on special RoboCup versions of the OS.  To enable access, you need to have ``/home/nao/robocup.conf`` on the Nao.  This file can be empty.  ``lola`` will then create a socket file ``/tmp/robocup`` which supports msgpack for read and write.  See ``robot/motion/LoLAData.cpp`` for more details.
 
 rUNSWift
 --------
