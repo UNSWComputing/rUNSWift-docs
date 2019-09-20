@@ -70,10 +70,10 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
 
 #.  Inside the VM, download
 
-    * ``rUNSWift/vms/ubuntu-18.04/.ssh/config``
-    * ``rUNSWift/vms/ubuntu-18.04/.ssh/id_rsa``
+    * `.ssh/config <https://www.cse.unsw.edu.au/~robocup/Nao/Downloads/vm-files/.ssh/config>`_
+    * `.ssh/id_rsa <https://www.cse.unsw.edu.au/~robocup/Nao/Downloads/vm-files/.ssh/id_rsa>`_
 
-    from github into ``~/.ssh/``.
+    from CSE into ``~/.ssh/``.
 
     In a terminal,
 
