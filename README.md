@@ -1,7 +1,6 @@
 # rUNSWift-Manual
 
 Repository for maintaining the Sphinx Documentation for rUNSWift.
-**Currently under construction**
 
 ## Installing Dependencies
 `sudo pip install -U sphinx sphinx_rtd_theme`

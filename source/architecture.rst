@@ -12,21 +12,22 @@ to read the reference papers and relevant code.
 Overview - libraries, libagent, runswift and offnao
 ---------------------------------------------------
 
-``libagent`` is the library loaded into ``naoqi`` and how ``runswift``
-communicates with the robot hardware.
+``libagent`` is a library loaded into ``naoqi`` and how ``runswift``
+communicates with the robot hardware on Nao v5 and earlier (OS 2.1 and
+earlier).
 
-``soccer`` & ``soccer-static`` are the basic hardware-independent
-modules (perception without cameras, networking threads, etc.). The
-static version is for ``robot-static``, and the dynamic version is for
-[[offnao]].
+``soccer`` & ``soccer-static`` are the basic toolchain-independent
+modules (perception without cameras, etc.). The static version is
+for ``robot-static``, and the dynamic version is for [[offnao]].
 
 ``robot-static`` is ``soccer-static`` with hardware-specific modules
 (camera, some parts of motion).
 
 ``runswift`` is ``robot-static`` with ``main()``.
 
-[[offnao]] is our current C++ visual debugger that connects to
-``runswift`` via TCP.
+[[offnao]] is our current C++/Qt visual debugger that connects to
+``runswift`` via TCP port 10125.  It can also save and load recordings in a few
+different formats
 
 If you poke around the cmake files, they should correlate with what's
 said here, but if it doesn't, the cmake files take precedence (and
@@ -35,8 +36,15 @@ please update this).
 Drivers and libagent
 --------------------
 
-Not sure about drivers? Naoqi modules are loaded by ``libagent`` `in
+Not sure about drivers? Naoqi modules like ``libagent`` are loaded `in
 image/etc/naoqi/autoload.ini <../tree/master/image/etc/naoqi/autoload.ini>`__
+
+If you poke around the files, they should correlate with what's
+said here, but if it doesn't, the files take precedence (and
+please update this).
+
+Nao v5, OS 2.1, and earlier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``libagent`` is our communications bridge to the robot. It is a library
 that we wrote within Aldebaran's proprietary NaoQi SDK that receives
@@ -45,6 +53,11 @@ commands. It is also responsible for `button
 presses <Button%20Presses%20for%20Nao>`__. libagent communicates with
 our executable (runswift) via a shared memory object. (linux allows you
 to allocate named memory that is shared with other processes.)
+
+Nao v6, OS 2.8, and later
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LoLA is Aldebaran's communications bridge to Aldebaran's proprietary NaoQi SDK.  ``lola`` is a process separate to ``naoqi``.  Access is only available on special RoboCup versions of the OS.  To enable access, you need to have ``/home/nao/robocup.conf`` on the Nao.  This file can be empty.  ``lola`` will then create a socket file ``/tmp/robocup`` which supports msgpack for read and write.  See ``robot/motion/LoLAData.cpp`` for more details.
 
 rUNSWift
 --------
