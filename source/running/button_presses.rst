@@ -4,24 +4,6 @@
 Button Presses
 ##############
 
-********************
-Chest Button LED key
-********************
-
-+-----------------------+------------------------------+-----------------------------+
-| Chest button colour   | runswift State               | libagent State              |
-+=======================+==============================+=============================+
-| Flashing Red          | runswift is not responding   | libagent is in limp mode    |
-+-----------------------+------------------------------+-----------------------------+
-| Flashing Yellow       | runswift is not responding   | libagent is in stand mode   |
-+-----------------------+------------------------------+-----------------------------+
-| Flashing Green        | runswift is responding       | libagent is in limp mode    |
-+-----------------------+------------------------------+-----------------------------+
-| Solid Red             | runswift is not responding   | libagent is in sit mode     |
-+-----------------------+------------------------------+-----------------------------+
-| Solid Green           | runswift is responding       | libagent is in sit mode     |
-+-----------------------+------------------------------+-----------------------------+
-
 **********************
 Chest Button Interface
 **********************

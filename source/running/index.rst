@@ -8,3 +8,4 @@ Running the Robot
     syncing
     running_runswift
     button_presses
+    leds
