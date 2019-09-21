@@ -4,9 +4,6 @@
 PC Setup
 ########
 
-.. warning::
-    Instructions here are not complete yet.
-
 .. note::
     If this is your first time using rUNSWift software, follow the instructions on this page.
     For those that are looking to contribute to the codebase, please follow instructions on :ref:`pc-setup-contributing`.
@@ -26,6 +23,7 @@ Import rUNSWift VM Image
 #. Select the Download OVA file
 #. Next
 #. Import
+#. Start
 
 .. _setup_network:
 

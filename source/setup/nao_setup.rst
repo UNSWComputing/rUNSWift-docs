@@ -2,6 +2,9 @@
 NAO Setup
 #########
 
+.. warning::
+    Instructions here are not complete yet.
+
 ***********
 Naoqi Setup
 ***********
@@ -41,4 +44,4 @@ Loading rUNSWift on new robot
 Run :code:`setup-robot.sh mario`
 
 .. note::
-    This creates configuration files for the new robot, finds it on the network and loads the code onto the robot. 
+    This creates configuration files for the new robot, finds it on the network and loads the code onto the robot.
