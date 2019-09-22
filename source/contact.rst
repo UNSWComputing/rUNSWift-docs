@@ -22,5 +22,12 @@ Tripta Kaur (tripta1611@gmail.com)
 
 .. figure:: /images/tripta_kaur.jpeg
 
+**********************************
+Tom Wells (Tom.wells96@gmail.com)
+**********************************
 
-.. Image size is 350*350
+.. figure:: /images/tom_wells.png
+
+
+.. Use 350 pixels width.
+.. Recommended image size is 350*350
