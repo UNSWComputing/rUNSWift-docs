@@ -158,7 +158,7 @@ RoboViz
 User-friendly visualiser for the simulator.
 Provides a graphical interface to interact with the simulator, such as moving the ball and robots.
 rUNSWift modifications are made in `rUNSWift's fork <https://github.com/ijnek/RoboViz>`__.
-More information can be found at `magmaOffenburg/RoboViz Github <https://github.com/magmaOffenburg/RoboViz>`__.
+More information can be found at `magmaOffenburg/RoboViz GitHub <https://github.com/magmaOffenburg/RoboViz>`__.
 
 
 **************
@@ -193,7 +193,7 @@ Making changes to Roboviz
 #. Create pull request with a branch with changes.
 
 .. note::
-    For Github push access, please :ref:`contact` us.
+    For GitHub push access, please :ref:`contact` us.
 
 
 **********************
