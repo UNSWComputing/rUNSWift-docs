@@ -18,12 +18,19 @@ Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 Import rUNSWift VM Image
 ************************
 
-#. Download OVF file from LINK HERE
+#. Download OVA file from LINK HERE
 #. Machine -> Import Appliance
 #. Select the Download OVA file
 #. Next
 #. Import
 #. Start
+
+.. tip::
+    OVA file is very big (>5GB), download on the SPL_R network in the lab.
+
+.. note::
+    For passwords, please :ref:`contact` us.
+
 
 .. _setup_network:
 
@@ -39,12 +46,3 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
         #. Enable Network Adapter
         #. Attached to Bridged Adapter
         #. Name should be your wired adapter
-
-    #. Adapter 3
-        #. Enable Network Adapter
-        #. Attached to Bridged Adapter
-        #. Name should be your wired (usb) adapter
-
-
-.. note::
-    For passwords, please :ref:`contact` us.

@@ -23,12 +23,10 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    motion/index
    networking
    3d_simulation
-   logs
    tools/index
    game_preparation/index
    style_guide
    contributing/index
    past_research
    code_releases_team_reports
-   joining_runswift
    contact

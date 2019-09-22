@@ -15,6 +15,7 @@ You can either use a virtual machine, or dual boot your computer.
 **Pick one of the following:**
 
 .. toctree::
+   gain_push_access_in_runswift_vm
    pc_setup_virtual_box
    pc_setup_dual_boot
 

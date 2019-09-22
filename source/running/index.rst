@@ -3,6 +3,8 @@ Running the Robot
 #################
 
 .. toctree::
+    :maxdepth: 1
+
     turning_on
     building
     syncing

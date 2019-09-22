@@ -27,12 +27,14 @@ Chest Button
 Left Ear
 ********
 
-Battery Charge
+Shows Battery Charge, each LED indicates approximately 10%.
 
-*********
-Right Ear
-*********
-
+================ ===========================================
+Effect           Description
+================ ===========================================
+LEDs turning Off Charging (LEDs fill up from current value)
+LEDs turning On  Discharging (LEDs empty from current value)
+================ ===========================================
 
 
 *********

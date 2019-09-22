@@ -19,7 +19,7 @@ To compile (build) the codebase for a V6 robot, run
     Possible programs that can be built are listed below.
 
     ============================== ==============================
-    nao_build-2.1.sh               nao_build-2.8.sh
+    nao_build-2.8.sh               nao_build-2.1.sh
     ============================== ==============================
     runswift                       runswift
     state-estimation-simulator.bin offnao.bin
