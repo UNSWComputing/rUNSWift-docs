@@ -16,6 +16,12 @@ Jayen Ashar (jayen@cse.unsw.edu.au)
 
 .. figure:: /images/jayen_ashar.png
 
+*************************************
+Ethan Jones (ethan.jones@unsw.edu.au)
+*************************************
+
+.. figure:: /images/ethan_jones.jpeg
+
 **********************************
 Tripta Kaur (tripta1611@gmail.com)
 **********************************
