@@ -31,6 +31,8 @@ Option Description
 -r     upload the compiled ``runswift`` program
 ------ -----------------------------------------
 -d     delete contents of ~/nao
+------ -----------------------------------------
+-g     upload debugging symbols for gdb
 ====== =========================================
 
 .. seealso::

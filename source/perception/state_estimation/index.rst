@@ -23,7 +23,7 @@ The State Estimation module is also written in such a way to allow easy addition
 
 
 *********************
-EstimatorInfo Objects 
+EstimatorInfo Objects
 *********************
 
 Estimator Information objects simplify the logging of input data and passing of data between the estimators. The estimatorInfo objects are created in :code:`StateEstimationAdapter`, and passed by reference to the estimators.
@@ -72,7 +72,7 @@ Development can be achieved by recording the input data into state estimation in
 Logging State Estimation Input
 ==============================
 
-To log estimatorInfoInit and estimatorInfoIn, 
+To log estimatorInfoInit and estimatorInfoIn,
    1. Enable logging by setting :code:`save_estimator_objects_to_file=TRUE` under :code:`stateestimation` in :code:`runswift.cfg`.
    2. (Optional: Change file name by the :code:`estimator_objects_file_name` option under :code:`stateestimation` options in :code:`runswift.cfg`. (eg. :code:`estimator_objects_file_name=test.txt`). Default is :code:`estimator_objects_record.txt`.
 
@@ -80,7 +80,7 @@ Running State Estimation Simulator
 ==================================
 
 To run the state estimation simulator,
-   1. Compile the state estimation simulator by running :code:`nao_build-2.8.sh state-estimation-simulator.bin`.
+   1. Compile the state estimation simulator by running :code:`build-relwithdebinfo-2.8.sh state-estimation-simulator.bin`.
    2. Run the simulator :code:`state-estimation-simulator-2.8.sh <path/to/file>`.
       (eg. :code:`state-estimation-simulator-2.8.sh logs/record.txt`)
 
@@ -94,7 +94,7 @@ To run the state estimation simulator,
 Estimators
 **********
 
-There are currently four estimators. 
+There are currently four estimators.
 
 .. toctree::
    :maxdepth: 1

@@ -25,6 +25,7 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    3d_simulation
    tools/index
    game_preparation/index
+   debugging/index
    style_guide
    contributing/index
    past_research
