@@ -34,14 +34,14 @@ You can either use a virtual machine, or dual boot your computer.
     A virtual machine is more likely to experience slowness in compiling and running simulations.
 
 *********************
-Add SSH key to Github
+Add SSH key to GitHub
 *********************
 
 #. Generating SSH key
     #. Open Terminal (Ctrl+Alt+T)
     #. Run :code:`ssh-keygen -t rsa -b 4096`
     #. Hit enter three times
-#. Add SSH key to Github by following `Github Instructions <https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account>`_
+#. Add SSH key to GitHub by following `GitHub Instructions <https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account>`_
 
 ******************
 Cloning Repository
@@ -55,7 +55,7 @@ Run the following commands to clone the rUNSWift repository
    $ git clone git@github.com:UNSWComputing/rUNSWift.git rUNSWift
 
 .. note::
-    Your Github account must have access to the private rUNSWift repository to be able to clone it. To gain access, please :ref:`contact` us.
+    Your GitHub account must have access to the private rUNSWift repository to be able to clone it. To gain access, please :ref:`contact` us.
 
 ***********************
 Build Environment Setup
