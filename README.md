@@ -3,7 +3,7 @@
 Repository for maintaining the Sphinx Documentation for rUNSWift.
 
 ## Installing Dependencies
-`sudo pip install -U sphinx sphinx_rtd_theme`
+`sudo apt install python3-sphinx-rtd-theme`
 
 ## Compiling
 To compile locally, run `make html`. 
