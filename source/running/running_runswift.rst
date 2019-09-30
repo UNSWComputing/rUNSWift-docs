@@ -2,13 +2,29 @@
 Running runswift
 ################
 
-To run the runswift program **on the robot**, run
+#. Open an ssh connection to the robot by running
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    $ runswift
+        $ ssh nao@mario
 
-Now, once the chest light is flashing green, **double press the chest** to stiffen the robot.
+    .. note::
+        Replace mario with the name of the robot’s head you’re using
+
+    .. tip::
+        ``nao`` is the user name, and ``mario`` is the hostname of the robot.
+
+    .. note::
+        For passwords, please :ref:`contact` us.
+
+#. **On the robot** (in the terminal with the ssh connection), run
+
+    .. code-block:: bash
+
+        $ runswift
+
+#. Once the chest light is flashing green
+   **double press the chest** to stiffen the robot.
 
 
 .. seealso::
