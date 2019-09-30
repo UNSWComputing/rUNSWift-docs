@@ -199,6 +199,15 @@ html_show_sourcelink = False
 # implements a search results scorer. If empty, the default will be used.
 #html_search_scorer = 'scorer.js'
 
+# https://docs.readthedocs.io/en/stable/guides/vcs.html#github
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "UNSWComputing", # Username
+    "github_repo": "rUNSWift-Manual", # Repo name
+    "github_version": "master", # Version
+    "conf_py_path": "/source/", # Path in the checkout to the docs root
+}
+
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'doctutdoc'
 
