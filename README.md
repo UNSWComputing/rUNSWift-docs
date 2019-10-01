@@ -21,6 +21,6 @@ https://purduecam2project.github.io/CAM2WebUI/basicSetup/sphinx.html
 ## Editing Flowcharts (with draw.io)
 `source/draw.io/` contains **.png (with embedded XML)** that can be imported/exported by draw.io.
 To modify a diagram, 
-1. import the png file into draw.io
-2. make ammendments
-3. overwrite png file by exporting from draw.io
+1. import the png file into draw.io.
+2. make ammendments.
+3. overwrite png file by exporting from draw.io.
