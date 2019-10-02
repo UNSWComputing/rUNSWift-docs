@@ -82,7 +82,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
         ssh-keygen -p -N '' -f ~/.ssh/id_rsa
         # Enter old passphrase: the standard runswift password
         sudo apt install git
-        git clone --depth=1 git@github.com:UNSWComputing/rUNSWift.git rUNSWift
+        git clone git@github.com:UNSWComputing/rUNSWift.git rUNSWift
         rUNSWift/bin/setup-build.sh
         rUNSWift/bin/setup-simulation.sh
 
