@@ -79,7 +79,7 @@ A window should pop up, with a soccer field.
 Runing simswift (single robot)
 ==============================
 
-#. Run ``build-relwithdebinfo-2.1.sh runswift`` in a new terminal
+#. Run ``nao_build-2.1.sh runswift`` in a new terminal
    to compile simswift. It is important to close the server and
    visualiser, to speed up the compilation.
    This step can be skipped if no re-compilation is required.
@@ -92,7 +92,7 @@ Runing simswift (single robot)
 Running simswift (team)
 =======================
 
-#. ``build-relwithdebinfo-2.1.sh runswift`` to compile. Skip this step if you don't have to
+#. ``nao_build-2.1.sh runswift`` to compile. Skip this step if you don't have to
    re-build.
 #. ``sim_run`` to launch a whole team. This starts five robot agents.
 #. ``sim_kill``, to terminate all agents.

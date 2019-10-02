@@ -83,7 +83,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
         # Enter old passphrase: the standard runswift password
         sudo apt install git
         git clone --depth=1 git@github.com:UNSWComputing/rUNSWift.git rUNSWift
-        rUNSWift/bin/setup-build.sh
+        rUNSWift/bin/build_setup.sh
         rUNSWift/bin/setup-simulation.sh
 
     .. note::

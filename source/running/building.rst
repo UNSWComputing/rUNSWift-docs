@@ -6,7 +6,7 @@ To compile (build) the codebase for a V6 robot, run
 
 .. code-block:: bash
 
-    $ build-relwithdebinfo-2.8.sh
+    $ nao_build-2.8.sh
 
 .. tip::
 
@@ -14,12 +14,12 @@ To compile (build) the codebase for a V6 robot, run
 
     .. code-block:: bash
 
-        $ build-relwithdebinfo-2.1.sh offnao.bin
+        $ nao_build-2.1.sh offnao.bin
 
     Possible programs that can be built are listed below.
 
     ============================== ==============================
-    build-relwithdebinfo-2.8.sh    build-relwithdebinfo-2.1.sh
+    nao_build-2.8.sh               nao_build-2.1.sh
     ============================== ==============================
     runswift                       runswift
     state-estimation-simulator.bin offnao.bin
@@ -33,4 +33,4 @@ To compile (build) the codebase for a V6 robot, run
 
 
 .. tip::
-    Builds can fail in strange ways sometimes. Try ``build-relwithdebinfo-2.8.sh -B`` to do a clean build
+    Builds can fail in strange ways sometimes. Try ``nao_build-2.8.sh -B`` to do a clean build

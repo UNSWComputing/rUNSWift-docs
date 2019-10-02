@@ -65,7 +65,7 @@ Run the following command to setup the build environment.
 
 .. code-block:: bash
 
-   $ rUNSWift/bin/setup-build.sh
+   $ rUNSWift/bin/build_setup.sh
 
 
 .. note::

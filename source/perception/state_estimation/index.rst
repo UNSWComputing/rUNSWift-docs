@@ -80,7 +80,7 @@ Running State Estimation Simulator
 ==================================
 
 To run the state estimation simulator,
-   1. Compile the state estimation simulator by running :code:`build-relwithdebinfo-2.8.sh state-estimation-simulator.bin`.
+   1. Compile the state estimation simulator by running :code:`nao_build-2.8.sh state-estimation-simulator.bin`.
    2. Run the simulator :code:`state-estimation-simulator-2.8.sh <path/to/file>`.
       (eg. :code:`state-estimation-simulator-2.8.sh logs/record.txt`)
 
