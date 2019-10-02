@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Architecture &mdash; RoboCup SPL 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Perception" href="perception/index.html" />
+    <link rel="prev" title="LEDs" href="running/leds.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RoboCup SPL
+          
+
+          
+            
+            <img src="_static/rUNSWift.gif" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2020
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running/index.html">Running the Robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-libraries-libagent-runswift-and-offnao">Overview - libraries, libagent, runswift and offnao</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drivers-and-libagent">Drivers and libagent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nao-v5-os-2-1-and-earlier">Nao v5, OS 2.1, and earlier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nao-v6-os-2-8-and-later">Nao v6, OS 2.8, and later</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#runswift">rUNSWift</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#call-tree">Call tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#threads">Threads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blackboard">Blackboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adapters">Adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-infrastructure">Python Infrastructure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="perception/index.html">Perception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motion/index.html">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3d_simulation.html">3D Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game_preparation/index.html">Game Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging/index.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="past_research.html">Past Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_releases_team_reports.html">Code Release / Team Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RoboCup SPL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Architecture</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/UNSWComputing/rUNSWift-Manual/blob/master/source/architecture.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">runswift</span></code> infrastructure is fairly large, so this page lists some
+key aspects and summaries. The best way to understand these in detail is
+to read the reference papers and relevant code.</p>
+<div class="section" id="overview-libraries-libagent-runswift-and-offnao">
+<h2>Overview - libraries, libagent, runswift and offnao<a class="headerlink" href="#overview-libraries-libagent-runswift-and-offnao" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">libagent</span></code> is a library loaded into <code class="docutils literal notranslate"><span class="pre">naoqi</span></code> and how <code class="docutils literal notranslate"><span class="pre">runswift</span></code>
+communicates with the robot hardware on Nao v5 and earlier (OS 2.1 and
+earlier).</p>
+<p><code class="docutils literal notranslate"><span class="pre">soccer</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">soccer-static</span></code> are the basic toolchain-independent
+modules (perception without cameras, etc.). The static version is
+for <code class="docutils literal notranslate"><span class="pre">robot-static</span></code>, and the dynamic version is for [[offnao]].</p>
+<p><code class="docutils literal notranslate"><span class="pre">robot-static</span></code> is <code class="docutils literal notranslate"><span class="pre">soccer-static</span></code> with hardware-specific modules
+(camera, some parts of motion).</p>
+<p><code class="docutils literal notranslate"><span class="pre">runswift</span></code> is <code class="docutils literal notranslate"><span class="pre">robot-static</span></code> with <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
+<p>[[offnao]] is our current C++/Qt visual debugger that connects to
+<code class="docutils literal notranslate"><span class="pre">runswift</span></code> via TCP port 10125.  It can also save and load recordings in a few
+different formats</p>
+<p>If you poke around the cmake files, they should correlate with what’s
+said here, but if it doesn’t, the cmake files take precedence (and
+please update this).</p>
+</div>
+<div class="section" id="drivers-and-libagent">
+<h2>Drivers and libagent<a class="headerlink" href="#drivers-and-libagent" title="Permalink to this headline">¶</a></h2>
+<p>Not sure about drivers? Naoqi modules like <code class="docutils literal notranslate"><span class="pre">libagent</span></code> are loaded <a class="reference external" href="../tree/master/image/etc/naoqi/autoload.ini">in
+image/etc/naoqi/autoload.ini</a></p>
+<p>If you poke around the files, they should correlate with what’s
+said here, but if it doesn’t, the files take precedence (and
+please update this).</p>
+<div class="section" id="nao-v5-os-2-1-and-earlier">
+<h3>Nao v5, OS 2.1, and earlier<a class="headerlink" href="#nao-v5-os-2-1-and-earlier" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">libagent</span></code> is our communications bridge to the robot. It is a library
+that we wrote within Aldebaran’s proprietary NaoQi SDK that receives
+information such as joint angles, and sends information such as LED
+commands. It is also responsible for <a class="reference external" href="Button%20Presses%20for%20Nao">button
+presses</a>. libagent communicates with
+our executable (runswift) via a shared memory object. (linux allows you
+to allocate named memory that is shared with other processes.)</p>
+</div>
+<div class="section" id="nao-v6-os-2-8-and-later">
+<h3>Nao v6, OS 2.8, and later<a class="headerlink" href="#nao-v6-os-2-8-and-later" title="Permalink to this headline">¶</a></h3>
+<p>LoLA is Aldebaran’s communications bridge to Aldebaran’s proprietary NaoQi SDK.  <code class="docutils literal notranslate"><span class="pre">lola</span></code> is a process separate to <code class="docutils literal notranslate"><span class="pre">naoqi</span></code>.  Access is only available on special RoboCup versions of the OS.  To enable access, you need to have <code class="docutils literal notranslate"><span class="pre">/home/nao/robocup.conf</span></code> on the Nao.  This file can be empty.  <code class="docutils literal notranslate"><span class="pre">lola</span></code> will then create a socket file <code class="docutils literal notranslate"><span class="pre">/tmp/robocup</span></code> which supports msgpack for read and write.  See <code class="docutils literal notranslate"><span class="pre">robot/motion/LoLAData.cpp</span></code> for more details.</p>
+</div>
+</div>
+<div class="section" id="runswift">
+<h2>rUNSWift<a class="headerlink" href="#runswift" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options">
+<h3>options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<p>There are many options to the runswift executable. They can be put on
+the command line, in the configuration file
+<a class="reference external" href="../tree/master/image/home/nao/data/runswift.cfg">runswift.cfg</a>, in
+the per-robot configuration file , or sent from off-nao. They are
+configured in options.cpp, and viewable by running “runswift –help”.</p>
+</div>
+<div class="section" id="call-tree">
+<h3>Call tree<a class="headerlink" href="#call-tree" title="Permalink to this headline">¶</a></h3>
+<p>At the top of our call tree is main, naturally.
+<a class="reference external" href="../tree/master/robot/main.cpp">main.cpp</a> launches threads for most
+of our top level-modules, such as Perception and Motion. The threads
+continuously run in a loop, independent of each other. Perception is
+[currently] the only top-level module that contains other top-level
+modules, namely Kinematics, Vision, Localisation, and Behaviour, which
+are executed in that order. Behaviour contains a bridge to python, and
+calls the execute method of a top-level python skill
+(<a class="reference external" href="../tree/master/image/home/nao/data/behaviours/skills/GameController.py">GameController.py</a>
+skill by default).</p>
+</div>
+<div class="section" id="threads">
+<h3>Threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h3>
+<p>The threads are run in a function called safelyRun, which:</p>
+<ul class="simple">
+<li>restarts the thread in the event of a segfault or other fatal signal</li>
+<li>restarts the thread in the event of an exception being thrown</li>
+<li>monitors for the thread if it goes overtime</li>
+<li>sleeps the thread if it goes undertime (to allow other threads to
+run)</li>
+<li>[re]constructs the thread, repeatedly calls the thread’s tick()
+function, and destructs the thread safelyRun stop calling tick() when
+ctrl-c is pressed or the interrupt signal is received. Additionally,
+perception is monitored for freezes (tick() does not return).</li>
+</ul>
+<p>To decrease the need for locks, and decrease the possibilities for
+segfaults, most of the blackboard variables are not pointers, and exist
+as long as the blackboard exists. It would be a concurrency error to
+have one thread write a new pointer to the blackboard and free the old
+one, while another thread may be accessing its contents. Some blackboard
+variables are smart pointers to avoid this.</p>
+<p>Multiple threads should never write to the same blackboard variable. If
+two threads ever happened to write simultaneously, it could crash
+either/both threads, as well as leaving corrupt data, causing another
+thread to crash. Each sub-blackboard is written to only by its
+corresponding top-level module.</p>
+<p>Note that reads of structures on the blackboard greater than 1-word in
+size, are not necessarily atomic, as the read may be interleaved with
+another thread’s write. An example is when reading from
+<code class="docutils literal notranslate"><span class="pre">blackboard-&gt;receiver.data</span></code>.</p>
+</div>
+<div class="section" id="blackboard">
+<h3>Blackboard<a class="headerlink" href="#blackboard" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="../tree/master/robot/blackboard/">blackboard</a> is a global
+variable where threads share information. The blackboard is broken into
+sub-blackboards for each top-level module. Each sub-blackboard is
+written to by its corresponding top-level module. Variables on the
+blackboard should not contain pointers. Adding a variable to the
+blackboard does not make it immediately accessible in offnao. You have
+to manually archive it, see [[Blackboard Serialization]].</p>
+</div>
+<div class="section" id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
+<p>We have a cout-like interface for recording log messages to a file. For
+example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">llog(INFO)</span> <span class="pre">&lt;&lt;</span> <span class="pre">&quot;RUNSWIFT</span> <span class="pre">soccer</span> <span class="pre">library</span> <span class="pre">spinning</span> <span class="pre">up!&quot;</span> <span class="pre">&lt;&lt;</span> <span class="pre">endl;</span></code></p>
+<p>Log files are saved in /var/volatile/runswift on the robot, and there is
+one log file per source directory. The log levels available are SILENT,
+QUIET, FATAL, ERROR, WARNING, INFO, VERBOSE, DEBUG1, DEBUG2, and DEBUG3.
+Setting a log level will record messages of that level or higher. The
+default log level is SILENT, and can be overridden using one of the
+options mechanisms listed in the options section. e.g. “-l INFO” will
+record messages at level SILENT, QUIET, FATAL, ERROR, WARNING, or INFO.
+Using llog (especially in tight loops) takes resources, even if the set
+log level is higher (e.g. “-l SILENT”) than the one passed to llog (e.g.
+“llog(DEBUG3)”).</p>
+</div>
+<div class="section" id="adapters">
+<h3>Adapters<a class="headerlink" href="#adapters" title="Permalink to this headline">¶</a></h3>
+<p>Including the blackboard in every file that needs to access a blackboard
+variable has led to some unreasonably long compiles in previous years.
+To alleviate this, we are using an Adapter-like pattern, where only the
+files representing the top-level modules access the variables on the
+blackboard. Blackboard.hpp should only be included from these special
+&lt;module&gt;Adapter.cpp files, and the blackboard should only friend these
+Adapters.</p>
+</div>
+</div>
+<div class="section" id="python-infrastructure">
+<h2>Python Infrastructure<a class="headerlink" href="#python-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>We use python as a high level language for writing behaviour code. The
+reasons for this are discussed in depth at: <a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2012site/reports/CarlChatfieldRoboCupReport2012.pdf">Carl Chatfield Robocup
+Report 2012 - Chapter
+3</a></p>
+<p>In order to enable this, we use the boost python libraries to set up an
+embedded python interpreter within our <code class="docutils literal notranslate"><span class="pre">runswift</span></code> executable that has
+access to parts of our blackboard. In every perception cycle, an entry
+tick() function is called by our c++ code within the python interpreter
+instance with a reference to the blackboard. The expected return value
+is a BehaviourRequest object that contains any information to pass back
+into the C++ code (primarily actions for motors &amp; leds).</p>
+<p>Key directories relating to the python interface:</p>
+<ul>
+<li><p class="first"><strong>robot/perception/behaviour/</strong></p>
+<p>This folder contains the c++ parts of the behaviour chain. In
+BehaviourAdapter.cpp, it creates a PythonSkill (defined in the
+<code class="docutils literal notranslate"><span class="pre">python</span></code> subdirectory). On every tick, it executes the PythonSkill
+which returns a BehaviourRequest to it. This is then used to write
+actioncommands to the blackboard.</p>
+<ul>
+<li><p class="first"><strong>python/</strong></p>
+<p>The important pieces here:</p>
+<ul>
+<li><p class="first">wrappers - Wrappers over some data types (see the report/code
+for details).</p>
+</li>
+<li><p class="first">converters - Converters for arrays, etc (see the report/code
+for details).</p>
+</li>
+<li><p class="first">PythonSkill.cpp - The PythonSkill class manages executing a
+python interpreter (setting up modules, paths, etc). It also
+watches files and reloads the interpreter if they change. This
+is useful for quick iteration on code (simply nao_sync your
+new code over and the robot runs the new code). It also handles
+python exceptions that are uncaught by flashing the Leds,
+saying “Python error”, and reloading the code. This is useful
+because in game, if your python code reaches an untested state
+and crashes, you want the interpreter to restart and continue
+(but notify you that it failed).</p>
+</li>
+<li><p class="first">RobotModule.cpp - This pulls all the wrappers in and gets
+compiled into a python module which can be imported within the
+interpreter as <code class="docutils literal notranslate"><span class="pre">robot</span></code>. You can then access parts of the
+wrapped cpp code. e.g ```python # This is a simple
+behaviour.py import robot</p>
+<p>def tick(blackboard): req = robot.BehaviourRequest() # Creates
+a Behaviour Request instance. req.actions.leds.rightEye =
+robot.rgb(True, False, False) # Set right eye to red. return
+req ```</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first"><strong>image/home/nao/data/behaviours</strong></p>
+<p>This is where the python files that run on the robot are kept. This
+folder gets synced to the robot by nao_sync. The highest level file
+here is <code class="docutils literal notranslate"><span class="pre">behaviour.py</span></code>. This file is run by PythonSkill at the top
+level. It calls the tick() function on this module, passing it a
+reference to the blackboard. The function must return a
+BehaviourRequest instance. Whatever else happens is up to your python
+architecture and can be customised to match some form of state
+machine / decision tree / other behaviour system implemented in
+python.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="perception/index.html" class="btn btn-neutral float-right" title="Perception" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="running/leds.html" class="btn btn-neutral float-left" title="LEDs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rUNSWift
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

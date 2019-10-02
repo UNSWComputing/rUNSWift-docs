@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Motion &mdash; RoboCup SPL 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Networking" href="../networking.html" />
+    <link rel="prev" title="Behaviour" href="../perception/behaviour.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> RoboCup SPL
+          
+
+          
+            
+            <img src="../_static/rUNSWift.gif" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2020
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running/index.html">Running the Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perception/index.html">Perception</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Motion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#literature">Literature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#actions">Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static-actions">Static Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pos-files">.pos Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-actions">Dynamic Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#actions-python">Actions + Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#kinematics">Kinematics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#forward-kinematics">Forward Kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse-kinematics">Inverse Kinematics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#walk2014-generator">Walk2014 Generator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-different-stand-postures">Two Different Stand Postures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kicks">Kicks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#walk-preprocessor">Walk Preprocessor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3d_simulation.html">3D Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../game_preparation/index.html">Game Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/index.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style_guide.html">Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../past_research.html">Past Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_releases_team_reports.html">Code Release / Team Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCup SPL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Motion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/UNSWComputing/rUNSWift-Manual/blob/master/source/motion/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="motion">
+<h1>Motion<a class="headerlink" href="#motion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The motion module is run in its own thread with the highest priority on the robot,
+as joint angles need to be calculated at approximately 82 frames per second to maintain stability.
+The MotionAdapter class controls this thread and is the gateway for communicating in
+and out of the motion module. Within motion, there are 3 main areas.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Touch</strong></td>
+<td>receives input from Lola, eg gyroscopes, accelerometers, etc</td>
+</tr>
+<tr class="row-even"><td><strong>Generator</strong></td>
+<td>generates joint values from the behaviour request and sensor input</td>
+</tr>
+<tr class="row-odd"><td><strong>Effector</strong></td>
+<td>outputs joint values to Lola</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="literature">
+<h2>Literature<a class="headerlink" href="#literature" title="Permalink to this headline">¶</a></h2>
+<p><strong>The most relevant report to motion currently is</strong> <a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20140930-Bernhard.Hengst-Walk2014Report.pdf">rUNSWift Walk2014
+Report</a>
+(Hengst, 2014)</p>
+<p>Other reports that include motion concepts to varying degrees:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20141113-HengstLangeWhite-Humanoids2011Paper31.pdf">Learning to Control a Biped with
+Feet</a>
+(Hengst, Lange, White, 2011)</li>
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20111010-Brock.White-OmniDirectionalLocomotion.pdf">Humanoid Omni-directional Locomotion</a>
+(White, 2011)</li>
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20120824-Belinda.Teh-OmniDirectionalKicks.pdf">Dynamic Omnidirectional Kicks on Humanoid Robots</a>
+(Teh, 2012)</li>
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20130000-Bernhard.Hengst-RLLateralStability-CLAWAR13.pdf">Reinforcement Learning of Bipedal Lateral Behaviour and Stability Control with Ankle-Roll Activation</a>
+(Hengst, 2013)</li>
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20130108-Roger.Liu-WalkAndGoalie.pdf">Bipedal walk and goalie behaviour in Robocup SPL</a>
+(Liu, 2013)</li>
+<li><a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20130817-Dan.Padiha-WalkStabilisation-Behaviours-DropIn.pdf">rUNSWift Robocup SPL 2013 Special Project A Report</a>
+(Padilha, 2013)</li>
+</ul>
+</div>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<p>Most of the work in producing actions happens in the generator area. The
+main generator class is the DistributedGenerator that calls upon
+subsequent generators depending on the requested action. There are also
+some basic generators that all generated joints get passed through, such
+as the ClippedGenerator, which ensures that joint requests do not go
+past their maximum values.</p>
+<p>All actions are defined in
+<code class="docutils literal notranslate"><span class="pre">$RUNSWIFT_CHECKOUT_DIR/robot/types/ActionCommand.hpp</span></code>. If you do add
+a new ActionType to it, remember to fill out all the corresponding
+enums, such as the action’s priority. These priorities define what
+actions can be interrupted, for example the get up action has the
+highest priority.</p>
+<p>To set a generator for a particular body action, you’ll need to add
+something like this to DistributedGenerator:</p>
+<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span>bodyGenerators[Body::BACK_FLIP] = (Generator*)(new BackFlipGenerator());
+   if (!bodyGenerators[Body::BACK_FLIP])
+      llog(FATAL) &lt;&lt; &quot;bodyGenerators[BACK_FLIP] is NULL!&quot; &lt;&lt; std::endl;
+</pre></div>
+</div>
+<p>All generators should subclass the basic Generator.hpp class and fill in
+the virtual functions, such as isActive, reset, and stop. Along with the
+ActionCommand priorities, these functions help DistributedGenerator
+decide how and when to transition between different actions.</p>
+<div class="section" id="static-actions">
+<h3>Static Actions<a class="headerlink" href="#static-actions" title="Permalink to this headline">¶</a></h3>
+<p>Static actions are typically used for straightforward motions such as
+standing, squatting, diving and getups. These are handled by the <code class="docutils literal notranslate"><span class="pre">ActionGenerator</span></code>. To
+specify which action should be performed, the ActionGenerator is passed
+the file name of the relevant .pos file.</p>
+<div class="section" id="pos-files">
+<h4>.pos Files<a class="headerlink" href="#pos-files" title="Permalink to this headline">¶</a></h4>
+<p><strong>The format for pos files are described in</strong> <code class="docutils literal notranslate"><span class="pre">$RUNSWIFT_CHECKOUR_DIR/image/home/nao/data/pos/README.md</span></code>.</p>
+<p>They typically look like this, for eg. <code class="docutils literal notranslate"><span class="pre">stand.pos</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  HY    HP    LSP   LSR   LEY   LER   LWY   LHYP  LHR   LHP   LKP   LAP   LAR   RHR   RHP   RKP   RAP   RAR   RSP   RSR   REY   RER   RWY   LH    RH    DUR
+$ 0     0     0     0     0     0     0     0.75  0.75  0.75  0.75  0.75  0.75  0.75  0.75  0.75  0.75  0.75  0     0     0     0     0     0     0
+! 0     0     90    10    0     0     0     0     0     -25   50    -25   0     0     -25   50    -25   0     90    -10   0     0     0     0     0     1000
+</pre></div>
+</div>
+<div class="figure">
+<img alt="http://doc.aldebaran.com/2-8/_images/naov6_motors.png" src="http://doc.aldebaran.com/2-8/_images/naov6_motors.png" />
+</div>
+<p>All pos files can be found in <code class="docutils literal notranslate"><span class="pre">$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/pos</span></code>.</p>
+</div>
+</div>
+<div class="section" id="dynamic-actions">
+<h3>Dynamic Actions<a class="headerlink" href="#dynamic-actions" title="Permalink to this headline">¶</a></h3>
+<p>Dynamic actions are for more complicated movements, such as the walk and
+kicks. Instead of reading the joint values from a pos file, they are set
+in the relevant generator’s <code class="docutils literal notranslate"><span class="pre">makeJoints</span></code> function.</p>
+<div class="section" id="actions-python">
+<h4>Actions + Python<a class="headerlink" href="#actions-python" title="Permalink to this headline">¶</a></h4>
+<p>To add a new action into the Python code, you’ll need to add to the
+python wrapping of ActionCommand in
+<code class="docutils literal notranslate"><span class="pre">$RUNSWIFT_CHECKOUT_DIR/robot/perception/behaviour/python/wrappers/ActionCommand_wrap.cpp</span></code>.</p>
+<p>Then add it to
+<code class="docutils literal notranslate"><span class="pre">$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/behaviours/actioncommand.py</span></code>.
+For example here is the one for <code class="docutils literal notranslate"><span class="pre">goalieDiveLeft</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">goalieDiveLeft</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">_type_only_body_command</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">ActionType</span><span class="o">.</span><span class="n">GOALIE_DIVE_LEFT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will then be able to call your new action from a Python behaviour
+like so:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">b_request</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">actioncommand</span><span class="o">.</span><span class="n">goalieDiveLeft</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The motion module will know which behaviour is running as
+MotionAdapter.cpp will read it from the blackboard, and then call upon
+the appropriate generator.</p>
+<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">motion</span> <span class="n">request</span> <span class="kn">from</span> <span class="nn">behaviours</span>
+<span class="nb">int</span> <span class="n">behaviourReadBuf</span> <span class="o">=</span> <span class="n">readFrom</span><span class="p">(</span><span class="n">behaviour</span><span class="p">,</span> <span class="n">readBuf</span><span class="p">);</span>
+<span class="n">ActionCommand</span><span class="p">::</span><span class="n">All</span> <span class="n">request</span> <span class="o">=</span> <span class="n">readFrom</span><span class="p">(</span><span class="n">behaviour</span><span class="p">,</span> <span class="n">request</span><span class="p">[</span><span class="n">behaviourReadBuf</span><span class="p">])</span><span class="o">.</span><span class="n">actions</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">//</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">joints</span> <span class="n">requested</span> <span class="n">by</span> <span class="n">whichever</span> <span class="n">generator</span> <span class="n">we</span><span class="s1">&#39;re using</span>
+<span class="n">JointValues</span> <span class="n">joints</span> <span class="o">=</span> <span class="n">generator</span><span class="o">-&gt;</span><span class="n">makeJoints</span><span class="p">(</span><span class="o">&amp;</span><span class="n">request</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">odometry</span><span class="p">,</span> <span class="n">sensors</span><span class="p">,</span> <span class="n">bodyModel</span><span class="p">,</span> <span class="n">ball</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">ball</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="n">motionDebugInfo</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kinematics">
+<h2>Kinematics<a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forward-kinematics">
+<h3>Forward Kinematics<a class="headerlink" href="#forward-kinematics" title="Permalink to this headline">¶</a></h3>
+<p>These can be found in perception (just a legacy location as it was
+originally only used for vision).</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters#Modified_DH_parameters">Modified DH parameters</a>
+are used to calculate the forward kinematics chain. See
+<a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2014ChampionTeamPaperReports/20140930-Bernhard.Hengst-Walk2014Report.pdf">Walk2014 Report</a>
+for the Camera to Foot transform used in the Nao v4 (most of which is
+similar in the Nao v5 and v6) These are used for calculating the robot pose and
+converting camera image space co-ordinates to robot relative
+co-ordinates.</p>
+<p>The DH parameters for each of Nao v4 limbs can be found in
+<a class="reference external" href="http://cgi.cse.unsw.edu.au/~robocup/2012site/reports/Belinda_Teh_Thesis.pdf">Bel Teh’s thesis</a>
+(see Tables 3.1-3.3). These are used for calculating the centre of mass.</p>
+<p>Note that body lean (as detected from IMU) is also applied when
+converting into world space as the robot’s foot is not always flat on
+the ground.</p>
+</div>
+<div class="section" id="inverse-kinematics">
+<h3>Inverse Kinematics<a class="headerlink" href="#inverse-kinematics" title="Permalink to this headline">¶</a></h3>
+<p>Both Kinematic Transforms and Iterative Inverse Kinematics for turning
+the feet can be found at the very bottom of Walk2014.cpp. They were
+copied from the symbolic Matlab solution and of the kinematic chain and
+iterative inverse method. Reference to the original work can be found in
+the <a class="reference external" href="http://cgi.cse.unsw.edu.au/%7Erobocup/2010site/reports/report2010.pdf">2010 rUNSWift Team Report</a>
+in Chapter 6.</p>
+</div>
+</div>
+<div class="section" id="walk2014-generator">
+<h2>Walk2014 Generator<a class="headerlink" href="#walk2014-generator" title="Permalink to this headline">¶</a></h2>
+<p>Walk2014 addresses shortcomings in the walk first developed in 2010,</p>
+<ul class="simple">
+<li>Stability - addressed by a new Stabiliser using a reinforcement
+learnt policy and the Centre-of-Mass moved towards centre of foot.</li>
+<li>Slow side-stepping - addressed with a new sidestepping generator that
+can take larger sidesteps.</li>
+<li>Robots overheat - addressed by using a stand command with low stiffness.</li>
+<li>Transition between stand, walks,
+kicks, and getup is not smooth - addressed by integrating these
+behaviour into the walk.</li>
+<li>Acceleration and braking uses an inefficient
+ratcheting technique - addressed by ability to start and stop in one
+step. Forward is still limited to changes of e.g. 50mm / step, (built
+into walk).</li>
+<li>Limited repertoire of kicks - addressed by new kicks,
+e.g. stab-kick, walk-kick, etc.</li>
+</ul>
+<p>Walk2014 is more responsive than previous rUNSWift walks. Python roles
+and skills have more control (and hence responsibility) for parameter
+settings:</p>
+<ol class="arabic">
+<li><p class="first">The forward, left and turn body action commands define the step-size (mm / rad)
+per second.</p>
+</li>
+<li><p class="first">The user will need to ensure that the combination of
+forward/left/turn stays within the capability of the walk. However,
+the values have been clipped to +/- 300mm for forward, +/-200mm for
+left, and +/- 2.0 radian for turn. Please note that the above ranges
+for forward, left, turn are with only one parameter set, the others
+are zero). In combination these ranges will need to be reduced, but
+combinations have not all been tested.</p>
+<p>Combination of parameter values are evaluated using an ellipsoid clamp,
+and transitions are dealt by clamping the maximum change of forward, left and turn.</p>
+</li>
+</ol>
+<div class="section" id="two-different-stand-postures">
+<h3>Two Different Stand Postures<a class="headerlink" href="#two-different-stand-postures" title="Permalink to this headline">¶</a></h3>
+<p>With <code class="docutils literal notranslate"><span class="pre">actioncommand.stand(power=stiffness)</span></code> the walk performs a stand
+routine and turns the stiffness to the motors using power. The power
+parameter is optional and defaults to 0.1.</p>
+<p><code class="docutils literal notranslate"><span class="pre">actioncommand.crouch(power=stiffness)</span></code>, the walk stops rocking, but is
+READY for action i.e. legs are kept bent. Stiffness is kep to 0.4
+minimum to ensure the robot retains this stance. The power parameter is
+optional and defaults to 0.4.</p>
+<p>However, there are some cases where the robot needs to stand but walk
+shouldn’t be running, for example when the robot first boots up or
+during ref pick up. We then use two pos files (initial.pos and
+stand.pos) that map to these two different stand postures.</p>
+</div>
+<div class="section" id="calibration">
+<h3>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h3>
+<p>The walk has been calibrated so that forward, left and turn will move
+the real robot approximately the specified distance/angle in one second
+in steady state operation. The odometry is calibrated based on foot
+movements and should be more accurate than average parameter values. For
+example, when changing speed, the odometry will record the movements at
+82Hz and not use the parameter values. In the <code class="docutils literal notranslate"><span class="pre">Walk2014Generator</span></code>,</p>
+<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">linear</span> <span class="n">calibration</span> <span class="n">to</span> <span class="n">achieve</span> <span class="n">actual</span> <span class="n">performance</span> <span class="n">ie</span> <span class="n">turn</span> <span class="ow">in</span> <span class="n">action</span> <span class="n">command</span> <span class="n">achieves</span> <span class="n">turn</span><span class="o">/</span><span class="n">sec</span> <span class="ow">in</span> <span class="n">radians</span> <span class="n">on</span> <span class="n">the</span> <span class="n">robot</span>
+<span class="n">forward</span> <span class="o">*=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="n">left</span> <span class="o">*=</span> <span class="mf">0.82</span><span class="p">;</span>
+<span class="n">turn</span> <span class="o">*=</span> <span class="mf">0.78</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kicks">
+<h3>Kicks<a class="headerlink" href="#kicks" title="Permalink to this headline">¶</a></h3>
+<p>The standard kick is also integrated into Walk2014Generator to make
+transitioning between the two as smooth as possible. It uses many of the
+same parameters and calculations.</p>
+<p>The motion of the kick is defined in several phases:</p>
+<ol class="arabic simple">
+<li>The back phase moves the foot backwards in preparation for the kick
+swing. It also moves the foot sideways depending on the position of
+the ball. This dynamic left movement helps reduce time spent lining
+up. The power parameter is used at this stage to affect how far back
+the kick foot should go back.</li>
+<li>The kick swing phase swings the foot forward into the ball. The power
+parameter is used at this stage to affect how far forwards the kick
+foot travels forwards.</li>
+<li>The follow through phase holds and stabilises at the end of the kick
+swing.</li>
+<li>The end phase returns the foot back to the zero position.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="walk-preprocessor">
+<h2>Walk Preprocessor<a class="headerlink" href="#walk-preprocessor" title="Permalink to this headline">¶</a></h2>
+<p>Since the behaviour module runs at 30fps in a separate thread and does
+not have access to the state of the walk cycle found in walk generator,
+it has no precise way to tell when a step begins and when it ends.
+That’s why walk parameters are given as step size per second. However,
+this makes certain higher level behaviours difficult when precision of
+steps is required, such as lining up to the ball before kicking it.</p>
+<p>The walk preprocessor is a wrapper around the walk generator and has
+access to the state of the walk cycle. It breaks down a single higher
+level behaviour request into multiple walk parameters for the walk
+generator. Thus avoiding the need for synchronisation between the
+behaviour and motion thread, and ensures precision of steps.</p>
+<p>This was used to perform a motion line up and turn dribble, but both are
+outdated and unused.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../networking.html" class="btn btn-neutral float-right" title="Networking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../perception/behaviour.html" class="btn btn-neutral float-left" title="Behaviour" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rUNSWift
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

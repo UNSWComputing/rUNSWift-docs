@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running runswift &mdash; RoboCup SPL 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Button Presses" href="button_presses.html" />
+    <link rel="prev" title="Syncing" href="syncing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> RoboCup SPL
+          
+
+          
+            
+            <img src="../_static/rUNSWift.gif" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2020
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Running the Robot</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="turning_on.html">Turning Robot On</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syncing.html">Syncing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running runswift</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="button_presses.html">Button Presses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="leds.html">LEDs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perception/index.html">Perception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motion/index.html">Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3d_simulation.html">3D Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../game_preparation/index.html">Game Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/index.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style_guide.html">Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../past_research.html">Past Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_releases_team_reports.html">Code Release / Team Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCup SPL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Running the Robot</a> &raquo;</li>
+        
+      <li>Running runswift</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/UNSWComputing/rUNSWift-Manual/blob/master/source/running/running_runswift.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-runswift">
+<h1>Running runswift<a class="headerlink" href="#running-runswift" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">Open an ssh connection to the robot by running</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh nao@mario
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Replace mario with the name of the robot’s head you’re using</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">nao</span></code> is the user name, and <code class="docutils literal notranslate"><span class="pre">mario</span></code> is the hostname of the robot.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For passwords, please <a class="reference internal" href="../contact.html#contact"><span class="std std-ref">Contact</span></a> us.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>On the robot</strong> (in the terminal with the ssh connection), run</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ runswift
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Once the chest light is flashing green
+<strong>double press the chest</strong> to stiffen the robot.</p>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="button_presses.html#button-presses"><span class="std std-ref">Button Presses</span></a> for ways to interact with the robot without a PC.</p>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<p>Commonly used options are below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="5%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-T</td>
+<td>18</td>
+<td>Team Number (eg. 18)</td>
+</tr>
+<tr class="row-odd"><td>-n</td>
+<td>2</td>
+<td>Player Number (eg. 2)</td>
+</tr>
+<tr class="row-even"><td>-s</td>
+<td>Game</td>
+<td>Name of top level body python behaviour skill to execute</td>
+</tr>
+<tr class="row-odd"><td>–stateestimation.initial_pose_type</td>
+<td>GAME</td>
+<td>Type of initial pose (GAME/UNPENALISED/SPECIFIED)</td>
+</tr>
+<tr class="row-even"><td>–stateestimation.specified_initial_x</td>
+<td>0</td>
+<td>Initial x value in mm (if stateestimation.initial_pose_type == SPECIFIED)</td>
+</tr>
+<tr class="row-odd"><td>–stateestimation.specified_initial_y</td>
+<td>0</td>
+<td>Initial y value in mm (if stateestimation.initial_pose_type == SPECIFIED)</td>
+</tr>
+<tr class="row-even"><td>–stateestimation.specified_initial_theta</td>
+<td>0</td>
+<td>Initial theta value in degrees (if stateestimation.initial_pose_type == SPECIFIED)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">runswift</span> <span class="pre">--help</span></code> for complete list of options</p>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>To run a robot with</p>
+<ul class="simple">
+<li>FieldPlayer skill</li>
+<li>Starting from the centre of the field, facing opponent goal</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ runswift -s FieldPlayer --stateestimation.initial_pose_type SPECIFIED
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Modify the options in <code class="docutils literal notranslate"><span class="pre">runswift.cfg</span></code> to make it easier if you have a lot of options!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="button_presses.html" class="btn btn-neutral float-right" title="Button Presses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="syncing.html" class="btn btn-neutral float-left" title="Syncing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, rUNSWift
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
