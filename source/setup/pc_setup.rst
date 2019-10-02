@@ -26,7 +26,7 @@ Import rUNSWift VM Image
 #. Start
 
 .. tip::
-    OVA file is very big (>5GB), you have to be connected to the SPL_R network in the lab.
+    OVA file is very big (>5GB), and you have to be connected to the SPL_R network in the rUNSWift lab to download it.
 
 .. note::
     For passwords, please :ref:`contact` us.
