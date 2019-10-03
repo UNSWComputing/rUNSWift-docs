@@ -84,7 +84,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
         sudo apt install git
         git clone git@github.com:UNSWComputing/rUNSWift.git rUNSWift
         rUNSWift/bin/build_setup.sh
-        rUNSWift/bin/setup-simulation.sh
+        rUNSWift/bin/sim_setup.sh
 
     .. note::
         For passwords, please :ref:`contact` us.
