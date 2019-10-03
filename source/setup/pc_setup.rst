@@ -18,15 +18,15 @@ Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 Import rUNSWift VM Image
 ************************
 
-#. Download OVA file from LINK HERE
-#. Machine -> Import Appliance
-#. Select the Download OVA file
+#. Download OVA file from ``runswift2.cse.unsw.edu.au/rUNSWift-VM.ova``
+#. File -> Import Appliance
+#. Select the Downloaded OVA file
 #. Next
 #. Import
 #. Start
 
 .. tip::
-    OVA file is very big (>5GB), download on the SPL_R network in the lab.
+    OVA file is very big (>5GB), and you have to be connected to the SPL_R network in the rUNSWift lab to download it.
 
 .. note::
     For passwords, please :ref:`contact` us.
@@ -37,6 +37,10 @@ Import rUNSWift VM Image
 ******************************
 Setup Wireless/Wired Network
 ******************************
+
+.. warning::
+    You only have to follow these steps if you have to connect to an actual robot.
+
 
 For a VM, it is necessary to bridge wireless networks and wired networks (when using LAN)
 from the host machine to the VM. Follow these instructions in VirtualBox.
