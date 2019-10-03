@@ -5,6 +5,8 @@ VM Image Creation
 These are instructions on creating an OVA file to be used in :ref:`pc_setup` for new team members.
 
 #. Download `Ubuntu Desktop Image <http://releases.ubuntu.com/18.04/>`_.
+
+   .. tip:: For a smaller VM, try Alpine Linux, Tiny Core Linux, or Slax.  (All are untested with runswift)
 #. Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 #. New
     #.  ======= ===============
@@ -64,6 +66,8 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
         --------- -------------
         password  (your choice)
         ========= =============
+        
+        .. tip:: Do not use the standard runswift password
 
     #. Continue
     #. Restart Now (after installation is complete)
@@ -88,6 +92,10 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
 
     .. note::
         For passwords, please :ref:`contact` us.
+    .. note::
+        Consider squashing history and removing ~/.ssh/id_rsa
+    .. tip::
+        Reduce the VM size by commenting out flite & ctc-2.8 from setup-build.sh if you don't need them
 
 #. Shutdown the VM
 #. Machine -> Export to OCI
