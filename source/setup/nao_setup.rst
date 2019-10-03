@@ -59,14 +59,22 @@ Run
 
 .. code-block:: bash
 
-    setup-robot.sh nao.local mario
+    nao_sync -s -h nao.local mario
 
 .. note::
     Replace ``mario`` with the name of the new robot.
     Robot names should consist of lower case alphabets or numbers
 
-This step
-* Create ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
-* Create ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
-* Adds <robot-name> to list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
-* Adds <robot-name> and ip address of robot to ``utils/wifitools/updateWlanSetup.py``
+
+*************************
+Places to add ``<NAME>``
+*************************
+#. ``<NAME>``.cfg in /image/home/nao/data/configs/ and /image/home/nao/data/configs/body/
+
+    .. code-block:: 
+
+        [player]
+        number=2
+        team=18
+#. in ``source.sh`` add the <NAME> to the appropriate list of names on line 150 or 153 (approx)
+#. Add the name and a new ip number in ``utils/wifitools/updateWlanSetup.py`` - The wifi IP will be zzz.zzz.18.1XX, where you set XX in the dictionary and zzz.zzz is usually ``10.0.*`` or ``192.168.*``. The idea is that the ethernet ip is .18.XX, and the wifi is .18.1XX for a given robot, but we use DHCP on ethernet and shouldn't use the same subnet for both wired and wireless anyway.
