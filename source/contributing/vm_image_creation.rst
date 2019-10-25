@@ -6,7 +6,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
 
 #. Download `Ubuntu Desktop Image <http://releases.ubuntu.com/18.04/>`_.
 
-   .. tip:: For a smaller VM, try Alpine Linux, Tiny Core Linux, or Slax.  (All are untested with runswift)
+   .. tip:: For a smaller VM, try Alpine Linux, Tiny Core Linux, or Slax 9.  (All are untested with runswift)
 #. Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 #. New
     #.  ======= ===============
@@ -95,7 +95,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
     .. note::
         Consider squashing history and removing ~/.ssh/id_rsa
     .. tip::
-        Reduce the VM size by commenting out flite & ctc-2.8 from setup-build.sh if you don't need them
+        Reduce the VM size by commenting out ctc-2.8, flite, and game controller from source.sh/setup-build.sh if you don't need them
 
 #. Shutdown the VM
 #. Machine -> Export to OCI
