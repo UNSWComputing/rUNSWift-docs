@@ -18,7 +18,7 @@ Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 Import rUNSWift VM Image
 ************************
 
-#. Download OVA file from ``runswift2.cse.unsw.edu.au/rUNSWift-VM.ova``
+#. Download OVA file from `http://robocup.web.cse.unsw.edu.au/runswift2/rUNSWift-VM.ova`
 #. File -> Import Appliance
 #. Select the Downloaded OVA file
 #. Next
@@ -26,7 +26,10 @@ Import rUNSWift VM Image
 #. Start
 
 .. tip::
-    OVA file is very big (>5GB), and you have to be connected to the SPL_R network in the rUNSWift lab to download it.
+    OVA file is very big (>5GB), and you have to be on campus or a CSE student to download it.
+
+.. tip::
+    We have a smaller (3.2GB) OVA file for external users at `http://robocup.web.cse.unsw.edu.au/runswift2-htpasswd/rUNSWeenie.ova`.
 
 .. note::
     For passwords, please :ref:`contact` us.
