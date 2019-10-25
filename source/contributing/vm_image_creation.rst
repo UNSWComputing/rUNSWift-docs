@@ -6,7 +6,7 @@ These are instructions on creating an OVA file to be used in :ref:`pc_setup` for
 
 #. Download `Ubuntu Desktop Image <http://releases.ubuntu.com/18.04/>`_.
 
-   .. tip:: For a smaller VM, try Alpine Linux, Tiny Core Linux, or Slax 9.  (All are untested with runswift)
+   .. tip:: For a smaller VM, try Alpine Linux, Tiny Core Linux, or Slax 9.  (Only Slax 9 has been tested.)
 #. Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 #. New
     #.  ======= ===============
