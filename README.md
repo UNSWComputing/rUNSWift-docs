@@ -1,4 +1,4 @@
-# rUNSWift-Manual
+# rUNSWift docs
 
 Repository for maintaining the Sphinx Documentation for rUNSWift.
 
