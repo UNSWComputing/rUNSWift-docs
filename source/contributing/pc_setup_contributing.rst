@@ -9,7 +9,7 @@ Getting Linux
 *************
 
 A Linux OS is required to work with the rUNSWift codebase.
-`Ubuntu 18.04 LTS <http://releases.ubuntu.com/18.04/>`_ is the recommended OS.
+`Ubuntu 18.04 LTS amd64 <http://releases.ubuntu.com/18.04/>`_ is the recommended OS.
 You can either use a virtual machine, or dual boot your computer.
 
 **Pick one of the following:**
@@ -20,12 +20,12 @@ You can either use a virtual machine, or dual boot your computer.
    pc_setup_dual_boot
 
 .. note::
-    The following distributions are also known to work:
+    The following distributions are known to work:
 
-    - `Ubuntu 16.04 LTS <http://releases.ubuntu.com/16.04/>`_
-    - `Ubuntu 18.04 LTS <http://releases.ubuntu.com/18.04/>`_
-    - `Ubuntu 19.04 <http://releases.ubuntu.com/19.04/>`_
-    - `Debian 9 (64-bit & 32-bit) <https://www.debian.org/>`_
+    - `Ubuntu 16.04 LTS amd64 <http://releases.ubuntu.com/16.04/>`_ (Need to disable black or install python3.6)
+    - `Ubuntu 18.04 LTS amd64 <http://releases.ubuntu.com/18.04/>`_
+    - `Ubuntu 19.04 amd64 <http://releases.ubuntu.com/19.04/>`_
+    - `Debian 9 (amd64 & i386) <https://www.debian.org/>`_ (Need to disable black or install python3.6)
 
 .. tip::
     Have at least 50GB storage and 4GB RAM.
