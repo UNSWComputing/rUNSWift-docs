@@ -5,8 +5,14 @@ NAO Setup
 .. warning::
     Instructions here are not complete yet.
 
-Follow these instructions to prepare Naos, that are brand new or have been
-factory reset, to run the rUNSWift codebase.
+    Follow these instructions to prepare Naos, that are brand new or have been
+    factory reset, to run the rUNSWift codebase. 
+    
+.. note::
+    Follow these instructions to prepare Naos, that are brand new or have been
+    factory reset, to run the rUNSWift codebase. 
+    
+    **You do not need to do this if are just setting up your environment!**
 
 Naoqi is the OS for the NAO.
 
