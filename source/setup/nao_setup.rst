@@ -4,9 +4,6 @@ NAO Setup
 
 .. warning::
     Instructions here are not complete yet.
-
-    Follow these instructions to prepare Naos, that are brand new or have been
-    factory reset, to run the rUNSWift codebase. 
     
 .. note::
     Follow these instructions to prepare Naos, that are brand new or have been
