@@ -26,7 +26,7 @@ You can either use a virtual machine, or dual boot your computer.
     - `Ubuntu 18.04 LTS amd64 <http://releases.ubuntu.com/18.04/>`_
     - `Ubuntu 19.04 amd64 <http://releases.ubuntu.com/19.04/>`_
     - `Debian 9 (amd64 & i386) <https://www.debian.org/>`_ (Need to disable black or install python3.6)
-    - `Debian 10 (amd64 & i386) <https://www.debian.org/>`_ (Need Debian 9 kernel 4.9 for ctc 2.1 (for v5) to work)
+    - `Debian 10 (amd64 & i386) <https://www.debian.org/>`_ (ctc 2.1 uses glibc 2.6 and needs `vsyscall=emulate <https://tracker.debian.org/media/packages/l/linux/changelog-4.10~rc6-1~exp1>`_)
 
 .. tip::
     Have at least 50GB storage and 4GB RAM.
