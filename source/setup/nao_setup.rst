@@ -6,7 +6,7 @@ NAO Setup
     Instructions here are not complete yet.
     
 .. note::
-    Follow these instructions to prepare Naos, that are brand new or have been
+    Follow these instructions to prepare Naos that are brand new or have been
     factory reset, to run the rUNSWift codebase. 
     
     **You do not need to do this if are just setting up your environment!**
@@ -62,14 +62,16 @@ Run
 
 .. code-block:: bash
 
-    setup-robot.sh nao.local mario
+    setup-robot.sh nao.local <robot-name>
 
 .. note::
-    Replace ``mario`` with the name of the new robot.
+
+    Replace ``<robot-name>`` with the name of the new robot, e.g. ``mario``.
     Robot names should consist of lower case alphabets or numbers
 
 This step
-* Create ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
-* Create ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
-* Adds <robot-name> to list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
-* Adds <robot-name> and ip address of robot to ``utils/wifitools/updateWlanSetup.py``
+
+* Creates ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
+* Creates ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
+* Adds ``<robot-name>`` to list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
+* Adds ``<robot-name>`` and ip address of robot to ``utils/wifitools/updateWlanSetup.py``
