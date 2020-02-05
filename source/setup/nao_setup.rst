@@ -57,21 +57,18 @@ Flashing the NAO
 *********************************
 Robot Config, Name and Wifi Setup
 *********************************
+If the robots are new you will still need to:
 
-Run
+* Add ``<robot-name>`` to the list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
+* Add ``<robot-name>`` and the ip address of the robot to ``utils/wifitools/updateWlanSetup.py``
+* Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
+* Create a copy of the default ``.cfg`` file called``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
+
+*********************************
+Syncing the new nao
+*********************************
+Finally, for all robots, run
 
 .. code-block:: bash
 
-    setup-robot.sh nao.local <robot-name>
-
-.. note::
-
-    Replace ``<robot-name>`` with the name of the new robot, e.g. ``mario``.
-    Robot names should consist of lower case alphabets or numbers
-
-This step
-
-* Creates ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
-* Creates ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
-* Adds ``<robot-name>`` to list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
-* Adds ``<robot-name>`` and ip address of robot to ``utils/wifitools/updateWlanSetup.py``
+    run nao_sync -s 
