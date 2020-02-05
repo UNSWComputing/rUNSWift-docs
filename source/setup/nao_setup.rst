@@ -65,7 +65,7 @@ If the robots are new you will still need to:
 * Create a copy of the default ``.cfg`` file called``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
 
 *********************************
-Syncing the new nao
+Syncing the nao
 *********************************
 Finally, for all robots, run
 
