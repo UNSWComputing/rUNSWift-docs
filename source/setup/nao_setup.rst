@@ -71,4 +71,4 @@ Finally, for all robots, run
 
 .. code-block:: bash
 
-    run nao_sync -s 
+    nao_sync -s 
