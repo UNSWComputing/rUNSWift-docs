@@ -83,4 +83,4 @@ Finally, for all robots, run
     ``<hostname>`` is likely ``nao.local`` for new or factory reset robots.
 
     Robots that are flashed without factory reset should retain their hostnames and you don't
-    need to specify ``-h <hostname>`` and ``<<robot-name>.local`` will be used automatically.
+    need to specify ``-h <hostname>`` and ``<robot-name>.local`` will be used automatically.
