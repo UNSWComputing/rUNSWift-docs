@@ -2,5 +2,6 @@
 Gain Push Access in rUNSWift-VM
 ###############################
 
-.. warning::
-    Instructions here are not complete yet.
+.. code-block:: bash
+
+   setup-permanent-vm.sh
