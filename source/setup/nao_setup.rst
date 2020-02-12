@@ -67,7 +67,7 @@ Robot Config, Name and Wifi Setup
 * Add ``<robot-name>`` to the list of robot names in ``$RUNSWIFT_CHECKOUT_DIR/bin/source.sh``
 * Add ``<robot-name>`` and the ip address of the robot to ``utils/wifitools/updateWlanSetup.py``
 * Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/``
-* Create a copy of the default ``.cfg`` file called``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
+* Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/configs/body/``
 
 *********************************
 Patching the OS for rUNSWift
