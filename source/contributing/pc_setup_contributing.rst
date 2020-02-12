@@ -4,6 +4,8 @@
 PC Setup (Contributing)
 #######################
 
+These are setup instructions for contributing members of the team to setup their PC.
+
 *************
 Getting Linux
 *************
