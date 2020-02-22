@@ -53,3 +53,38 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
         #. Enable Network Adapter
         #. Attached to Bridged Adapter
         #. Name should be your wired adapter
+        
+******************
+Using Hyper-V instead of Virtual Box
+******************
+If you using windows OS and already running hyper-v system, virtual box will not be able to start the VM. 
+These instruction is converting the VM from virtual box to hyper-v.
+Converting directly via microsoft converted wont work, some VM description is not supported, hence need to extract the VM description info, edit and override it before convert to hyper-v. Steps are below.
+
+************************
+Step by steps
+************************
+
+#. Download OVA file from `http://robocup.web.cse.unsw.edu.au/runswift2/rUNSWift-VM.ova`
+#. Download Microsoft Virtual Machine Converter 3.0 `https://www.microsoft.com/en-gb/download/details.aspx?id=42497`
+#. Download dsfok `https://www.mysysadmintips.com/-downloads-/Windows/Servers/dsfok.zip`
+#. Create folder C:\AMConvertingrUNSWiftVM for converting and storage of VM, recommended to have at least 30gb space on this drive. Create empty folder 'VM' under it, C:\AMConvertingrUNSWiftVM\VM
+#. Unzip OVA file to extract rUNSWift-VM-disk001.vmdk file to C:\AMConvertingrUNSWiftVM\
+#. unzip dsfok.zip and run a cmd from that folder.
+#. run `.\dsfo.exe C:\AMConvertingrUNSWiftVM\rUNSWift-VM-disk001.vmdk 512 1024 C:\AMConvertingrUNSWiftVM\Descriptor.txt`
+#. Edit the Descriptor.txt comment out ddb.uuid.* and ddb.comment. example:
+`
+...
+
+#ddb.uuid.image="da0f0b53-5c68-4d2d-a357-7db834223cca"
+#ddb.uuid.parent="00000000-0000-0000-0000-000000000000"
+#ddb.uuid.modification="00000000-0000-0000-0000-000000000000"
+#ddb.uuid.parentmodification="00000000-0000-0000-0000-000000000000"
+#ddb.comment=""
+`
+#. NOTE DSFI.exe not DSFO.exe, run `.\dsfi.exe C:\AMConvertingrUNSWiftVM\rUNSWift-VM-disk001.vmdk 512 1024 C:\AMConvertingrUNSWiftVM\Descriptor.txt`
+#. Now the vmdk is ready to be converted to hyper-v. Run powershell `Import-Module "C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1"`
+#. Run powershell `ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath C:\AMConvertingrUNSWiftVM\rUNSWift-VM-disk001.vmdk -DestinationLiteralPath C:\AMConvertingrUNSWiftVM\VM -VhdType DynamicHardDisk -VhdFormat Vhd`
+#. Now you can create new hyper-v VM, with settings: Generation 1, Dynamic Memory, HD use existing HD in C:\AMConvertingrUNSWiftVM\VM
+#. Done, you can start the VM it should load the ubuntu screen.
+#. Any questions, pm Andrew Million in slack group.
