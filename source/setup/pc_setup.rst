@@ -23,6 +23,25 @@ Import rUNSWift VM Image
 #. Select the Downloaded OVA file
 #. Next
 #. Import
+#. Settings
+    #. System
+        * Motherboard
+            =========== =======
+            Base Memory 4096 MB
+            =========== =======
+
+            .. tip::
+                Memory size of 4GB is a minimum.
+                You also want to leave at least 4GB for your host OS.
+                Recommendation is half your system memory.
+        * Processor
+            ============ ======
+            Processor(s) 4 CPUs
+            ============ ======
+
+            .. tip::
+                The number of processors should be equal to the number of cores on your system.
+                Ignore the 'Invalid settings detected'.
 #. Start
 
 .. tip::
