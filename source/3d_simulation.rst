@@ -76,6 +76,9 @@ Running the visualiser (RoboViz)
 To start the simulator visualier, in a new terminal run ``roboviz.sh``.
 A window should pop up, with a soccer field.
 
+.. note::
+    If you run into a ``Exception in thread "main" java.awt.AWTError: Assistive Technology not found: org.GNOME.Accessibility.AtkWrapper`` you may find this helpful: https://askubuntu.com/a/723503
+
 Runing simswift (single robot)
 ==============================
 
