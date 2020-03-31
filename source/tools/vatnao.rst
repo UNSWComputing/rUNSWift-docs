@@ -16,16 +16,7 @@ For example, in the case of the ball detector, each heuristic can be broken down
 and displayed separately to determine optimal values for the checks. The tool
 also handles other modules of vision, such as field feature and robot detection.
 
-For basic usage:
-
-1. Compile
-2. Run:
-::
-    bash
-    vatnao -f some/offnao/dump/with/raw/images.ofn
-    
-
-To change the colour calibration files used: 
+For basic usage build rUNSWift, then run:
 ::
     bash
     vatnao -f some/offnao/dump/with/raw/images.ofn
@@ -173,6 +164,7 @@ In the example below, VisionPainter would draw a red circle of radius `5` at coo
     #endif
 
 The `VisionPainter` has the following methods:
+
 * 'draw(x, y, colour)' or 'draw(x, y, r, g, b)'
 
     Fills the pixel at the given x, y coordinates with the given colour.
