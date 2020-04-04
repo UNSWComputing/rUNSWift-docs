@@ -17,8 +17,9 @@ and displayed separately to determine optimal values for the checks. The tool
 also handles other modules of vision, such as field feature and robot detection.
 
 For basic usage build rUNSWift, then run:
-::
-    bash
+
+.. code-block:: bash
+
     vatnao -f some/offnao/dump/with/raw/images.ofn
 
 Vision Debug Module (VDM)
@@ -29,8 +30,9 @@ This has been used in the past by sections like ball detector, to see how the ba
 
 A word of warning, only one section of code can have access to the vision debug module at a time. It's polite to wrap any of your debugging in `#ifdef` catches and remove the `#define` before merging
 your code into master. Use a name unique to your work, for example, if you were working on the `Foo` module:
-::
-    c++
+
+.. code-block:: c++
+
     // ...
 
     #define FOO_USES_VDM
@@ -46,8 +48,9 @@ Importing the vdm
 
 The vision debug module is handled by a single global pointer, `vdm`, defined in `soccer.hpp`. Whenever running vatnao, `vdm` will be initialised, otherwsie will be left as `NULL`.
 To import, add the following to the head of any code you are debugging.
-::
-    c++
+
+.. code-block:: c++
+
     #ifdef FOO_USES_VDM
 
     #include "VisionDebuggerInterface.hpp"
@@ -63,27 +66,34 @@ It's possible to set options that you can toggle in the vatnao user interface, t
 There are three types of options:
 
 Checkboxes, defined with:
-::
-    c++
+
+.. code-block:: c++
+
     vdm->addOption("Single argument for checkboxes");
+
 Dropdowns, defined with:
-::
-    c++
+
+.. code-block:: c++
+
     vector<string> aList;
     aList.push_back("of");
     aList.push_back("all");
     aList.push_back("the");
     aList.push_back("options");
     vdm->addOption("The option name and", aList);
+
 Numeric, defined with:
-::
-    c++
+
+
+.. code-block:: c++
+
     vdm->addNumericOption("Single argument for numeric");
 
 The default value for checkboxes is `false`, the default value for dropdowns is whatever you insert first, the default value for numeric is `0`.
 Each option must only be set once, and cannot be removed during runtime. It's best to put them in the constructor for a class you're trying to debug. For example:
-::
-    c++
+
+.. code-block:: c++
+
     #ifdef FOO_USES_VDM
 
     if (vdm != NULL) {
@@ -96,8 +106,9 @@ Using vdm options
 -----------------
 
 To use vdm options in the codebase, use the `vdm->getQuery()` method. This returns a `VisionDebugQuery` which has a map of the option values and another map of numeric values.
-::
-    c++
+
+.. code-block:: c++
+
     #ifdef FOO_USES_VDM
 
     if (vdm != NULL) {
@@ -118,8 +129,9 @@ Using vdm message
 -----------------
 
 There is a space in vatnao for displaying some message, this can be set in one of two ways. First:
-::
-    c++
+
+.. code-block:: c++
+
     #ifdef FOO_USES_VDM
 
     if (vdm != NULL) {
@@ -147,8 +159,9 @@ The indexes are unbounded unsigned integers, so they will need to be checked.
 
 The `VisionPainter` itself is a simple interface that allows you to draw on regions you pass in through the `vdm->getGivenRegionOberlayPainter()` method.
 In the example below, VisionPainter would draw a red circle of radius `5` at coordinate `10`, `10` in the region specified by the `q.region_index`, as long as the `Draw Circle` checkbox has been checked.
-::
-    c++
+
+.. code-block:: c++
+
     #ifdef FOO_USES_VDM
 
     if (vdm != NULL) {
