@@ -24,4 +24,8 @@ Simulated Nao  rcssserver3d   rcsss3d  3100                TCP     Sends joint a
 rcssserver3d   Simulated Nao  rcsss3d  3100                TCP     Sends perceptor readings (joints, imu, etc.)
 -------------- -------------- -------- ------------------- ------- --------------------------------------------
 rcssserver3d   roboviz        rcsss3d  3200                TCP     Sends scene graphs
+-------------- -------------- -------- ------------------- ------- --------------------------------------------
+simserver      browser        ss       5000                TCP     Sends the webpage
+-------------- -------------- -------- ------------------- ------- --------------------------------------------
+browser        simserver      ss       5000                TCP     Launches simulations
 ============== ============== ======== =================== ======= ============================================
