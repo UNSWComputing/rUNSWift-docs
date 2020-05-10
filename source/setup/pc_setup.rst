@@ -31,8 +31,7 @@ Import rUNSWift VM Image
             =========== =======
 
             .. tip::
-                Memory size of 4GB is a minimum.
-                You also want to leave at least 4GB for your host OS.
+                Memory size of 2GB is a minimum.
                 Recommendation is half your system memory.
         * Processor
             ============ ======
@@ -40,8 +39,8 @@ Import rUNSWift VM Image
             ============ ======
 
             .. tip::
-                The number of processors should be equal to the number of cores on your system.
-                Ignore the 'Invalid settings detected'.
+                Maximum 1 CPU per 1.5GB Base Memory
+                Recommendation is equal to the number of cores on your system.  Ignore the 'Invalid settings detected'.
 #. Start
 
 .. tip::

@@ -17,10 +17,9 @@ VirtualBox Instructions
        Memory Size 4096MB
        =========== ======
 
-        .. tip::
-            Memory size of 4GB is a minimum.
-            You also want to leave at least 4GB for your host machine.
-            Recommendation is half your system memory.
+       .. tip::
+           Memory size of 2GB is a minimum.
+           Recommendation is half your system memory.
     #. Next
     #. Create a Virtual Hard Disk now
     #. Create
@@ -40,8 +39,8 @@ VirtualBox Instructions
             ============ ======
 
             .. tip::
-                The number of processors should be equal to the number of cores on your system.
-                Ignore the 'Invalid settings detected'.
+                Maximum 1 CPU per 1.5GB Base Memory
+                Recommendation is equal to the number of cores on your system.  Ignore the 'Invalid settings detected'.
     #. Storage
         #. Click on *Empty* under *Controller:IDE*.
         #. *Attributess* -> *Optical Drive* -> click on the disc icon
