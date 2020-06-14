@@ -24,7 +24,7 @@ You can either use a virtual machine, or dual boot your computer.
 .. note::
     The following distributions are known to work:
 
-    - `Ubuntu 16.04 LTS amd64 <http://releases.ubuntu.com/16.04/>`_ (Need to disable black or install python3.6)
+    - `Ubuntu 16.04 LTS amd64 <http://releases.ubuntu.com/16.04/>`_ (Need to disable black or install python3.6; and install pip >= 9.0)
     - `Ubuntu 18.04 LTS amd64 <http://releases.ubuntu.com/18.04/>`_
     - `Ubuntu 19.04 amd64 <http://releases.ubuntu.com/19.04/>`_
     - `Debian 9 (amd64 & i386) <https://www.debian.org/>`_ (Need to disable black or install python3.6)
