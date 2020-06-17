@@ -4,12 +4,6 @@
 Contact
 #######
 
-**************************************
-Kenji Brameld (kenjibrameld@gmail.com)
-**************************************
-
-.. figure:: /images/kenji_brameld.png
-
 ***********************************
 Jayen Ashar (jayen@cse.unsw.edu.au)
 ***********************************
