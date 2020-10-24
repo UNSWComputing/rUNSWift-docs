@@ -57,9 +57,9 @@ Example Output
 
 .. note:: 
     Robot names must be lower case.
-    To setup two teams enter space seperated values (no commas).
+    To setup two teams enter space separated values (no commas).
     
-    For example, two teams might be configures as such: 
+    For example, two teams might be configured as such: 
     ::
     
         teams=(  18 5    )
@@ -76,4 +76,3 @@ Example Output
 
 .. note::
     The script must be run before every game
-
