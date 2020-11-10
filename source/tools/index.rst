@@ -5,6 +5,6 @@ Tools
 .. toctree::
    :maxdepth: 2
 
-   offnao
+   offnao/index
    vatnao
    vatnao_legacy
