@@ -115,17 +115,17 @@ A teammate's color is
 
 * **red** if **playing** the ball
 * **blue** if **assisting**
-* otherwise, depends on it's :ref:`role`
+* otherwise, depends on it's :ref:`positioning`
 
-.. _role:
+.. _positioning:
 
-Role
-####
+Positioning
+###########
 
-Roles are defined in ``robot/utils/PositioningDefs.hpp``.
+Positionings are defined in ``robot/utils/PositioningDefs.hpp``.
 
 ================================================ ======= ======
-Role                                             Color   Letter
+Positioning                                      Color   Letter
 ================================================ ======= ======
 POSITIONING_NONE                                 black   NA
 POSITIONING_AGAINST_KICKING_TEAM_SUPPORTER       magenta F
@@ -138,10 +138,10 @@ POSITIONING_AGAINST_DRIBBLE_TEAM_LEFT_SUPPORTER  magenta LS
 POSITIONING_AGAINST_DRIBBLE_TEAM_SWEEPER         black   SW
 ================================================ ======= ======
 
-Role Letter
-###########
+Positioning Letter
+##################
 
-The letter above a :ref:`teammate_pose` indicates it's role, as listed in :ref:`role`.
+The letter above a :ref:`teammate_pose` indicates it's positioning, as listed in :ref:`positioning`.
 
 Player Number
 #############
