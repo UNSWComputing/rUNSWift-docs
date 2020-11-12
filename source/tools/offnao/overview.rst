@@ -18,31 +18,6 @@ Field View
 
 Field View shows many things that our robot knows about the world and shows behaviour intentions.
 
-TeamBall Position and Velocity
-##############################
-
-TeamBall position and velocity estimates are shown in black color as below,
-
- .. figure:: /images/teamball.png
-
-======= ===========================
-Element Description
-======= ===========================
-Dot     Ball Position
-------- ---------------------------
-Ellipse Position Covariance Ellipse
-------- ---------------------------
-Line    Ball Velocity
-======= ===========================
-
-The direction of the line from the ball, is the direction it is moving.
-
-.. tip::
-
-    The length of the line is how far the ball would travel over **one second** if the ball travelled at constant
-    velocity.
-
-
 .. _robot_pose:
 
 Robot Pose
@@ -64,9 +39,15 @@ the covariance ellipse is stretched along one of it's axes, the robot knows its 
 .. tip::
     Covariance ellipses are used commonly in robot kalman filters, so search google to learn more.
 
+My Pose
+*******
+
+My pose is the pose hypothesis used in behaviours, and can be identified by a :ref:`robot_pose` symbol with a **white ellipse**.
+
+.. figure:: /images/my_pose.png
 
 My Pose Hypotheses
-##################
+******************
 
 All the robot pose hypotheses are **yellow**, and use the :ref:`robot_pose` symbol.
 The **brush thickness** of the covariance ellipse is the **weight of hypothesis**.
@@ -76,26 +57,131 @@ The **brush thickness** of the covariance ellipse is the **weight of hypothesis*
 The left and right hypotheses in the image have 1.0 and 0.03 weight respectively.
 The right hypotheses has an extremely small brush thickness that ends up almost invisible.
 
-My Pose
-#######
 
-My pose is the pose hypothesis used in behaviours, and can be identified by a :ref:`robot_pose` symbol with a **white ellipse**.
+.. _teammate_pose:
 
-.. figure:: /images/my_pose.png
+Teammate Pose
+*************
+
+Teammate's pose is shown in its corresponding :ref:`color`, and uses the :ref:`robot_pose` symbol.
+
+.. _ball:
+
+Ball Position and Velocity
+##########################
+
+======= ===========================
+Element Description
+======= ===========================
+Dot     Ball Position
+------- ---------------------------
+Ellipse Position Covariance Ellipse
+------- ---------------------------
+Line    Ball Velocity
+======= ===========================
+
+The direction of the line from the ball, is the direction it is moving.
+
+.. tip::
+
+    The length of the line is how far the ball would travel over **one second** if the ball travelled at constant
+    velocity.
+
+EgoBall
+*******
+
+EgoBall is shown in **yellow**, and use the :ref:`ball` symbol.
+
+.. figure:: /images/egoball.png
+
+TeamBall
+********
+
+TeamBall is shown in **black**, and use the :ref:`ball` symbol as below,
+
+.. figure:: /images/teamball.png
+
+Teammate's Ball
+***************
+
+A teammate's ball is shown in its corresponding :ref:`color`, and uses the :ref:`ball` symbol.
+
+.. _color:
+
+Color
+#####
+
+A teammate's color is
+
+* **red** if **playing** the ball
+* **blue** if **assisting**
+* otherwise, depends on it's :ref:`role`
+
+.. _role:
+
+Role
+####
+
+Roles are defined in ``robot/utils/PositioningDefs.hpp``.
+
+================================================ ======= ======
+Role                                             Color   Letter
+================================================ ======= ======
+POSITIONING_NONE                                 black   NA
+POSITIONING_AGAINST_KICKING_TEAM_SUPPORTER       magenta F
+POSITIONING_AGAINST_KICKING_TEAM_DEFENDER        black   D
+POSITIONING_AGAINST_KICKING_TEAM_UPFIELDER       cyan    U
+POSITIONING_FIND_BALL_FINDER                     gray    FB
+POSITIONING_AGAINST_DRIBBLE_TEAM_RIGHT_SUPPORTER white   RS
+POSITIONING_AGAINST_DRIBBLE_TEAM_SHOOTER         cyan    SH
+POSITIONING_AGAINST_DRIBBLE_TEAM_LEFT_SUPPORTER  magenta LS
+POSITIONING_AGAINST_DRIBBLE_TEAM_SWEEPER         black   SW
+================================================ ======= ======
+
+Role Letter
+###########
+
+The letter above a :ref:`teammate_pose` indicates it's role, as listed in :ref:`role`.
+
+Player Number
+#############
+
+The number below a :ref:`teammate_pose` indicates it's player number.
+
+Teammate WalkingTo
+##################
+
+The position of where a teammate robot is moving to when anticipating or in global find ball
+is shown with a **50% opacity** :ref:`teammate_pose` symbol.
 
 
-* Ego Ball Position
-* Ego Ball Velocity
-* Teammate's ball observation
-* Teammate's positions
-* Teammate's player numbers
-* playingBall
-* isAssisting
-* role and their colors
-* where teammate is walking to
-* visual robot obstacles
-* vision balls
-* observed field features
+Robot Observations
+##################
+
+Visual robot observations are shown using a **green** :ref:`robot_pose` symbol.
+
+.. figure:: /images/obstacle.png
+
+Observed Balls
+##############
+
+Balls directly from the vision module are shown as an **orange dot**, as below
+
+.. figure:: /images/ball_obs.png
+
+Observed Field Features
+#######################
+
+Observed T-Junctions and corners are displayed using **black**, as below
+
+.. figure:: /images/ff_obs.png
+
+Observed centre-circle is displayed with **orange** if the orientation is known or **red** otherwise.
+
+.. figure:: /images/cc_obs.png
+
+Observed field lines are displayed in **red**.
+
 * Ball Manoeuvre
 * Ball Manoeuvre target
 * Anticipate Position
