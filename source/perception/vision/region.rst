@@ -40,7 +40,78 @@ as empty field green.
 Accessing Pixels
 ****************
 
-TODO
+The primary purpose of ``RegionI`` is to efficiently access both raw and colour classified pixels in the camera image.
+The colour classified pixels within a region can be accessed using functions and iterators referencing the words
+"colour" or "fovea". The raw yuv values given to rUNSWift by the camera can be accessed using functions and iterators
+referencing the world "raw".
+
+In live code you should nearly always use iterators to access pixel values as they are much faster than the functions
+that take x, y value parameters. The x, y value functions should only be used if you are accessing a relatively small
+number of pixels within a region. You might only need a single line, a few widely separated pixels in irregular
+positions, or otherwise <10% of the region. The other case you might use these functions is during early prototyping, as
+it can sometimes be easier to think about these while attempting to code an algorithm for the first time. You will need
+to convert this kind code to the use of iterators before use on a robot or it is likely to be far too slow.
+
+Iterators
+#########
+
+An iterator is essentially a pointer to a single pixel within a region. Iterators move from the top left to the bottom
+right in row major order. ``RegionI`` iterators are very efficient at scanning though a RoI this way, so for most
+applications this is your most computationally efficient option.
+
+There are two kinds of iterator used by ``RegionI``, both of which inherit from the core ``iterator`` class interface,
+``iterator_fovea`` and ``iterator_raw``. At time of writing ``iterator_fovea`` is only used to access colour classified
+pixel values. ``iterator_raw`` is used to access the underlying yuv values given by the camera. The two iterators
+have identical functionality, except that ``iterator_colour`` is accessed with ``colour()`` (or a few other functions
+that grab adjacent pixels) and ``iterator`` raw is accessed with ``getY()``, ``getU()`` and ``getV()``. Examples will
+that use one type of iterator should be easy to translate to the other.
+
+The core way of using a ``RegionI`` iterator is:
+
+.. code-block:: c++
+    :linenos:
+
+    RegionI::iterator_fovea end = region.end_fovea();
+    for(RegionI::iterator_fovea it = region.begin_fovea(); it<end; ++it)
+    {
+        Colour pixel = it.colour();
+        // Do stuff with pixel.
+    }
+
+An obvious extension is the case where you need to compare horizontally adjacent pixels:
+
+.. code-block:: c++
+    :linenos:
+
+    int width = region.getCols();
+    int x=1;
+    RegionI::iterator_raw end = region.end_fovea();
+    Colour last_pixel = it.getY();
+
+    ++it;
+    for(RegionI::iterator_raw it = region.begin_fovea(); it<end; ++it)
+    {
+        if(x==width)
+        {
+            x=1;
+            last_pixel = it.colour();
+            ++it;
+        }
+        Colour pixel = it.colour();
+        // Do stuff with pixel and last_pixel.
+        ++x;
+    }
+
+Sometimes you want to scan in column major rather than row major order. Due to the way the cache works (see Additional
+Technical Information) this should be done by scanning the region in row major order and buffering the results in a
+vector:
+
+.. code-block:: c++
+    :linenos:
+
+    TODO
+
+
 
 *******************
 Moving and Resizing
@@ -78,7 +149,7 @@ Create a new ``RegionI`` in a new location relative to an existing ``RegionI``:
     :linenos:
 
     Point offset = Point(x, y);
-    RegionI new_region =
+    RegionI *new_region =
         new RegionI(old_region.subRegion(offset, old_region.getBoundingBoxRel().b));
 
 Rescale a ``RegionI`` while keeping the centre of the RoI in place:
@@ -88,7 +159,7 @@ Rescale a ``RegionI`` while keeping the centre of the RoI in place:
 
     // Works whether x > 1 or x < 1.
     float scaleFactor = x;
-    RegionI new_region = new RegionI(
+    RegionI *new_region = new RegionI(
         old_region.subRegion(old_region.getBoundingBoxRel().expand(scaleFactor)));
 
 Double the height of a ``RegionI`` while maintaining the position of the upper left point:
@@ -98,7 +169,7 @@ Double the height of a ``RegionI`` while maintaining the position of the upper l
 
     BBox new_box = old_region.getBoundingBoxRel();
     new_box.b.y() *= 2;
-    RegionI new_region = new RegionI(old_region.subRegion(new_box));
+    RegionI *new_region = new RegionI(old_region.subRegion(new_box));
 
 This is a deliberately obscure case to demonstrate advanced use, normally you would just start with ``full_regions`` to
 do this, which makes the code as simple as that above. If that somehow wasn't an option, here is how to create a new
@@ -111,7 +182,7 @@ do this, which makes the code as simple as that above. If that somehow wasn't an
     BBox new_bbox_rel = old_region.getBoundingBoxRel();
     new_bbox_rel.a -= old_region.getBoundingBoxRaw().a / old_region.getDensity();
     new_bbox_rel.a += offset;
-    RegionI new_region = new RegionI(old_region.subRegion(new_bbox_rel));
+    RegionI *new_region = new RegionI(old_region.subRegion(new_bbox_rel));
 
 A final note: Any time moving or resizing a ``RegionI`` would take you outside the frame the region will automatically
 be constrained to a size and position inside the frame. The result is a ``RegionI`` covering whatever part of your
@@ -150,14 +221,14 @@ Zoom in by a factor of 2 (so density is halved):
 .. code-block:: c++
     :linenos:
 
-    RegionI new_region = new RegionI(old_region.zoomIn());
+    RegionI *new_region = new RegionI(old_region.zoomIn());
 
 Zoom out by a factor of 4 (so density is quadrupled):
 
 .. code-block:: c++
     :linenos:
 
-    RegionI new_region = new RegionI(old_region.zoomOut(4));
+    RegionI *new_region = new RegionI(old_region.zoomOut(4));
 
 Calling ``zoomIn`` when density is already 1 has undefined behaviour.
 
@@ -182,24 +253,27 @@ Here is a simple example of how to use this function:
 .. code-block:: c++
     :linenos:
 
-    RegionI new_region =
+    RegionI *new_region =
         new RegionI(old_region.reclassify(new_window_size, new_thresholding_value));
 
 For information on what ``window_size`` and ``thresholding_value`` do see the Adaptive Thresholding section of the
 Vision documentation.
 
-************
-Advanced Use
-************
+***************
+Advanced Topics
+***************
 
 This section covers a few advanced topics slightly more complex than what was discussed in other sections.
+
+Complex Constructor
+###################
 
 ``RegionI`` provides an advanced function for occasions where you want to change several things about a region at once:
 
 .. code-block:: c++
     :linenos:
 
-    RegionI new_region(const Point& offset, const Point& size,
+    RegionI *new_region(const Point& offset, const Point& size,
         const bool zoom_in=true, const int factor=1,
         const int window_size=UNDEFINED_ADAPTIVE_THRESHOLDING_VALUE,
         const int thresholding_value=UNDEFINED_ADAPTIVE_THRESHOLDING_VALUE,
@@ -214,9 +288,12 @@ position:
 .. code-block:: c++
     :linenos:
 
-    RegionI new_region =  new RegionI(old_region.new_region(
+    RegionI *new_region = new RegionI(old_region.new_region(
         old_region.getBoundingBoxRel().a, old_region.getBoundingBoxRel().b,
                         false, 2, new_window_size, new_thresholding_value);
+
+regenerate_fovea_colour
+#######################
 
 Another advanced topic is ``regenerate_fovea_colour``, which appears both in this and the zoom functions. To use this
 parameter correctly you will need to understand a little of the underlying complexity handled by ``RegionI``.
@@ -247,9 +324,35 @@ performing a new colour classification:
     :linenos:
 
     BBox expanded_region = old_region.expand(2.0f);
-    RegionI new_region =  new RegionI(old_region.new_region(expanded_region.a,
+    RegionI *new_region = new RegionI(old_region.new_region(expanded_region.a,
         expanded_region.b, true, 2, UNDEFINED_ADAPTIVE_THRESHOLDING_VALUE,
                                 UNDEFINED_ADAPTIVE_THRESHOLDING_VALUE, false);
+
+Why ``new``?
+############
+
+A natural question to ask about the examples here is:
+
+.. code-block:: c++
+    :linenos:
+
+    // Why use this:
+    RegionI *new_region = new RegionI(old_region.func(params));
+    // Rather than just:
+    RegionI new_region = old_region.func(params);
+
+The answer goes back to a bug rUNSWift had on the V5s. The program would randomly crash. Eventually the problem was
+traced to a memory issue, despite overall RAM usage being low. It seemed like creating the colour classification arrays
+used by ``Fovea`` without using new was, for some reason, putting the arrays on the stack, and naturally causing a stack
+overflow. The problem was fixed by changing ``Fovea`` creation to  use ``new`` whenever creating its large arrays AND to
+make sure Fovea themselves were created with ``new``. Yes, it shouldn't have worked that way. But it did.
+
+When ``RegionI`` was introduced later on the problem reappeared. To fix it we had to make sure any time a new
+``RegionI`` that would generate a new ``Fovea`` was created it was created with ``new``. Rather than worrying about
+which ``RegionI`` actually end up generating new ``Fovea`` we simply adopted the strategy of creating all ``RegionI``
+with ``new``.
+
+At time of writing no one has tested whether the V6 Nao have the peculiar V5 behaviours that forced us to do all this.
 
 ********************************
 Additional Technical Information
