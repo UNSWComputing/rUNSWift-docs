@@ -12,6 +12,8 @@ tools to make  creating and using RoI as easy as possible, while allowing for th
 SPL. A ``RegionI`` stores the position, width and height of an RoI. It also stores a zoom level and, optionally, a link
 to a colour classified view of the RoI.
 
+WARNING: Examples have been compiled and run, but have not been thoroughly debugged. Tests used early 2021 rUNSWift.
+
 ********************
 The Standard Regions
 ********************
@@ -85,33 +87,54 @@ An obvious extension is the case where you need to compare horizontally adjacent
 
     int width = region.getCols();
     int x=1;
-    RegionI::iterator_raw end = region.end_fovea();
-    Colour last_pixel = it.getY();
+    RegionI::iterator_raw it = region.begin_raw();
+    RegionI::iterator_raw end = region.end_raw();
+    uint8_t last_pixel = it.getY();
 
     ++it;
-    for(RegionI::iterator_raw it = region.begin_fovea(); it<end; ++it)
+    for(; it<end; ++it)
     {
         if(x==width)
         {
             x=1;
-            last_pixel = it.colour();
+            last_pixel = it.getY();
             ++it;
         }
-        Colour pixel = it.colour();
+        uint8_t pixel = it.getY();
         // Do stuff with pixel and last_pixel.
         ++x;
     }
 
-Sometimes you want to scan in column major rather than row major order. Due to the way the cache works (see Additional
-Technical Information) this should be done by scanning the region in row major order and buffering the results in a
-vector:
+Sometimes you want to scan in column major rather than row major order. Due to the way memory and the cache works (see
+Additional Technical Information) this should be done by scanning the region in row major order and buffering the
+results in a vector:
 
 .. code-block:: c++
     :linenos:
 
-    TODO
+    int width = region.getCols();
+    RegionI::iterator_fovea it = region.begin_fovea();
+    RegionI::iterator_fovea end = region.end_fovea();
+    std::vector<Colour> last_pixels(width);
 
+    // Grab the pixel values of the first row.
+    for(std::vector<Colour>::iterator pixel = last_pixels.begin(); pixel<last_pixels.end(); ++pixel)
+    {
+        *pixel = it.colour();
+        ++it;
+    }
 
+    // Run through the remaining rows.
+    while(it<end)
+    {
+        for(std::vector<Colour>::iterator pixel = last_pixels.begin(); pixel<last_pixels.end(); ++pixel)
+        {
+            Colour last_pixel = *pixel;
+            *pixel = it.colour();
+            // Do stuff with pixel and last_pixel.
+            ++it;
+        }
+    }
 
 *******************
 Moving and Resizing
@@ -290,7 +313,7 @@ position:
 
     RegionI *new_region = new RegionI(old_region.new_region(
         old_region.getBoundingBoxRel().a, old_region.getBoundingBoxRel().b,
-                        false, 2, new_window_size, new_thresholding_value);
+                        false, 2, new_window_size, new_thresholding_value));
 
 regenerate_fovea_colour
 #######################
@@ -357,3 +380,80 @@ At time of writing no one has tested whether the V6 Nao have the peculiar V5 beh
 ********************************
 Additional Technical Information
 ********************************
+
+None of the information in this section should be needed to make use of ``RegionI``. This section exists only to provide
+a plain text explanation of how ``RegionI`` works and why.
+
+Purpose
+#######
+
+Frequently vision algorithms need to examine some portion of the full image rather than the full frame. Obvious examples
+are rectangles around possible balls, field line intersections and robots. Programmers with less experience in
+optimisation and/or who aren't aware of some of the peculiarities of the Nao processor and rUNSWift codebase tended to
+do this with code that is 10 to 100 times slower than what ``RegionI`` can achieve. Those with more expertise still took
+some time to write and debug this code each time it came up, and often errors would sneak in to master this way.
+
+The goal of ``RegionI`` is to provide functions that do these tasks as quickly as possible. Additionally, as ``RegionI``
+is used throughout vision, its code has been thoroughly examined and debugged to ensure it works correctly. Finally, if
+someone needs a new tool for looking through pixels (at time of writing scan lines have come up) their work can be added
+to ``RegionI`` so that future work can easily make use of that method.
+
+Cache
+#####
+
+One of the reasons why ``RegionI`` can perform so much better than naive methods is cache optimisation. Modern
+processors attempt to predict which data is likely to be accessed next and load it from RAM into a smaller chunk of
+memory that can be much more rapidly accessed by the CPU (the cache). Processors usually assume nearby memory blocks are
+more likely to be accessed. Ultimately this means the fastest way to read memory is in the same order as it is stored in
+RAM. ``RegionI`` iterators are designed to do this as much as possible with as little overhead as possible.
+
+Row Major and Column Major
+##########################
+
+Internally 2D images are stored as 1D arrays. In rUNSWift this means the image is unravelled row by row into this 1D
+arrangement. The last pixel of the 1st row is followed by the 1st pixel of the 2nd row, then the rest of the 2nd row,
+then the 1st pixel of the 3rd row, and so on. This is called row major order, with the most common alternative being
+column major order (i.e. as above but replacing "row" with "column"). All images in rUNSWift are in row major order. The
+matrix used by Eigen are actually in column major order, though this doesn't come up often in vision.
+
+YUV422
+######
+
+The raw image received by rUNSWift from the camera is in YUV422 format. YUV images were designed for the period in which
+colour TV was just being introduced. The Y channel contained all the information needed by older black and white TVs
+(i.e. the greyscale image), while U and V contain the colour components of the image. U and V don't have a simple
+meaning, and are best understood by looking at YUV colour charts online.
+
+YUV422 uses a format which saves space by focussing on the Y channel to the detriment of the U and V channels. Every
+pixel gets its own Y value, while a single U and V value are shared by two horizontally adjacent pixels. The values in
+the raw image are therefor an array with the form YUYVYUYV...YUYV. The first pixel is ``y=im[0]; u=im[1]; v=im[3]``
+while the second is ``y=im[2]; u=im[1]; v=im[3]``. This means odd and even pixels have different relative locations of
+their colour values, adding complexity to the implementation of ``RegionI``.
+
+Fovea
+#####
+
+Throughout ``RegionI`` are references to ``Fovea``. The ``Fovea`` class is an older system in rUNSWift that was once
+directly accessed by vision algorithms. With the introduction of ``RegionI`` ``Fovea`` should only every be accessed
+through a ``RegionI``.
+
+``Fovea`` contain both a reference to the original raw image and any processed images used by rUNSWift. While this
+currently is only the colour classified image, ``Fovea`` used to handle edge and blurred images as well. If extra images
+like this are reintroduced they should be placed in ``Fovea`` access through ``RegionI::iterator_fovea`` with a new
+function similar to the existing ``.colour()``.
+
+While initially only a relatively low resolution full frame ``Fovea`` is created ``Fovea`` was designed to generate new
+higher resolution images of subsections of the image. This is the source of the name, drawing analogy with the human
+eye's fovea focussing on a particular location.
+
+It is useful to keep ``RegionI`` and ``Fovea`` separate as they perform quite different tasks when looked at closely.
+``Fovea`` is designed to make use of actual arrays that have been generated in full. Back when ``Fovea`` was used alone
+this meant zooming out for a lower resolution image or looking at only a segment of the current ``Fovea`` image would
+incur significant cost as the classified image was regenerated at that location and resolution.
+
+``RegionI`` takes a step back from the actual internal array and focussed on only what it needs to meet the requirements
+of the ``RegionI``'s parameters. ``RegionI`` will only create new classified images (by creating new ``Fovea``) when it
+needs to zoom in to locations and resolutions beyond what the current ``Fovea`` can provide, or needs a different set of
+colour classification parameters. ``RegionI`` can work on a subsection of an actual array, or subsample the pixels of
+that array to provide the same effect as zooming out. An arbitrary number of ``RegionI`` can work off a single ``Fovea``
+as long as that ``Fovea`` provides the classified pixels they need.
