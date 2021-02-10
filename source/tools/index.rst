@@ -8,3 +8,4 @@ Tools
    offnao
    vatnao
    vatnao_legacy
+   clevernao
