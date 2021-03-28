@@ -19,3 +19,8 @@ Kinematic offsets can be calibrated to compensate for differences in the head mo
 and looseness in the robot’s joints. Debug logs recorded by the main code may
 be viewed. Finally, raw data from the non vision sensors, such as sonar and foot
 sensors, can be monitored.
+
+.. toctree::
+   :maxdepth: 2
+
+   overview
