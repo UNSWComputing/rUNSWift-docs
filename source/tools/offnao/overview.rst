@@ -182,25 +182,40 @@ Observed centre-circle is displayed with **orange** if the orientation is known 
 
 Observed field lines are displayed in **red**.
 
-* Ball Manoeuvre
-* Ball Manoeuvre target
-* Anticipate Position
+Ball Manoeuvre
+##############
 
+A robot's ball manouevre intention is displayed using a colored sector extending
+from the ball's current location to the target ball location (indicated with a **pink** dot)
 
-.. _cc_top_image:
+**Green** cone indicates a **kick**, while **blue** indicates a **dribble** intention.
 
-**************************
-Color Classified Top Image
-**************************
+The centre angle of the sector indicates the heading accuracy that must be achieved for the robot to execute the manoeuvre when lining up with the ball.
 
-.. _cc_bot_image:
+The radius of the sector may be finite or infinite. A finite radius indicates that the robot will try and control its kick strength to aim for a certain field coordinate,
+while an infinite radius indicates that the robot will try and kick the ball in the direction of the sector with maximum power.
 
-*****************************
-Color Classified Bottom Image
-*****************************
+A maximum power kick towards the opponent goal:
 
-.. _bb_variables:
+.. figure:: /images/ball_manouevre.png
 
-********************
-Blackboard Variables
-********************
+A dribble towards the opponent goal box:
+
+.. figure:: /images/ball_manouevre_dribble.png
+
+A controlled power kick towards the opponent goal box:
+
+.. figure:: /images/ball_manouevre_soft.png
+
+.. note::
+    Dribble strength is **not** controllable
+
+Anticipate Position
+###################
+
+The intended anticipate position of a robot that is executing an Anticipate or TeamFindBall skill is visualised using a grey
+:ref:`robot_pose`, as below. The heading variance of the pie-shape indicates the acceptable heading error once the robot is at its
+anticipate position.
+
+.. figure:: /images/anticipate_position.png
+
