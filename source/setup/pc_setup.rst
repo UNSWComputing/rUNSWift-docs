@@ -18,7 +18,7 @@ Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 Import rUNSWift VM Image
 ************************
 
-#. Download OVA file from `http://robocup.web.cse.unsw.edu.au/runswift2/rUNSWift-VM.ova`
+#. Download OVA file from `http://robocup.web.cse.unsw.edu.au/runswift2/rUNSWift-VM-2021.ova`
 #. File -> Import Appliance
 #. Select the Downloaded OVA file
 #. Next
