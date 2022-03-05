@@ -73,4 +73,4 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
         #. Name should be your wired adapter
         
 .. note::
-    In case you're unable to connect to a robot (i.e. ping <robotname> doesn't work), try installing ![Wireshark](https://www.wireshark.org/download.html) and monitoring the packages to diagnose the issue.
+    In case you're unable to connect to a robot (i.e. ping <robotname> doesn't work), try installing [Wireshark](https://www.wireshark.org/download.html) and monitoring the packets to diagnose the issue.
