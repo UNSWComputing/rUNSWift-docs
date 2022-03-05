@@ -71,3 +71,6 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
         #. Enable Network Adapter
         #. Attached to Bridged Adapter
         #. Name should be your wired adapter
+        
+.. note::
+    In case you're unable to connect to a robot (i.e. `ssh <robotname>` doesn't work), try installing [Wireshark](https://www.wireshark.org/download.html) and monitoring the packets to diagnose the issue. 	Also try pinging by the expected IP address of the robot, `ping <robotname>.local`, and checking the output of `avahi-browse -av`.
