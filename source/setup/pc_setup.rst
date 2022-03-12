@@ -76,6 +76,10 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
     In case you're unable to connect to a robot (i.e. `ssh <robotname>` doesn't work), try the following steps, proceeding to the next step if the one you tried doesn't work:
         #. Try `ssh <robotname>.local`.
         #. Try `ssh nao@<robot_ip_address>`
-        #. If the error message from any of the above steps was something like `Name or service not known`, try `ping <robotname>.local`.
+        #. If the error message from any of the above steps was something like `Name or service not known`, try `ping <robotname>.local`. If this doesn't work:
+            #. Check that your PC is connected to the network by pinging the router for instance i.e. `ping <router_ip_address>`. This IP address can be found by checking the Network Settings -> IPv4 address or by running `ifconfig`.
+            #. Confirm that the robot has the right IP address. (There might be a `button combo <https://runswift.readthedocs.io/en/latest/running/button_presses.html#chest-button-interface>`_ for this.)
+            #. Check the router for the list of devices connected to it. The robot should appear as a wifi client or DHCP client(wired). This can be done by installing a network utility such as `nmap <https://nmap.org>`_.
+            #. If you're connected via WiFi, try connecting via Ethernet(wired) and vice-versa.
         #. Try `avahi-browse -av` and check the output to see if the name of the robot you're connecting to is listed.
         #. Install `Wireshark <https://www.wireshark.org/download.html>`_ and monitor the packets to diagnose the issue. If you find this step overwhelming, please seek help from one of the more experienced members.
