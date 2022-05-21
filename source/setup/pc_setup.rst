@@ -73,4 +73,4 @@ from the host machine to the VM. Follow these instructions in VirtualBox.
         #. Name should be your wired adapter
         
 .. note::
-    In case you're unable to connect to a robot (i.e. `ssh <robotname>` doesn't work), try installing `Wireshark <https://www.wireshark.org/download.html>`_ and monitoring the packets to diagnose the issue. 	Also try pinging by the expected IP address of the robot, `ping <robotname>.local`, and checking the output of `avahi-browse -av`.
+    In case you're unable to connect to a robot (i.e. ``ssh <robotname>`` doesn't work), try installing `Wireshark <https://www.wireshark.org/download.html>`_ and monitoring the packets to diagnose the issue. 	Also try pinging by the expected IP address of the robot, ``ping <robotname>.local``, and checking the output of ``avahi-browse -av``.
