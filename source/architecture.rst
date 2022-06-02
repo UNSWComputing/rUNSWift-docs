@@ -203,13 +203,17 @@ Key directories relating to the python interface:
       -  RobotModule.cpp - This pulls all the wrappers in and gets
          compiled into a python module which can be imported within the
          interpreter as ``robot``. You can then access parts of the
-         wrapped cpp code. e.g \`\`\`python # This is a simple
-         behaviour.py import robot
+         wrapped cpp code. e.g
 
-         def tick(blackboard): req = robot.BehaviourRequest() # Creates
-         a Behaviour Request instance. req.actions.leds.rightEye =
-         robot.rgb(True, False, False) # Set right eye to red. return
-         req \`\`\`
+.. code-block:: python
+        
+        # This is a simple behaviour.py
+        import robot
+        
+        def tick(blackboard): 
+            req = robot.BehaviourRequest() # Creates a Behaviour Request instance.
+            req.actions.leds.rightEye = robot.rgb(True, False, False) # Set right eye to red.
+            return req
 
 -  **image/home/nao/data/behaviours**
 
