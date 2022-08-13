@@ -4,30 +4,11 @@
 Contact
 #######
 
-***********************************
-Jayen Ashar (jayen@cse.unsw.edu.au)
-***********************************
+If you have any issues, please send an email to:
 
-.. figure:: /images/jayen_ashar.png
+robocup.spl@cse.unsw.edu.au (primary)
 
-*************************************
-Ethan Jones (ethan.jones@unsw.edu.au)
-*************************************
-
-.. figure:: /images/ethan_jones.jpeg
-
-**********************************
-Tripta Kaur (tripta1611@gmail.com)
-**********************************
-
-.. figure:: /images/tripta_kaur.jpeg
-
-**********************************
-Tom Wells (Tom.wells96@gmail.com)
-**********************************
-
-.. figure:: /images/tom_wells.png
-
+unswrobocup@gmail.com (alternative)
 
 .. Use 350 pixels width.
 .. Recommended image size is 350*350
