@@ -84,3 +84,19 @@ Finally, for all robots, run
 
     Robots that are flashed without factory reset should retain their hostnames and you don't
     need to specify ``-h <hostname>`` and ``<robot-name>.local`` will be used automatically.
+
+.. tip::
+
+    Workaround: If this last step is causing trouble for you, try changing the hostname at 
+    the command line first, then syncing, for example:
+    
+.. code-block:: bash
+    
+    PC$ ssh nao@nao.local
+    nao$ sudo nano /etc/hostname
+    # Agree, then change the hostname from 'nao' to for example 'treebeard'
+    # then reboot the robot and continue as normal, i.e.
+    PC$ nao_sync -s treebeard
+    PC$ nao_sync -rd treebeard
+    # reboot again
+    
