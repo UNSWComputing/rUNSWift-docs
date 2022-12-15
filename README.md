@@ -2,12 +2,6 @@
 
 Repository for maintaining the Sphinx Documentation for rUNSWift.
 
-## Installing Sphinx
-
-```sh
-sudo apt install python3-sphinx
-```
-
 ## Installing Dependencies
 
 ```
