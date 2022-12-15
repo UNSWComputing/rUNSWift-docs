@@ -7,7 +7,7 @@ Overview
 
 #. :ref:`field_view`
 #. Top Image
-#. Bot Image
+#. Bottom Image
 #. Blackboard Variables
 
 .. _field_view:
