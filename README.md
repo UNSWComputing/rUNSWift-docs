@@ -2,11 +2,20 @@
 
 Repository for maintaining the Sphinx Documentation for rUNSWift.
 
+## Installing Sphinx
+
+```sh
+sudo apt install python3-sphinx
+```
+
 ## Installing Dependencies
-`sudo apt install python3-sphinx-rtd-theme`
+
+```
+pip3 install -r requirements.txt
+```
 
 ## Compiling
-To compile locally, run `make html`. 
+To compile locally, run `make html`.
 The home documentation page can be opened by opening `build/html/index.html` in a browser.
 
 ## RTD
@@ -14,7 +23,7 @@ The instructions for setting up the webhook for readthedocs is [here](https://do
 
 ## Editing Flowcharts (with draw.io)
 `source/draw.io/` contains **.png (with embedded XML)** that can be imported/exported by draw.io.
-To modify a diagram, 
+To modify a diagram,
 1. import the png file into draw.io
 2. make ammendments
 3. overwrite png file by exporting from draw.io
