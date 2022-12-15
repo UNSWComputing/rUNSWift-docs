@@ -6,9 +6,9 @@ Overview
 
 
 #. :ref:`field_view`
-#. :ref:`cc_top_image`
-#. :ref:`cc_bot_image`
-#. :ref:`bb_variables`
+#. Top Image
+#. Bot Image
+#. Blackboard Variables
 
 .. _field_view:
 
