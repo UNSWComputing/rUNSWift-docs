@@ -8,7 +8,7 @@ Welcome to rUNSWift's Documentation!
 
 rUNSWift is a team from the University of New South Wales that competes in the `Standard Platform League <https://spl.robocup.org/>`_ of RoboCup.
 
-.. image:: /images/2022_team_photo.png
+.. image:: /images/2022_team_photo.jpg
 
 
 .. toctree::
