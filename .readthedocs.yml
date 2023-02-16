@@ -1,3 +1,9 @@
+# https://docs.readthedocs.io/en/stable/config-file/v2.html
 version: 2
 sphinx:
   configuration: source/conf.py
+  
+# Optionally declare the Python requirements required to build your docs
+python:
+   install:
+   - requirements: requirements.txt
