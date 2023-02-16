@@ -1,5 +1,8 @@
 # rUNSWift docs
 
+[![Documentation Status](https://readthedocs.org/projects/runswift/badge/?version=latest)](https://runswift.readthedocs.io/en/latest/?badge=latest)
+ 
+
 Repository for maintaining the Sphinx Documentation for rUNSWift.
 
 ## Installing Dependencies
