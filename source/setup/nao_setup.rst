@@ -65,6 +65,8 @@ Run
     Replace ``mario`` with the name of the new robot.
     Robot names should consist of lower case alphabets or numbers
 
+.. tip::
+    After plugging your work machine into your Nao via an ethernet cable, you can also use the Softbank web page at http://nao.local/ (username/password are nao/nao respectively) to change the Nao's name.
 
 *************************
 Places to add ``<NAME>``
