@@ -1,8 +1,8 @@
 ###############
-Camera Settings
+Walk
 ###############
 
-
+We need to calibrate the walk speed for each opponent.
 
 ************
 Instructions
