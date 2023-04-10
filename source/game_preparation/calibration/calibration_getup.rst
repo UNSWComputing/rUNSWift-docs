@@ -9,7 +9,7 @@ Instructions
 ************
 
 #.  Find the most inclined part of the field of the next game.
-#.  Run `runswift` (triple-tap), stiffen (double-tap), and put the robot in the penalised state (double single-tap).
+#.  Stiffen (double-tap) and put the robot in the penalised state (double single-tap).
 #.  Edit the appropriate image/home/nao/data/pos/individualPoses/<robot>_getup<side><version>.pos
 
     The main thing to note is the head pitch during the last part of the getup.
