@@ -5,7 +5,7 @@ Code Release / Team Reports
 * `Code Release 2022 <https://github.com/UNSWComputing/rUNSWift-2022-release>`_ /
   `Team Report 2022 <https://github.com/UNSWComputing/rUNSWift-2022-release/raw/main/RoboCup_SPL_2022_rUNSWift_Team_Paper.pdf>`_
 * `Code Release 2019 <https://github.com/UNSWComputing/rUNSWift-2019-release>`_ /
-  `Team Report 2019 <https://github.com/UNSWComputing/rUNSWift-2019-release/raw/master/rUNSWift_Team_Report.pdf>`_
+  `Team Report 2019 <https://github.com/UNSWComputing/rUNSWift-2019-release/blob/main/rUNSWift_Team_Report.pdf>`_
 * `Code Release 2018 <https://github.com/UNSWComputing/rUNSWift-2018-release>`_ /
   `Team Report 2018 <http://cgi.cse.unsw.edu.au/~robocup/2018/TeamPaper2018.pdf>`_
 * `Code Release 2017 <https://github.com/UNSWComputing/rUNSWift-2017-release>`_ /
