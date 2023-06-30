@@ -44,7 +44,7 @@ mario     yoshi
 #.  Modify the ``leanOffsetL`` and ``leanOffsetR`` value until the kick doesn't fallover sideways.
 
     .. note::
-        ``kick_lean_offset`` is in **degrees**. Increments of 1.0 degrees is recommended for initial tuning, and 0.5 degrees for finer tuning.
+        ``kick_lean_offset`` is in **degrees**. Increments of 1.0 degrees is recommended for initial tuning, and 0.5 degrees for finer tuning. The value can be positive or negative (as seen in the example config below).
 
     .. tip::
         **Increase** ``kick_lean_offset`` to make the robot **lean more** onto the support foot, and vice versa.
@@ -62,4 +62,4 @@ mario     yoshi
         Replace ``yoshi`` with your robot's body names
 
 
-#.  Repeat procedure for both feet.
+#.  Repeat the corresponding procedure for each foot.
