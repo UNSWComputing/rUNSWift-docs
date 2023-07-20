@@ -30,7 +30,9 @@ Download then to your current working directory using
     rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.8.5.1x/nao-2.8.5.11_ROBOCUP_ONLY_with_root.opn .
 
 .. note::
-    For passwords, please :ref:`contact` us.
+    For passwords, please :ref:`contact` us. 
+
+    For teams new to RoboCup SPL, please contact the RoboCup SPL Technical Committee (rc-spl-tc@lists.robocup.org) who will be able to share the Naoqi 2.8.5 image with you as mentioned `here <https://spl.robocup.org/v6-support/>`_.
 
 .. warning::
     Due to software licensing between Softbank and RoboCup SPL, teams can't publicly release the NAOqi OS provided by Softbank.
