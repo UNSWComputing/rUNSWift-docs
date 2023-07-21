@@ -20,7 +20,12 @@ Download opn file
 *****************
 
 OpenNAO (opn) files are the image file for the NAO robot.
-Download then to your current working directory using
+
+- For teams new to RoboCup SPL, please contact the RoboCup SPL Technical Committee (rc-spl-tc@lists.robocup.org) as mentioned `here <https://spl.robocup.org/v6-support/>`_.
+
+- If you're not aligned with RoboCup, please contact Aldebaran.
+
+- If you're a member of rUNSWift, download them to your current working directory using
 
 .. code-block:: bash
 
@@ -31,8 +36,6 @@ Download then to your current working directory using
 
 .. note::
     For passwords, please :ref:`contact` us. 
-
-    For teams new to RoboCup SPL, please contact the RoboCup SPL Technical Committee (rc-spl-tc@lists.robocup.org) who will be able to share the Naoqi 2.8.5 image with you as mentioned `here <https://spl.robocup.org/v6-support/>`_.
 
 .. warning::
     Due to software licensing between Softbank and RoboCup SPL, teams can't publicly release the NAOqi OS provided by Softbank.
