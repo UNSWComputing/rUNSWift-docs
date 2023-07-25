@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'RoboCup SPL'
-copyright = '2019, rUNSWift'
+copyright = '2023, rUNSWift'
 author = 'rUNSWift, University of NSW'
 
 # The version info for the project you're documenting, acts as replacement for
