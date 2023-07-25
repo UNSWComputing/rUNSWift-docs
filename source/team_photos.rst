@@ -5,7 +5,7 @@ Team Photos
 .. dropdown:: 2023 Bordeaux, France
     :open:
 
-    .. image:: /images/2023_team_photo.jpg
+    .. image:: /images/2023_team_photo.JPG
 
 .. dropdown:: RCAP2023 Tianjin, China
 
