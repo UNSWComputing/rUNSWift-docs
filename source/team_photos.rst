@@ -2,6 +2,12 @@
 Team Photos
 ###########
 
+
+.. dropdown:: default title
+    :open:
+
+    default dropdown
+
 .. dropdown:: 2023 Bordeaux, France
     :open:
 
