@@ -32,6 +32,7 @@ import os
 extensions = [
     'sphinx_copybutton',
     'sphinx.ext.githubpages',
+    'sphinx_panels'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
