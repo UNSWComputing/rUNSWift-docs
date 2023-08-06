@@ -31,8 +31,10 @@ OpenNAO (opn) files are the image file for the NAO robot.
 
     # 2.1 image (v4 and v5)
     rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.1.4.13/opennao-atom-system-image-2.1.4.13_2015-08-27.opn .
-    # 2.8 image (v6)
+    # 2.8 image (v6 before 2024)
     rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.8.5.1x/nao-2.8.5.11_ROBOCUP_ONLY_with_root.opn .
+    # ros2 image (v6)
+    rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.8.5.1x/ubuntu-22.04-ros2.opn .
 
 .. note::
     For passwords, please :ref:`contact` us. 
@@ -51,6 +53,8 @@ Create NAOqi USB
     .. note::
         The 2.1 flasher also works with the 2.8 opn.  You can also just use dd on linux and mac.
 
+    .. note::
+        alternative instructions can be found here: https://github.com/NaoDevils/NaoImage/#installation
 
 ****************
 Flashing the NAO
@@ -63,6 +67,9 @@ Flashing the NAO
 
 .. tip::
     If this step takes too long (>30 minutes) turn the robot off and retry flashing.
+
+.. note::
+    alternative instructions can be found here: https://github.com/NaoDevils/NaoImage/#installation
 
 *********************************
 Robot Config, Name and Wifi Setup
