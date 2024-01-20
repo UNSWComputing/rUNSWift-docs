@@ -9,6 +9,7 @@ The basic structure of the vision system is as follows.
 .. toctree::
    :maxdepth: 2
 
+   region
    adaptive_thresholding
    connected_component_analysis
    field_feature_detector
