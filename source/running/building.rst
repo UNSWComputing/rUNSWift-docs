@@ -18,15 +18,18 @@ To compile (build) the codebase for a V6 robot, run
 
     Possible programs that can be built are listed below.
 
-    ============================== ==============================
-    build-relwithdebinfo-2.8.sh    build-relwithdebinfo-2.1.sh
-    ============================== ==============================
-    runswift                       runswift
-    state-estimation-simulator.bin offnao.bin
-    .                              vatnao.bin
-    .                              vatnao-legacy.bin
-    .                              state-estimation-simulator.bin
-    ============================== ==============================
+    ============================== ============================== ==============================
+                  v6                     v5 + offnao/vatnao           native + offnao/vatnao
+    .                              .                               needed for v6 robot detector
+    ------------------------------ ------------------------------ ------------------------------
+    build-relwithdebinfo-2.8.sh    build-relwithdebinfo-2.1.sh    build-relwithdebinfo-native.sh
+    ============================== ============================== ==============================
+    runswift                       runswift                       runswift
+    state-estimation-simulator.bin offnao.bin                     offnao.bin
+    .                              vatnao.bin                     vatnao.bin
+    .                              vatnao-legacy.bin              vatnao-legacy.bin
+    .                              state-estimation-simulator.bin state-estimation-simulator.bin
+    ============================== ============================== ==============================
 
 .. note::
     By default, the maximum number of processors available will be used for compilation.
