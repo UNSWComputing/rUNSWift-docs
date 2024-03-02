@@ -125,7 +125,6 @@ analagous to connecting to a wifi hotspot, one needs to specify things like the
     sudo bin/changeField.py SPL_E
 ```
 
-These could also have been set from the `runswift.cfg` file.
 
 Further considering the SPL Rules section on `Wireless Communications`, robots should be
 changed off the field when not playing a game or on an unused field:
