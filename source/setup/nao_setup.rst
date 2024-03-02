@@ -119,17 +119,19 @@ One way to set this up is to SSH into the robot and use the change field script,
 analagous to connecting to a wifi hotspot, one needs to specify things like the 
 `SSID <https://www.lifewire.com/definition-of-service-set-identifier-816547>`_:
 
-```
+.. code-block:: bash
+
     PC$ ssh nao@treebeard.local
     # sudo bin/changeField.py <SSID>
     sudo bin/changeField.py SPL_E
-```
+
 
 Further considering the SPL Rules section on `Wireless Communications`, robots should be
 changed off the field when not playing a game or on an unused field:
 
-```
+.. code-block:: bash
+
     # runswift is not a valid SPL SSID, so the Nao's WiFi should 
     # disconnect and fail to connect at a competition
     sudo bin/changeField.py runswift
-```
+
