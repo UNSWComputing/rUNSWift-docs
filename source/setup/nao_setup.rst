@@ -105,3 +105,33 @@ Finally, for all robots, run
     PC$ nao_sync -rd treebeard
     # reboot again
     
+*********************************
+Connecting to GameController Wifi
+*********************************
+
+To play a game by the SPL Rules, the `runswift` executable needs to send packets of 
+information to, and respond to commands from, one specific soccer field's 
+`GameController <https://github.com/RoboCup-SPL/GameController3/>`_. Typically the
+competition organisers will provide the list of field SSIDs and any other details 
+at the competition, for example `SPL_A` to `SPL_E` has been typical of RoboCup.
+
+One way to set this up is to SSH into the robot and use the change field script, this is 
+analagous to connecting to a wifi hotspot, one needs to specify things like the 
+`SSID <https://www.lifewire.com/definition-of-service-set-identifier-816547>`_:
+
+.. code-block:: bash
+
+    PC$ ssh nao@treebeard.local
+    # sudo bin/changeField.py <SSID>
+    sudo bin/changeField.py SPL_E
+
+
+Further considering the SPL Rules section on `Wireless Communications`, robots should be
+changed off the field when not playing a game or on an unused field:
+
+.. code-block:: bash
+
+    # runswift is not a valid SPL SSID, so the Nao's WiFi should 
+    # disconnect and fail to connect at a competition
+    sudo bin/changeField.py runswift
+
