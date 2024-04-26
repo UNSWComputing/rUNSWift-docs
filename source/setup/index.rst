@@ -7,3 +7,4 @@ Setup
 
    pc_setup
    nao_setup
+   nao_setup_ubuntu

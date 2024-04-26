@@ -2,6 +2,10 @@
 NAO Setup
 #########
 
+.. warning::
+
+   This document is deprecated. Please refer to the new document `here <nao_setup_ubuntu.html>`__.
+
 Follow these instructions to prepare brand new NAOs and add them to the rUNSWift codebase.
 
 Most of these instructions can be used to upgrade or reset robots as well.
@@ -35,7 +39,7 @@ OpenNAO (opn) files are the image file for the NAO robot.
     rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.8.5.1x/nao-2.8.5.11_ROBOCUP_ONLY_with_root.opn .
 
 .. note::
-    For passwords, please :ref:`contact` us. 
+    For passwords, please :ref:`contact` us.
 
 .. warning::
     Due to software licensing between Softbank and RoboCup SPL, teams can't publicly release the NAOqi OS provided by Softbank.
@@ -92,11 +96,11 @@ Finally, for all robots, run
 
 .. tip::
 
-    Workaround: If this last step is causing trouble for you, try changing the hostname at 
+    Workaround: If this last step is causing trouble for you, try changing the hostname at
     the command line first, then syncing, for example:
-    
+
 .. code-block:: bash
-    
+
     PC$ ssh nao@nao.local
     nao$ sudo nano /etc/hostname
     # Agree, then change the hostname from 'nao' to for example 'treebeard'
@@ -104,19 +108,19 @@ Finally, for all robots, run
     PC$ nao_sync -s treebeard
     PC$ nao_sync -rd treebeard
     # reboot again
-    
+
 *********************************
 Connecting to GameController Wifi
 *********************************
 
-To play a game by the SPL Rules, the `runswift` executable needs to send packets of 
-information to, and respond to commands from, one specific soccer field's 
+To play a game by the SPL Rules, the `runswift` executable needs to send packets of
+information to, and respond to commands from, one specific soccer field's
 `GameController <https://github.com/RoboCup-SPL/GameController3/>`_. Typically the
-competition organisers will provide the list of field SSIDs and any other details 
+competition organisers will provide the list of field SSIDs and any other details
 at the competition, for example `SPL_A` to `SPL_E` has been typical of RoboCup.
 
-One way to set this up is to SSH into the robot and use the change field script, this is 
-analagous to connecting to a wifi hotspot, one needs to specify things like the 
+One way to set this up is to SSH into the robot and use the change field script, this is
+analagous to connecting to a wifi hotspot, one needs to specify things like the
 `SSID <https://www.lifewire.com/definition-of-service-set-identifier-816547>`_:
 
 .. code-block:: bash
@@ -131,7 +135,7 @@ changed off the field when not playing a game or on an unused field:
 
 .. code-block:: bash
 
-    # runswift is not a valid SPL SSID, so the Nao's WiFi should 
+    # runswift is not a valid SPL SSID, so the Nao's WiFi should
     # disconnect and fail to connect at a competition
     sudo bin/changeField.py runswift
 
