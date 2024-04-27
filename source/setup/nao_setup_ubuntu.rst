@@ -22,7 +22,7 @@ alongside allowing us to pursue new technical projects with a better chance of s
 *****************
 Build rUNSWift
 *****************
-Before doing anything, you should build rUNSWIift. While technically optional, this will be useful later on, as the image
+Before doing anything, you should build rUNSWift. While technically optional, this will be useful later on, as the image
 you create would automatically bake in the rUNSWift executable if it exists. Make sure you follow the PC setup guide beforehand.
 
 
@@ -44,21 +44,17 @@ OpenNAO (opn) files are the image file for the NAO robot.
 
 - If you're not aligned with RoboCup, please contact Aldebaran.
 
-- If you're a member of rUNSWift, download them to your current working directory using
 
-You can download them as follows:
+If you are from UNSW, running ``build-naoimage.sh`` will download the opn file for you as part of the image creation process.
+
+For passwords, please :ref:`contact` us.
+
+You can download them manually as follows:
 
 .. code-block:: bash
 
-    # 2.1 image (v4 and v5)
-    rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.1.4.13/opennao-atom-system-image-2.1.4.13_2015-08-27.opn .
     # 2.8 image (v6)
     rsync -P repository@runswift2.cse.unsw.edu.au:/var/www/html/opennao2/build-2.8.5.1x/nao-2.8.5.11_ROBOCUP_ONLY_with_root.opn .
-
-.. note::
-    You do not need to do this manually. Running ``build-naoimage.sh`` will download the opn file for you.
-    For passwords, please :ref:`contact` us.
-
 
 
 .. warning::
@@ -100,17 +96,14 @@ Create a Flashable USB (Recommended)
 
 This approach is likely to work with the least amount of complications.
 
-#.  Follow the instructions on
-    `Softbank's Documentation <http://doc.aldebaran.com/2-1/software/naoflasher/naoflasher.html>`_
+Using the output opn file (``softwares/image.opn``), you can either use the official Nao Flasher or ``dd`` on Linux/Mac to flash the USB.
 
-    .. note::
-        The 2.1 flasher also works with the 2.8 opn.  You can also just use dd on linux and mac.
+If you wish to use the official Nao Flasher, follow the instructions on `Softbank's Documentation <http://doc.aldebaran.com/2-1/software/naoflasher/naoflasher.html>`_
 
-Take the output opn file in ``softwares/image.opn`` and use the above guide and program to flash to a USB of your choice.
-
-You can also use the flash script in the bin directory to flash the USB.  A help menu will be displayed without args.
+You can also use the flash script in the bin directory to flash the USB using ``dd``.
     .. code-block:: bash
 
+        # run without args to view the help menu
         ./bin/make-usb.sh
 
 
@@ -138,8 +131,8 @@ Robot Config, Name and Wifi Setup
 **If the robots are new** you will need to:
 
 * Add the robot to ``robots/robots.cfg``
-    * You can find its head id via ``cat /sys/qi/head_id``.
-    * If you don't know it yet, you can flash without adding the robot to this file, and discover the head ID by sshing to the IP it calls out after flashing.
+    * You can find its head id via ``cat /sys/qi/head_id`` after SSHing onto the robot.
+    * Note you can flash safely without adding the robot to this file, and discover the head ID by sshing to the IP it calls out after flashing and running the ``cat`` command.
 
 * Add ``<robot-name>`` to the list of robots in ``utils/webnao/src/common/dicts/robots.ts``
 * Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``image/home/nao/data/configs/``
@@ -173,14 +166,12 @@ Troubleshooting
 .. tip::
 
     It's sometimes useful to just flash the base opn image if you experience issues with robot kinematics, but are confident there are no hardware issues.
-    You can simply use the base image with the existing flash methods to restore the default nao image.
+    You can simply use the base image with the aforementioned flash methods to restore the default nao image, and then flash the custom image once you confirm
+    things roughly work as expected on the base image.
 
 .. tip::
 
-    ``<hostname>`` is likely ``nao.local`` for new or factory reset robots.
-
-    Robots that are flashed without factory reset should retain their hostnames and you don't
-    need to specify ``-h <hostname>`` and ``<robot-name>.local`` will be used automatically.
+    ``<hostname>`` is likely ``nao.local`` for new or factory reset robots. This could be used instead of the IP address during setup.
 
 .. tip::
 
@@ -207,7 +198,8 @@ information to, and respond to commands from, one specific soccer field's
 competition organisers will provide the list of field SSIDs and any other details
 at the competition, for example `SPL_A` to `SPL_E` has been typical of RoboCup.
 
-One way to do this is to use the change_field script located in bin. You can also modify the WIFI network manually in the ``/etc/netplan`` directory while connected through ethernet if you're in a pinch.
+One way to do this is to use the change_field script located in bin.
+You can also modify the WIFI network manually in the ``/etc/netplan`` directory and run ``sudo netplan apply`` if you're in a pinch.
 
 .. code-block:: bash
 
