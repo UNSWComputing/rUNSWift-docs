@@ -42,7 +42,7 @@ Add SSH key to GitHub
 
 #. Generating SSH key
     #. Open Terminal (Ctrl+Alt+T)
-    #. Run :code:`ssh-keygen -t rsa -b 4096`
+    #. Run :code:`ssh-keygen -t ed25519`
     #. Hit enter three times
 #. Add SSH key to GitHub by following `GitHub Instructions <https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account>`_
 
