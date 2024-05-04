@@ -7,9 +7,7 @@ NAO Setup
     In 2024, rUNSWift completely migrated their robot OS to Ubuntu. If you wish to see the old documentation for the
     Softbank-based OS visit https://runswift.readthedocs.io/en/2023/setup/nao_setup.html
 
-
-
-Note: Now that we've moved to Ubuntu, the setup process is slightly different. Follow along to see what's changed.
+In this guide, we will go through the process of setting up a fresh NAO robot for RoboCup SPL using rUNSWift's image.
 
 Most of these instructions can be used to upgrade or reset robots as well.
 
