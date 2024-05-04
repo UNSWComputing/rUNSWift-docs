@@ -22,7 +22,7 @@ alongside allowing us to pursue new technical projects with a better chance of s
 **************
 Build rUNSWift
 **************
-Before doing anything, you should build `runswift`. While technically optional, this will be useful later on, as the image
+Before doing anything, you should build ``runswift``. While technically optional, this will be useful later on, as the image
 you create would automatically bake in the ``runswift`` executable if it exists. Make sure you follow the PC setup guide beforehand.
 
 
