@@ -16,17 +16,17 @@ What's different?
 *****************
 Our robots have traditionally been running NAOqi OS. However, we recently transitioned our robots (and our tooling/software) to be compatible with Ubuntu 22.04 as a base image.
 
-This offers several advantages. On top of being more familiar to most of us, it makes things a lot simpler in a technical perspective,
-alongside allowing us to pursue new technical projects with a better chance of success such as the migration to ROS.
+This offers several advantages. On top of being more familiar to most of us, it makes things a lot simpler from a technical perspective,
+alongside allowing us to pursue new technical projects with a better chance of success such as the ongoing research into a migration to ROS/ROS2.
 
-*****************
+**************
 Build rUNSWift
-*****************
-Before doing anything, you should build rUNSWift. While technically optional, this will be useful later on, as the image
-you create would automatically bake in the rUNSWift executable if it exists. Make sure you follow the PC setup guide beforehand.
+**************
+Before doing anything, you should build `runswift`. While technically optional, this will be useful later on, as the image
+you create would automatically bake in the ``runswift`` executable if it exists. Make sure you follow the PC setup guide beforehand.
 
 
-Use docker.ps1 if you're on windows.
+Use ``docker.ps1`` if you're on Windows.
 
 .. code-block:: bash
 
@@ -40,12 +40,12 @@ Download opn file
 
 OpenNAO (opn) files are the image file for the NAO robot.
 
-- For teams new to RoboCup SPL, please contact the RoboCup SPL Technical Committee (rc-spl-tc@lists.robocup.org) as mentioned `here <https://spl.robocup.org/v6-support/>`_.
+- For teams new to RoboCup SPL, please contact the RoboCup SPL Technical Committee (rc-spl-tc AT lists.robocup.org) as mentioned `here <https://spl.robocup.org/v6-support/>`_.
 
-- If you're not aligned with RoboCup, please contact Aldebaran.
+- If you're not aligned with RoboCup, please contact your regional NAO reseller, most likely either Softbank Robotics or United Robotics Group.
 
 
-If you are from UNSW, running ``build-naoimage.sh`` will download the opn file for you as part of the image creation process.
+If you are on site at UNSW, running ``build-naoimage.sh`` will download the opn file for you as part of the image creation process.
 
 For passwords, please :ref:`contact` us.
 
@@ -60,9 +60,9 @@ You can download them manually as follows:
 .. warning::
     Due to software licensing between Softbank and RoboCup SPL, teams can't publicly release the NAOqi OS provided by Softbank.
 
-********************************
+****************************
 Create a custom Ubuntu Image
-********************************
+****************************
 We will now create a custom Ubuntu image, which will use the base Softbank image and add our own customisations on top.
 
 The process is based off the NaoDevil's flasher. You can find the source code `here <https://github.com/NaoDevils/NaoImage>`_.
@@ -73,26 +73,26 @@ The process is based off the NaoDevil's flasher. You can find the source code `h
         bin\docker.ps1 bin/build-naoimage.sh
 
 
-- MacOS/Linux
+- Mac/Linux
     .. code-block:: bash
 
         bin/docker.sh bin/build-naoimage.sh
 
 
-Ensure you have docker installed before continuing. This process will take a significant period if you are running for the first time.
+Ensure you have Docker installed before continuing. This process will take a significant period if you are running for the first time.
 
 For subsequent runs, you will have the option to save time by reusing the base Ubuntu image.
 As long as you didn't make any changes to the root scripts (you are unlikely to as they are located inside of the NaoDevils code) you can continue with the saved base to save time.
 
-*******************
+******************
 Flashing the Robot
-*******************
+******************
 
 You have 2 options to flash the robot:
 
 
 Create a Flashable USB (Recommended)
-*************************************
+************************************
 
 This approach is likely to work with the least amount of complications.
 
@@ -131,8 +131,8 @@ Robot Config, Name and Wifi Setup
 **If the robots are new** you will need to:
 
 * Add the robot to ``robots/robots.cfg``
-    * You can find its head id via ``cat /sys/qi/head_id`` after SSHing onto the robot.
-    * Note you can flash safely without adding the robot to this file, and discover the head ID by sshing to the IP it calls out after flashing and running the ``cat`` command.
+    * You can find its head id via ``cat /sys/qi/head_id`` after ``ssh <robot>``.
+    * Note you can flash safely without adding the robot to this file, and discover the head ID by ``ssh <IP>`` the robot calls out after flashing, and running the ``cat`` command.
 
 * Add ``<robot-name>`` to the list of robots in ``utils/webnao/src/common/dicts/robots.ts``
 * Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``image/home/nao/data/configs/``
@@ -196,7 +196,7 @@ To play a game by the SPL Rules, the ``runswift`` executable needs to send packe
 information to, and respond to commands from, one specific soccer field's
 `GameController <https://github.com/RoboCup-SPL/GameController3/>`_. Typically the
 competition organisers will provide the list of field SSIDs and any other details
-at the competition, for example `SPL_A` to `SPL_E` has been typical of RoboCup.
+at the competition, for example ``SPL_A`` to ``SPL_E`` has been typical of RoboCup.
 
 One way to do this is to use the change_field script located in bin.
 You can also modify the WIFI network manually in the ``/etc/netplan`` directory and run ``sudo netplan apply`` if you're in a pinch.
