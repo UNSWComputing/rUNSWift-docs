@@ -2,6 +2,8 @@
 Visual Studio Code Addons
 #########################
 
+This page has not been completed yet. Please check back later.
+
 *****
 C/C++
 *****
