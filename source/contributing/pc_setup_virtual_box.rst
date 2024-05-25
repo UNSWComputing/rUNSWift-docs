@@ -2,7 +2,7 @@
 VirtualBox Instructions
 #######################
 
-#. Download `Ubuntu Desktop Image <http://releases.ubuntu.com/18.04/>`_.
+#. Download `Ubuntu Desktop Image <http://releases.ubuntu.com/22.04/>`_.
 #. Download and Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_.
 #. New
     #.  ======= ===============
