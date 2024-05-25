@@ -203,21 +203,21 @@ information to, and respond to commands from, one specific soccer field's
 competition organisers will provide the list of field SSIDs and any other details
 at the competition, for example ``SPL_A`` to ``SPL_E`` has been typical of RoboCup.
 
-One way to do this is to use the change_field script located in bin.
+One way to do this is to use the change-wifi script located in bin.
 You can also modify the WIFI network manually in the ``/etc/netplan`` directory and run ``sudo netplan apply`` if you're in a pinch.
 
 .. code-block:: bash
 
-    bin/change_field.py <robot hostname or ip> <field (e.g. SPL_A)>
+    bin/change-wifi.py <robot hostname or ip/all> <field (e.g. SPL_A)>
 
-You can also provide ``*`` to change_field to change the field of all robots in robots.cfg.
+You can also provide ``all`` to change-wifi to change the field of all robots in robots.cfg.
 
 Note the robot is capable of maintaining an eth and wifi connection at the same time.
 
-Please ensure to disconnect from the Game controller wifi during an active game you are not part of as per the rules.
+Please ensure to disconnect from the Game Controller wifi during an active game you are not part of as per the rules.
 
 .. code-block:: bash
 
-    bin/change_field.py <robot hostname or ip> NONE
+    ./bin/change-wifi.py <robot hostname or ip/all> NONE
 
 Providing NONE disables Wifi on the robot (makes it attempt to connect to NONE which doesn't exist)
