@@ -31,12 +31,12 @@ Before doing anything, you should build ``runswift``. While technically optional
 you create would automatically bake in the ``runswift`` executable if it exists. Make sure you follow the PC setup guide beforehand.
 
 
-Use ``docker.ps1`` if you're on Windows.
+Use WSL if you're on Windows.
 
 .. code-block:: bash
 
 
-    ./bin/docker.sh bin/build-runswift.sh
+    make build-runswift
 
 
 *****************
@@ -50,7 +50,7 @@ OpenNAO (opn) files are the image file for the NAO robot.
 - If you're not aligned with RoboCup, please contact your regional NAO reseller, most likely either Softbank Robotics or United Robotics Group.
 
 
-If you are on site at UNSW, running ``build-naoimage.sh`` will download the opn file for you as part of the image creation process.
+If you are on site at UNSW, running ``make build-image`` will download the opn file for you as part of the image creation process.
 
 For passwords, please :ref:`contact` us.
 
@@ -72,19 +72,12 @@ We will now create a custom Ubuntu image, which will use the base Softbank image
 
 The process is based off the NaoDevil's flasher. You can find the source code `here <https://github.com/NaoDevils/NaoImage>`_.
 
-- Windows
-    .. code-block:: powershell
-
-        bin\docker.ps1 bin/build-naoimage.sh
-
-
 - Mac/Linux
     .. code-block:: bash
 
-        bin/docker.sh bin/build-naoimage.sh
+        make build-image
 
-
-Ensure you have Docker installed before continuing. This process will take a significant period if you are running for the first time.
+Ensure you have Docker installed before continuing. This process will take a significant period (without terminal output) if you are running for the first time.
 
 For subsequent runs, you will have the option to save time by reusing the base Ubuntu image.
 As long as you didn't make any changes to the root scripts (you are unlikely to as they are located inside of the NaoDevils code) you can continue with the saved base to save time.
