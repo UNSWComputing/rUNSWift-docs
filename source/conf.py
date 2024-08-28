@@ -32,7 +32,8 @@ import os
 extensions = [
     'sphinx_copybutton',
     'sphinx.ext.githubpages',
-    'sphinx_panels'
+    'sphinx_panels',
+    'myst_parser'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -40,8 +41,8 @@ templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
+# source_suffix = '.rst'
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -141,7 +142,10 @@ html_logo = 'images/rUNSWift.gif'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+html_static_path = ['_static']
+html_css_files = [
+    'css/custom.css',  # Make sure this path is correct
+]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
