@@ -33,7 +33,7 @@ extensions = [
     'sphinx_copybutton',
     'sphinx.ext.githubpages',
     'sphinx_panels',
-    'myst-parser'
+    'myst_parser'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

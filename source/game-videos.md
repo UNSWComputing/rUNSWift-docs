@@ -1,6 +1,6 @@
 # Game Videos
 
-List of Game videos including only rUNSWift, copied from https://github.com/bhuman/SPLGames
+List of Game videos including only rUNSWift, copied from [https://github.com/bhuman/SPLGames](https://github.com/bhuman/SPLGames)
 | Event | Time | F | ½ | # | Team A | Team B | Video | GC Log | TCM Log |
 |:--|:--|:--:|:--:|:--:|:--|:--|:--:|:--:|:--:|
 | RoboCup 2018 | 2018‑06‑18 13:30 | B | 1 | 1 | rUNSWift | Camellia Dragons | | [GC](https://b-human.informatik.uni-bremen.de/public/logs/2018/RoboCup/2018-06-18_13-30_rUNSWift_vs_Camellia_Dragons.txt) | [TCM](https://logs.naoth.de/2018-06-18_RC18-others/2018-06-18_13-30-00_rUNSWift_vs_Camellia%20Dragons_half1/gc_logs/teamcomm_2018-06-18_13-31-18-358_rUNSWift_Camellia%20Dragons_1stHalf.log) |
