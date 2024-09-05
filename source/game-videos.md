@@ -1,5 +1,7 @@
 # Game Videos
 
+## NOTE: video links don't work in some browsers, if you have issues use chrome
+
 List of Game videos including only rUNSWift, copied from [https://github.com/bhuman/SPLGames](https://github.com/bhuman/SPLGames)
 | Event | Time | F | ½ | # | Team A | Team B | Video | GC Log | TCM Log |
 |:--|:--|:--:|:--:|:--:|:--|:--|:--:|:--:|:--:|
