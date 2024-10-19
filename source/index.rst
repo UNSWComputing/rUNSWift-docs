@@ -31,5 +31,5 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    past_research
    code_releases_team_reports
    team_photos
-   game-videos
+   game_videos
    contact
