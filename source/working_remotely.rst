@@ -43,7 +43,7 @@ As the Port No. has been obtained, run the following command in a terminal of yo
 VNC Viewer
 **********
 
-Download a VNC Viewer such as `TightVNC <https://www.tightvnc.com/>`_ (recommended) and `RealVNC <https://www.realvnc.com>`_ and install it on your computer.
+Download a VNC Viewer such as `TightVNC <https://www.tightvnc.com/>`_ (recommended), `RealVNC <https://www.realvnc.com>`_ or `Remote Ripple <https://remoteripple.com>`_ and install it on your computer.
 
 Run VNC Viewer in your computer with the VNC Server address being :code:`localhost:<X Display No.>` such as
 
