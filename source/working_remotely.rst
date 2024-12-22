@@ -28,10 +28,14 @@ Run :code:`vncserver -geometry <dim>` in Kodos such as
 .. code-block:: bash
 
    $ vncserver -geometry 1920x893
+   
+It should print something like:
 
-Run :code:`vncserver --list` in Kodos to find your X Display No.
+.. code-block:: bash
 
-If the X Display No. is 3, for example, the Port No. should be :code:`5900 + 3`, that is, :code:`5903`.
+   New 'X' desktop is kodos:3
+
+The integer :code:`3` is the X Display No. from which the Port No. can be found, for example, the Port No. should be :code:`5900 + 3`, that is, :code:`5903`.
 
 As the Port No. has been obtained, run the following command in a terminal of your computer to connect to Kodos. Replace *5903* with *your Port No.* and *username* with *your Kodos account username*.
 
