@@ -2,8 +2,12 @@
 Code Release / Team Reports
 ###########################
 
-* `Code Release 2024 <https://github.com/UNSWComputing/rUNSWift-2024-release>`_ / Team Report is not required by 2024-10-15
-* `Code Release 2023 <https://github.com/UNSWComputing/rUNSWift-2023-release>`_ / `Team Description Paper 2023 <https://spl.robocup.org/wp-content/uploads/SPL2023_TDP_rUNSWift.pdf>`_
+* `Team Description Paper 2025 <https://github.com/UNSWComputing/rUNSWift-2024-release/raw/main/SPL_2025_TDP_rUNSWift.pdf>`_
+* `Team Description Paper 2024 <https://github.com/UNSWComputing/rUNSWift-2024-release/raw/main/SPL_2024_TDP_rUNSWift.pdf>`_ / `Code Release 2024 <https://github.com/UNSWComputing/rUNSWift-2024-release>`_
+* `Team Description Paper 2023 <https://spl.robocup.org/wp-content/uploads/SPL2023_TDP_rUNSWift.pdf>`_  / `Code Release 2023 <https://github.com/UNSWComputing/rUNSWift-2023-release>`_
+
+In 2023, the SPL changed from Team Reports post-competition to Team Description Papers pre-competition.
+
 * `Code Release 2022 <https://github.com/UNSWComputing/rUNSWift-2022-release>`_ /
   `Team Report 2022 <https://github.com/UNSWComputing/rUNSWift-2022-release/raw/main/RoboCup_SPL_2022_rUNSWift_Team_Paper.pdf>`_
 * `Code Release 2019 <https://github.com/UNSWComputing/rUNSWift-2019-release>`_ /
