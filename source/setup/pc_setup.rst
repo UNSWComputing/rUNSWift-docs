@@ -4,7 +4,7 @@
 PC Setup
 ########
 
-.. note::
+.. warning::
     ⚠ ⚠ ⚠ This guide is probably so outdated it needs to be decommissioned. If you're here for rUNSWift Bootcamp, please follow
     the instructions you have been provided in Discord, not anything on this page.
 
