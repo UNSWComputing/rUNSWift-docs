@@ -5,6 +5,10 @@ PC Setup
 ########
 
 .. note::
+    ⚠ ⚠ ⚠ This guide is probably so outdated it needs to be decommissioned. If you're here for rUNSWift Bootcamp, please follow
+    the instructions you have been provided in Discord, not anything on this page.
+
+.. note::
     If this is your first time using rUNSWift software, follow the instructions on this page.
     For those that are looking to contribute to the codebase, please follow instructions on :ref:`pc-setup-contributing`.
 
