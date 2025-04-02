@@ -29,11 +29,11 @@ Team Photos
 
 .. dropdown:: 2016 Leipzig, Germany
 
-    no photo
+    .. image:: /images/2016_team_photo.jpg
 
 .. dropdown:: 2015 Hefei, China
 
-    no photo
+    .. image:: /images/2015_team_photo.jpg
 
 .. dropdown:: 2014 Joao Pessoa, Brazil
 
