@@ -118,7 +118,7 @@ If that fails, plug in a USB and see where Ubuntu 22.04 has mounted it:
         Disk /dev/sda: 115.1 GiB, 123589361664 bytes, 241385472 sectors
 
 .. tip::
-    If this takes a long time, you can install and use `sudo iotop` to get an idea of how the `dd` copy is progressing.
+    If this takes a long time, you can install and use ``sudo iotop`` to get an idea of how the ``dd`` copy is progressing.
 
 Once the USB is made, turn off the robot and plug the USB to the back of its head. Then, hold the chest button continuously until it turns blue.
 
