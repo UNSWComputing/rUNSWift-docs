@@ -4,6 +4,11 @@ NAO Setup
 
 .. note::
 
+    In 2025, rUNSWift completely migrated to `ROS2 Humble <https://docs.ros.org/en/humble/index.html>`_. If you wish to see the old documentation for the
+    Ubuntu-based OS visit https://runswift.readthedocs.io/en/2024/setup/nao_setup.html
+
+.. note::
+
     In 2024, rUNSWift completely migrated their robot OS to Ubuntu. If you wish to see the old documentation for the
     Softbank-based OS visit https://runswift.readthedocs.io/en/2023/setup/nao_setup.html
 
@@ -24,19 +29,20 @@ Our robots have traditionally been running NAOqi OS. However, we recently transi
 This offers several advantages. On top of being more familiar to most of us, it makes things a lot simpler from a technical perspective,
 alongside allowing us to pursue new technical projects with a better chance of success such as the ongoing research into a migration to ROS/ROS2.
 
-**************
-Build rUNSWift
-**************
-Before doing anything, you should build ``runswift``. While technically optional, this will be useful later on, as the image
-you create would automatically bake in the ``runswift`` executable if it exists. Make sure you follow the PC setup guide beforehand.
+***********************
+Build rUNSWift for ROS2
+***********************
+Before doing anything, you should build. While technically optional, this will be useful later on, as the image
+you create would automatically bake in the executables if they exist. Make sure you follow the PC setup guide beforehand.
 
-
-Use WSL if you're on Windows.
+Use Docker on all platforms except bare metal Ubuntu 22.04.
 
 .. code-block:: bash
 
-
-    make build-runswift
+    # Launch into Docker, otherwise follow the regular ROS2 steps like `source /opt/ros/humble/setup.bash`
+    make dev
+    cd robot_ws
+    colcon build
 
 
 *****************
@@ -102,8 +108,17 @@ You can also use the flash script in the bin directory to flash the USB using ``
     .. code-block:: bash
 
         # run without args to view the help menu
-        ./bin/make-usb.sh
+        ./bin/make-usb.sh /dev/sda  # This assumes you only have one USB attached and it's at /dev/sda
 
+If that fails, plug in a USB and see where Ubuntu 22.04 has mounted it:
+    .. code-block:: bash
+
+        sudo fdisk -l | grep sd
+        ...
+        Disk /dev/sda: 115.1 GiB, 123589361664 bytes, 241385472 sectors
+
+.. tip::
+    If this takes a long time, you can install and use `sudo iotop` to get an idea of how the `dd` copy is progressing.
 
 Once the USB is made, turn off the robot and plug the USB to the back of its head. Then, hold the chest button continuously until it turns blue.
 
@@ -112,16 +127,7 @@ Let go, and it should start flashing blue rapidly. The lights on the side of the
 .. tip::
     If this step takes too long (>30 minutes) turn the robot off and retry flashing.
 
-Network flash
-****************
-You can also flash over the network with the following script:
-
-    .. code-block:: bash
-
-        ./bin/flash-robot.sh <robot-hostname or ip>
-
-Restarting the robot will then begin the flashing process (the script should also prompt you to do so)
-
+Look upstream at `NaoImage <https://github.com/NaoDevils/NaoImage/>`_ (thank you NaoDevils!) for fancy possibilities like `Network flash`.
 
 *********************************
 Robot Config, Name and Wifi Setup
@@ -131,8 +137,6 @@ Robot Config, Name and Wifi Setup
 * Add the robot to ``robots/robots.cfg``
     * You can find its head id via ``cat /sys/qi/head_id`` after ``ssh <robot>``.
     * Note you can flash safely without adding the robot to this file, and discover the head ID by ``ssh <IP>`` the robot calls out after flashing, and running the ``cat`` command.
-
-* Add ``<robot-name>`` to the list of robots in ``utils/webnao/src/common/dicts/robots.ts``
 * Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``image/home/nao/data/configs/``
 * Create a copy of the default ``.cfg`` file called ``<robot-name>.cfg`` in ``image/home/nao/data/configs/body/``
 
@@ -146,9 +150,9 @@ To flash a new version, run:
 
 .. code-block:: bash
 
-    bin/nao_sync.sh <robot hostname or ip>
+    make sync <robot hostname or ip>
 
-The robot should already be good to go with the IP specified in robots/robots.cfg for LAN and wifi in SPL_A
+The robot should already be good to go with the IPs specified in `robots/robots.cfg` for LAN and wifi in SPL_A
 
 You can see the network settings in ``/etc/netplan`` directory. You can modify these files and then run ``sudo netplan apply`` to apply the changes.
 
@@ -171,20 +175,6 @@ Troubleshooting
 
     ``<hostname>`` is likely ``nao.local`` for new or factory reset robots. This could be used instead of the IP address during setup.
 
-.. tip::
-
-    Workaround: If this last step is causing trouble for you, try changing the hostname at
-    the command line first, then syncing, for example:
-
-.. code-block:: bash
-
-    PC$ ssh nao@nao.local
-    nao$ sudo nano /etc/hostname
-    # Agree, then change the hostname from 'nao' to for example 'treebeard'
-    # then reboot the robot and continue as normal, i.e.
-    PC$ nao_sync -s treebeard
-    PC$ nao_sync -rd treebeard
-    # reboot again
 
 *********************************
 Connecting to GameController Wifi
@@ -196,21 +186,4 @@ information to, and respond to commands from, one specific soccer field's
 competition organisers will provide the list of field SSIDs and any other details
 at the competition, for example ``SPL_A`` to ``SPL_E`` has been typical of RoboCup.
 
-One way to do this is to use the change-wifi script located in bin.
-You can also modify the WIFI network manually in the ``/etc/netplan`` directory and run ``sudo netplan apply`` if you're in a pinch.
-
-.. code-block:: bash
-
-    bin/change-wifi.py <robot hostname or ip/all> <field (e.g. SPL_A)>
-
-You can also provide ``all`` to change-wifi to change the field of all robots in robots.cfg.
-
-Note the robot is capable of maintaining an eth and wifi connection at the same time.
-
-Please ensure to disconnect from the Game Controller wifi during an active game you are not part of as per the rules.
-
-.. code-block:: bash
-
-    ./bin/change-wifi.py <robot hostname or ip/all> NONE
-
-Providing NONE disables Wifi on the robot (makes it attempt to connect to NONE which doesn't exist)
+You can modify the WIFI network in ``/etc/netplan/wifi.yaml`` and then run ``sudo netplan apply``, or look at `make change-wifi`.
