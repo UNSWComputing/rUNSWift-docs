@@ -83,7 +83,7 @@ The process is based off the NaoDevil's flasher. You can find the source code `h
 
         make build-image
 
-Ensure you have Docker installed before continuing. This process will take a significant period (without terminal output) if you are running for the first time.
+Ensure you have Docker installed before continuing. This process will take a significant period (without terminal output) if you are running for the first time. You may need to use ``sudo``.
 
 For subsequent runs, you will have the option to save time by reusing the base Ubuntu image.
 As long as you didn't make any changes to the root scripts (you are unlikely to as they are located inside of the NaoDevils code) you can continue with the saved base to save time.
