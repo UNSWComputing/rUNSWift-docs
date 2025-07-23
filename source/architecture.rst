@@ -6,125 +6,65 @@ The ``runswift`` infrastructure is fairly large, so this page lists some
 key aspects and summaries. The best way to understand these in detail is
 to read the reference papers and relevant code.
 
-Overview - libraries, libagent, runswift and offnao
----------------------------------------------------
+ROS2
+----
 
-``libagent`` is a library loaded into ``naoqi`` and how ``runswift``
-communicates with the robot hardware on Nao v5 and earlier (OS 2.1 and
-earlier).
+We run ROS2 Humble on ubuntu based on the image provided by Nao Devils:
+https://github.com/NaoDevils/NaoImage.git
 
-``soccer`` & ``soccer-static`` are the basic toolchain-independent
-modules (perception without cameras, etc.). The static version is
-for ``robot-static``, and the dynamic version is for [[offnao]].
+We have many packages within the codebase. Below is a quick summary of the main ones.
+- **3rdparty**: Contains all 3rd party dependencies
+- **behaviours**: Logic for the behaviours running on the robot
+- **bringup**: Has higher level launch files for other packages
+- **comms**: For communications from the robots to other robots and GameController
+- **hri**: Human Robot Interaction; LEDs, buttons, touch sensors, speakers, etc.
+- **kinematics**: Robot kinematics information
+- **motion**: Robot movement
+- **runswift_interfaces**: Interfaces for msgs between modules
+- **stateestimation**: Robot localisation and ball tracking
+- **vision**: Camera processing
 
-``robot-static`` is ``soccer-static`` with hardware-specific modules
-(camera, some parts of motion).
+Configuration
+-------------
 
-``runswift`` is ``robot-static`` with ``main()``.
+We have many ways to configure the way things run on the robot, and we try to 
+follow the ROS2 pattern as closely as possible.
 
-[[offnao]] is our current C++/Qt visual debugger that connects to
-``runswift`` via TCP port 10125.  It can also save and load recordings in a few
-different formats
-
-If you poke around the cmake files, they should correlate with what's
-said here, but if it doesn't, the cmake files take precedence (and
-please update this).
-
-Drivers and libagent
---------------------
-
-Not sure about drivers? Naoqi modules like ``libagent`` are loaded `in
-image/etc/naoqi/autoload.ini <../tree/master/image/etc/naoqi/autoload.ini>`__
-
-If you poke around the files, they should correlate with what's
-said here, but if it doesn't, the files take precedence (and
-please update this).
-
-Nao v5, OS 2.1, and earlier
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``libagent`` is our communications bridge to the robot. It is a library
-that we wrote within Aldebaran's proprietary NaoQi SDK that receives
-information such as joint angles, and sends information such as LED
-commands. It is also responsible for `button
-presses <Button%20Presses%20for%20Nao>`__. libagent communicates with
-our executable (runswift) via a shared memory object. (linux allows you
-to allocate named memory that is shared with other processes.)
-
-Nao v6, OS 2.8, and later
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-LoLA is Aldebaran's communications bridge to Aldebaran's proprietary NaoQi SDK.  ``lola`` is a process separate to ``naoqi``.  Access is only available on special RoboCup versions of the OS.  To enable access, you need to have ``/home/nao/robocup.conf`` on the Nao.  This file can be empty.  ``lola`` will then create a socket file ``/tmp/robocup`` which supports msgpack for read and write.  See ``robot/motion/LoLAData.cpp`` for more details.
-
-rUNSWift
---------
-
-options
-~~~~~~~
-
-There are many options to the runswift executable. They can be put on
-the command line, in the configuration file
-`runswift.cfg <../tree/master/image/home/nao/data/runswift.cfg>`__, in
-the per-robot configuration file , or sent from off-nao. They are
-configured in options.cpp, and viewable by running "runswift --help".
-
-Call tree
-~~~~~~~~~
-
-At the top of our call tree is main, naturally.
-`main.cpp <../tree/master/robot/main.cpp>`__ launches threads for most
-of our top level-modules, such as Perception and Motion. The threads
-continuously run in a loop, independent of each other. Perception is
-[currently] the only top-level module that contains other top-level
-modules, namely Kinematics, Vision, Localisation, and Behaviour, which
-are executed in that order. Behaviour contains a bridge to python, and
-calls the execute method of a top-level python skill
-(`GameController.py <../tree/master/image/home/nao/data/behaviours/skills/GameController.py>`__
-skill by default).
-
-Threads
-~~~~~~~
-
-The threads are run in a function called safelyRun, which:
-
--  restarts the thread in the event of a segfault or other fatal signal
--  restarts the thread in the event of an exception being thrown
--  monitors for the thread if it goes overtime
--  sleeps the thread if it goes undertime (to allow other threads to
-   run)
--  [re]constructs the thread, repeatedly calls the thread's tick()
-   function, and destructs the thread safelyRun stop calling tick() when
-   ctrl-c is pressed or the interrupt signal is received. Additionally,
-   perception is monitored for freezes (tick() does not return).
-
-To decrease the need for locks, and decrease the possibilities for
-segfaults, most of the blackboard variables are not pointers, and exist
-as long as the blackboard exists. It would be a concurrency error to
-have one thread write a new pointer to the blackboard and free the old
-one, while another thread may be accessing its contents. Some blackboard
-variables are smart pointers to avoid this.
-
-Multiple threads should never write to the same blackboard variable. If
-two threads ever happened to write simultaneously, it could crash
-either/both threads, as well as leaving corrupt data, causing another
-thread to crash. Each sub-blackboard is written to only by its
-corresponding top-level module.
-
-Note that reads of structures on the blackboard greater than 1-word in
-size, are not necessarily atomic, as the read may be interleaved with
-another thread's write. An example is when reading from
-``blackboard->receiver.data``.
-
-Blackboard
+Parameters
 ~~~~~~~~~~
 
-The `blackboard <../tree/master/robot/blackboard/>`__ is a global
-variable where threads share information. The blackboard is broken into
-sub-blackboards for each top-level module. Each sub-blackboard is
-written to by its corresponding top-level module. Variables on the
-blackboard should not contain pointers. Adding a variable to the
-blackboard does not make it immediately accessible in offnao. You have
-to manually archive it, see [[Blackboard Serialization]].
+
+Launch files
+~~~~~~~~~~~~
+
+we have launch files.
+
+Configs
+~~~~~~~
+The legacy way of using configs for each robot was to use .cfg files. We have 
+not yet got around to moving to proper ROS2 ways of doing this and instead read 
+in parameters from the config files as they were in legacy. The top level is 
+`runswift.cfg <../tree/master/image/home/nao/data/runswift.cfg>`__, with
+per-robot configuration files in the 
+`robot.cfg <../tree/master/image/home/nao/data/configs>__`, or the robot body 
+config `robot.cfg <../tree/master/image/home/nao/data/configs/body>__`. Our 
+implementation was fairly inconsistent as we are probably going move to a more 
+ROS2 like way of doing things, so make sure to check the launch files for which
+file takes precedence for each parameter.
+
+
+Running Architecture
+--------------------
+
+By default, we want the code to be running on boot because we want it to be game
+ready. To make sure this happens, follow the instructions HERE? (readme)
+
+Currently, we don't have any thread restarting logic as we were tight on time.
+This is good for writing new code and debugging because you can see if it crashes
+easily. However, if anyone reading this wants to implement it, read the 2024
+Threads section LINK LINK LINKs
+
+
 
 Logging
 ~~~~~~~
@@ -145,84 +85,5 @@ Using llog (especially in tight loops) takes resources, even if the set
 log level is higher (e.g. "-l SILENT") than the one passed to llog (e.g.
 "llog(DEBUG3)").
 
-Adapters
-~~~~~~~~
 
-Including the blackboard in every file that needs to access a blackboard
-variable has led to some unreasonably long compiles in previous years.
-To alleviate this, we are using an Adapter-like pattern, where only the
-files representing the top-level modules access the variables on the
-blackboard. Blackboard.hpp should only be included from these special
-<module>Adapter.cpp files, and the blackboard should only friend these
-Adapters.
 
-Python Infrastructure
----------------------
-
-We use python as a high level language for writing behaviour code. The
-reasons for this are discussed in depth at: `Carl Chatfield Robocup
-Report 2012 - Chapter
-3 <http://cgi.cse.unsw.edu.au/~robocup/2012site/reports/CarlChatfieldRoboCupReport2012.pdf>`__
-
-In order to enable this, we use the boost python libraries to set up an
-embedded python interpreter within our ``runswift`` executable that has
-access to parts of our blackboard. In every perception cycle, an entry
-tick() function is called by our c++ code within the python interpreter
-instance with a reference to the blackboard. The expected return value
-is a BehaviourRequest object that contains any information to pass back
-into the C++ code (primarily actions for motors & leds).
-
-Key directories relating to the python interface:
-
--  **robot/perception/behaviour/**
-
-   This folder contains the c++ parts of the behaviour chain. In
-   BehaviourAdapter.cpp, it creates a PythonSkill (defined in the
-   ``python`` subdirectory). On every tick, it executes the PythonSkill
-   which returns a BehaviourRequest to it. This is then used to write
-   actioncommands to the blackboard.
-
-   -  **python/**
-
-      The important pieces here:
-
-      -  wrappers - Wrappers over some data types (see the report/code
-         for details).
-      -  converters - Converters for arrays, etc (see the report/code
-         for details).
-      -  PythonSkill.cpp - The PythonSkill class manages executing a
-         python interpreter (setting up modules, paths, etc). It also
-         watches files and reloads the interpreter if they change. This
-         is useful for quick iteration on code (simply nao\_sync your
-         new code over and the robot runs the new code). It also handles
-         python exceptions that are uncaught by flashing the Leds,
-         saying "Python error", and reloading the code. This is useful
-         because in game, if your python code reaches an untested state
-         and crashes, you want the interpreter to restart and continue
-         (but notify you that it failed).
-      -  RobotModule.cpp - This pulls all the wrappers in and gets
-         compiled into a python module which can be imported within the
-         interpreter as ``robot``. You can then access parts of the
-         wrapped cpp code. e.g
-
-.. code-block:: python
-        
-        # This is a simple behaviour.py
-        import robot
-        
-        def tick(blackboard): 
-            req = robot.BehaviourRequest() # Creates a Behaviour Request instance.
-            req.actions.leds.rightEye = robot.rgb(True, False, False) # Set right eye to red.
-            return req
-
--  **image/home/nao/data/behaviours**
-
-   This is where the python files that run on the robot are kept. This
-   folder gets synced to the robot by nao\_sync. The highest level file
-   here is ``behaviour.py``. This file is run by PythonSkill at the top
-   level. It calls the tick() function on this module, passing it a
-   reference to the blackboard. The function must return a
-   BehaviourRequest instance. Whatever else happens is up to your python
-   architecture and can be customised to match some form of state
-   machine / decision tree / other behaviour system implemented in
-   python.

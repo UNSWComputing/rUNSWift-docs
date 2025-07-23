@@ -6,7 +6,12 @@
 Welcome to rUNSWift's Documentation!
 ====================================
 
-rUNSWift is a team from the University of New South Wales that competes in the `Standard Platform League <https://spl.robocup.org/>`_ of RoboCup.
+rUNSWift is a team from the University of New South Wales that competes in the 
+`Standard Platform League <https://spl.robocup.org/>`_ of RoboCup.
+
+.. note::
+    In 2025, we transitioned our codebase to ROS2. For older docs, refer to the 2024
+    docs. 2024 is typically referred to as *legacy* in the new docs.
 
 .. image:: /images/2023_team_photo.JPG
 
@@ -15,21 +20,11 @@ rUNSWift is a team from the University of New South Wales that competes in the `
    :hidden:
    :maxdepth: 1
 
-   setup/index
-   running/index
+   setup_and_workspace/index
+   working_with_the_robot/index
    architecture
-   perception/index
-   motion/index
-   networking
-   3d_simulation
+   modules/index
    tools/index
-   game_preparation/index
-   debugging/index
+   team_and_publications/index
    style_guide
-   contributing/index
-   working_remotely
-   past_research
-   code_releases_team_reports
-   team_photos
-   game_videos
    contact
