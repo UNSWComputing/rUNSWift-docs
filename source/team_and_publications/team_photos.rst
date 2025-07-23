@@ -2,8 +2,22 @@
 Team Photos
 ###########
 
-.. dropdown:: 2023 Bordeaux, France
+.. dropdown:: 2025 Salvador, Brazil
     :open:
+
+    .. image:: /images/2025_team_photo.jpg
+
+.. dropdown:: RCAP2024 Qingdao, China
+    :open:
+
+    .. image:: /images/RCAP2024_team_photo.jpg
+
+.. dropdown:: 2024 Eindhoven, Netherlands
+    :open:
+
+    .. image:: /images/2024_team_photo.jpg
+
+.. dropdown:: 2023 Bordeaux, France
 
     .. image:: /images/2023_team_photo.JPG
 

@@ -13,18 +13,40 @@ rUNSWift is a team from the University of New South Wales that competes in the
     In 2025, we transitioned our codebase to ROS2. For older docs, refer to the 2024
     docs. 2024 is typically referred to as *legacy* in the new docs.
 
-.. image:: /images/2023_team_photo.JPG
+.. image:: /images/2024_team_photo.JPG
 
+
+Getting Started
+---------------
 
 .. toctree::
-   :hidden:
-   :maxdepth: 1
+   :maxdepth: 2
+   :caption: Getting Started
 
    setup_and_workspace/index
    working_with_the_robot/index
-   architecture
-   modules/index
-   tools/index
-   team_and_publications/index
    style_guide
+
+Technical Documentation
+-----------------------
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Technical Documentation
+
+   architecture
+   behaviour
+   modules/motion/index
+   modules/state_estimation/index
+   modules/vision/index
+   modules/tools/index
+
+About
+-----
+
+.. toctree::
+   :maxdepth: 2
+   :caption: About
+
+   team_and_publications/index
    contact
