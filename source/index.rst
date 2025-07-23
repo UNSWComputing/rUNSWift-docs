@@ -22,25 +22,25 @@ Contents
    :maxdepth: 2
    :caption: Getting Started
 
-   setup_and_workspace/index
-   working_with_the_robot/index
-   style_guide
+   getting_started/setup_and_workspace/index
+   getting_started/working_with_the_robot/index
+   getting_started/style_guide
 
 .. toctree::
    :maxdepth: 3
    :caption: Technical Documentation
 
-   architecture
-   behaviour
-   modules/motion/index
-   modules/state_estimation/index
-   modules/vision/index
-   modules/tools/index
+   technical_documentation/architecture
+   technical_documentation/behaviour
+   technical_documentation/motion/index
+   technical_documentation/state_estimation/index
+   technical_documentation/vision/index
+   technical_documentation/tools/index
 
 .. toctree::
    :maxdepth: 2
    :caption: About
 
-   publications/index
-   past_teams/index
-   contact
+   about/publications/index
+   about/past_teams/index
+   about/contact
