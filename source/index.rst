@@ -41,5 +41,6 @@ Contents
    :maxdepth: 2
    :caption: About
 
-   publications_and_team_information/index
+   publications/index
+   past_teams/index
    contact
