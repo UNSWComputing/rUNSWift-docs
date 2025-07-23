@@ -13,16 +13,21 @@ We run ROS2 Humble on ubuntu based on the image provided by Nao Devils:
 https://github.com/NaoDevils/NaoImage.git
 
 We have many packages within the codebase. Below is a quick summary of the main ones.
-- **3rdparty**: Contains all 3rd party dependencies
-- **behaviours**: Logic for the behaviours running on the robot
-- **bringup**: Has higher level launch files for other packages
-- **comms**: For communications from the robots to other robots and GameController
-- **hri**: Human Robot Interaction; LEDs, buttons, touch sensors, speakers, etc.
-- **kinematics**: Robot kinematics information
-- **motion**: Robot movement
-- **runswift_interfaces**: Interfaces for msgs between modules
-- **stateestimation**: Robot localisation and ball tracking
-- **vision**: Camera processing
+
+=================== =========================================================================
+Package             Description
+=================== =========================================================================
+3rdparty            Contains all 3rd party dependencies
+behaviours          Logic for the behaviours running on the robot
+bringup             Has higher level launch files for other packages
+comms               For communications from the robots to other robots and GameController
+hri                 Human Robot Interaction; LEDs, buttons, touch sensors, speakers, etc.
+kinematics          Robot kinematics information
+motion              Robot movement
+runswift_interfaces Interfaces for msgs between modules
+stateestimation     Robot localisation and ball tracking
+vision              Camera processing
+=================== =========================================================================
 
 Configuration
 -------------
