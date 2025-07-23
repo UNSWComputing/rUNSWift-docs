@@ -15,9 +15,8 @@ rUNSWift is a team from the University of New South Wales that competes in the
 
 .. image:: /images/2024_team_photo.JPG
 
-
-Getting Started
----------------
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
@@ -26,9 +25,6 @@ Getting Started
    setup_and_workspace/index
    working_with_the_robot/index
    style_guide
-
-Technical Documentation
------------------------
 
 .. toctree::
    :maxdepth: 3
@@ -41,12 +37,9 @@ Technical Documentation
    modules/vision/index
    modules/tools/index
 
-About
------
-
 .. toctree::
    :maxdepth: 2
    :caption: About
 
-   team_and_publications/index
+   publications_and_team_information/index
    contact

@@ -1,6 +1,6 @@
-#####################
-Team and Publications
-#####################
+#################################
+Publications and Team Information
+#################################
 
 .. toctree::
    :maxdepth: 2
