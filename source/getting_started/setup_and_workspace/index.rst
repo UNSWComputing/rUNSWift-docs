@@ -3,6 +3,7 @@ Setup and Workspace
 ###################
 
 .. toctree::
+   :maxdepth: 2
 
    pc_setup
    contributing

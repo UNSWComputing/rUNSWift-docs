@@ -7,7 +7,8 @@ Contributing
 
 1. Follow the setup instructions
 2. Add SSH key to github
-3. read other instructions?
+3. read and follow the style guide
+4. read other instructions?
 
 *********************
 Add SSH key to GitHub
