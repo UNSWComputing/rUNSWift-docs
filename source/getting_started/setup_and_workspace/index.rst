@@ -6,5 +6,6 @@ Setup and Workspace
 
    pc_setup
    contributing
+   style_guide
    working_remotely
    debugging/index

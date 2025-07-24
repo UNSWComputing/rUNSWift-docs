@@ -1,5 +1,5 @@
 ########
-Work in progress
+Work in Progress
 ########
 
 In 2024, rUNSWift underwent major changes in order to move to an Ubuntu-based 
