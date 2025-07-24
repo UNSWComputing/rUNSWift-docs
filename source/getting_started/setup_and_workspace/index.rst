@@ -9,4 +9,3 @@ Setup and Workspace
    contributing
    style_guide
    working_remotely
-   debugging/index

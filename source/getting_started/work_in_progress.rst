@@ -27,3 +27,5 @@ settled on the most efficient way to run everything smoothly with regards to thr
 
 Shared IDE addons would be good. TODO add 2024 link
 
+In legacy, gdb was used for debugging. This hasn't been used in some time, and we're 
+not sure if it's still relevant. TODO: add 2024 link
