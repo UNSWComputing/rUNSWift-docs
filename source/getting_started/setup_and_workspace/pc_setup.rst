@@ -4,9 +4,11 @@
 PC Setup
 ########
 
-make setup 
+Clone repo
 
-make dev
+make dev - sets up the docker container. Takes a while the first time.
+
+make setup - installs 3rdparty package dependencies in your workspace
 
 We rely on some third party packages, and for more information on how 
 those work, see those packages themselves. For a complete list of dependencies, 
@@ -19,21 +21,22 @@ in the dockerfile and robot dependencies are located in
 .. _setup_network:
 
 ******************************
-Setup Wireless/Wired Network
+Connecting to the robot
 ******************************
 
 .. warning::
     You only have to follow these steps if you have to connect to an actual robot.
 
+First, run `make update-hosts`. This will update your hosts file with the robot 
+names in your system so you can ssh with their names rather than their IPs. 
 
-For a VM, it is necessary to bridge wireless networks and wired networks (when using LAN)
-from the host machine to the VM. Follow these instructions in VirtualBox.
+Next, put your ssh key in `image/home/nao/.ssh/authorized_keys`. Then sync with 
+the robot or flash it (I think? Idk). Idk if our default password is meant to be
+public information or not.
 
-#. Network
-    #. Adapter 2
-        #. Enable Network Adapter
-        #. Attached to Bridged Adapter
-        #. Name should be your wired adapter
-        
-.. note::
-    In case you're unable to connect to a robot (i.e. ``ssh <robotname>`` doesn't work), try installing `Wireshark <https://www.wireshark.org/download.html>`_ and monitoring the packets to diagnose the issue. 	Also try pinging by the expected IP address of the robot, ``ping <robotname>.local``, and checking the output of ``avahi-browse -av``.
+Make sure you're on the same network as the robot and the robot is visible. If 
+connecting over LAN directly to robot, use 10.1.AA.2XX, where AA is the team code
+and XX is any numbers between 0 and 54. For rUNSWift, AA is 18 and we use 2XX because
+0 and 1 starting numbers are reserved for the robots. If connecting over wireless
+without a router, use 10.0.AA.2XX. If you have a router, DHCP should be fine.
+Typically we connect to a robot with ``ssh nao@<robotname>``. 

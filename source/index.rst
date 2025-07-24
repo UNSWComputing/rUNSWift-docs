@@ -10,8 +10,10 @@ rUNSWift is a team from the University of New South Wales that competes in the
 `Standard Platform League <https://spl.robocup.org/>`_ of RoboCup.
 
 .. note::
-    In 2025, we transitioned our codebase to ROS2. For older docs, refer to the 2024
-    docs. 2024 is typically referred to as *legacy* in the new docs.
+    In 2025, rUNSWift completely migrated to `ROS2 Humble <https://docs.ros.org/en/humble/index.html>`_. 
+    If you wish to see the old documentation for the Ubuntu-based OS visit 
+    https://runswift.readthedocs.io/en/2024/index.html. 2024 is referred to as
+    *legacy* in the docs.
 
 .. image:: /images/2024_team_photo.JPG
 
@@ -27,7 +29,7 @@ Contents
    getting_started/style_guide
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Technical Documentation
 
    technical_documentation/architecture
