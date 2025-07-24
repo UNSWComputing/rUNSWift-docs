@@ -6,6 +6,7 @@ Working with the Robot
     :maxdepth: 3
 
     nao_setup
+    connecting_to_the_robot
     game_preparation/index
     networking
     turning_on

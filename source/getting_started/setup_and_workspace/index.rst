@@ -5,6 +5,6 @@ Setup and Workspace
 .. toctree::
 
    pc_setup
+   contributing
    working_remotely
-   contributing/index
    debugging/index

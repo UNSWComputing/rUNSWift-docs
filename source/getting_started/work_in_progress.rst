@@ -24,3 +24,6 @@ Threads etc:
 In legacy, they locked threads for different tasks. Now that everything runs as 
 nodes and we didn't have a lot of knowledge or time to test, we haven't quite 
 settled on the most efficient way to run everything smoothly with regards to threads.
+
+Shared IDE addons would be good. TODO add 2024 link
+

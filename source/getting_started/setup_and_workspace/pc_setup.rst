@@ -1,14 +1,65 @@
-.. _pc_setup:
+.. _pc-setup:
 
 ########
 PC Setup
 ########
 
-Clone repo
+These are setup instructions for contributing members of the team to setup their PC.
+We use docker, so it should work on any system that can install docker. If you want,
+you can use bare metal ubuntu or a vm but docker is recommended.
 
-make dev - sets up the docker container. Takes a while the first time.
+******************
+Cloning Repository
+******************
 
-make setup - installs 3rdparty package dependencies in your workspace
+Run the following commands to clone the rUNSWift repository
+
+.. code-block:: bash
+
+   $ sudo apt-get install git
+   $ git clone git@github.com:UNSWComputing/rUNSWift.git rUNSWift
+
+.. note::
+    Your GitHub account must have access to the private rUNSWift repository to be able to clone it. To gain access, please :ref:`contact` us.
+
+******
+Docker
+******
+
+The recommended way of setting everything up is just using the docker image
+clone
+run ``make dev``
+voila, everything is set up.
+
+*******************
+Docker alternatives
+*******************
+
+Docker is great and runs on all platforms, but we have some instructions  TODO
+vms work too
+
+.. toctree::
+    pc_setup_dual_boot
+    pc_setup_linux
+    pc_setup_wsl
+
+***********************
+Build Environment Setup
+***********************
+
+Run the following command to setup the build environment.
+
+.. code-block:: bash
+
+   $ make setup
+
+
+.. note::
+    For passwords, please :ref:`contact` us.
+
+************
+Dependencies
+************
 
 We rely on some third party packages, and for more information on how 
 those work, see those packages themselves. For a complete list of dependencies, 
@@ -17,26 +68,3 @@ robot_ws/src/3rdparty/scripts/install-dependencies.sh, workspace dependencies ar
 in the dockerfile and robot dependencies are located in 
 /firmware/naoimage-snippets.
 
-
-.. _setup_network:
-
-******************************
-Connecting to the robot
-******************************
-
-.. warning::
-    You only have to follow these steps if you have to connect to an actual robot.
-
-First, run `make update-hosts`. This will update your hosts file with the robot 
-names in your system so you can ssh with their names rather than their IPs. 
-
-Next, put your ssh key in `image/home/nao/.ssh/authorized_keys`. Then sync with 
-the robot or flash it (I think? Idk). Idk if our default password is meant to be
-public information or not.
-
-Make sure you're on the same network as the robot and the robot is visible. If 
-connecting over LAN directly to robot, use 10.1.AA.2XX, where AA is the team code
-and XX is any numbers between 0 and 54. For rUNSWift, AA is 18 and we use 2XX because
-0 and 1 starting numbers are reserved for the robots. If connecting over wireless
-without a router, use 10.0.AA.2XX. If you have a router, DHCP should be fine.
-Typically we connect to a robot with ``ssh nao@<robotname>``. 
