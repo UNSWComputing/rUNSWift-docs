@@ -10,8 +10,6 @@ Working with the Robot
     game_preparation/index
     networking
     turning_on
-    building
-    syncing
     running_runswift
     button_presses
     leds
