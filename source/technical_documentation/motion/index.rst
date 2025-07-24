@@ -6,18 +6,13 @@ Motion
 Overview
 ********
 
-The motion module is run in its own thread with the highest priority on the robot,
+The motion module should be run in its own thread with the highest priority on the robot,
 as joint angles need to be calculated at approximately 82 frames per second to maintain stability.
-The MotionAdapter class controls this thread and is the gateway for communicating in
-and out of the motion module. Within motion, there are 3 main areas.
-
-============= ==================================================================
-**Touch**     receives input from Lola, eg gyroscopes, accelerometers, etc
-------------- ------------------------------------------------------------------
-**Generator** generates joint values from the behaviour request and sensor input
-------------- ------------------------------------------------------------------
-**Effector**  outputs joint values to Lola
-============= ==================================================================
+We haven't quite figured out if that's happening yet in ROS2.
+The MotionAdapter node controls the motion and handles the motion processing. In
+legacy, there were 3 areas, but now touch and effector are handled but the nao_lola package.
+Now, it essentially takes in a MotionCommand, wraps it with SafetySkill (for handling ref
+pickups and getups when falling), and runs it through the generators.
 
 **********
 Literature
@@ -58,6 +53,9 @@ Other reports that include motion concepts to varying degrees:
 Actions
 *******
 
+.. note::
+    These are not ROS2 actions, these are physical actions performed by the robot
+
 Most of the work in producing actions happens in the generator area. The
 main generator class is the DistributedGenerator that calls upon
 subsequent generators depending on the requested action. There are also
@@ -65,12 +63,11 @@ some basic generators that all generated joints get passed through, such
 as the ClippedGenerator, which ensures that joint requests do not go
 past their maximum values.
 
-All actions are defined in
-``$RUNSWIFT_CHECKOUT_DIR/robot/types/ActionCommand.hpp``. If you do add
+All actions are defined in MotionCommand [TODO link?]. If you do add
 a new ActionType to it, remember to fill out all the corresponding
-enums, such as the action's priority. These priorities define what
-actions can be interrupted, for example the get up action has the
-highest priority.
+maps in DistributedGenerator, if it needs a special priority or head movement. 
+These priorities define what actions can be interrupted, for example the get up 
+action has the highest priority.
 
 To set a generator for a particular body action, you'll need to add
 something like this to DistributedGenerator:
@@ -79,7 +76,7 @@ something like this to DistributedGenerator:
 
     bodyGenerators[Body::BACK_FLIP] = (Generator*)(new BackFlipGenerator());
        if (!bodyGenerators[Body::BACK_FLIP])
-          llog(FATAL) << "bodyGenerators[BACK_FLIP] is NULL!" << std::endl;
+          RCLCPP_FATAL(motion_node_->get_logger(), "bodyGenerators[BACK_FLIP] is NULL!");
 
 All generators should subclass the basic Generator.hpp class and fill in
 the virtual functions, such as isActive, reset, and stop. Along with the
@@ -118,45 +115,6 @@ Dynamic Actions
 Dynamic actions are for more complicated movements, such as the walk and
 kicks. Instead of reading the joint values from a pos file, they are set
 in the relevant generator's ``makeJoints`` function.
-
-Actions + Python
-----------------
-
-To add a new action into the Python code, you'll need to add to the
-python wrapping of ActionCommand in
-``$RUNSWIFT_CHECKOUT_DIR/robot/perception/behaviour/python/wrappers/ActionCommand_wrap.cpp``.
-
-Then add it to
-``$RUNSWIFT_CHECKOUT_DIR/image/home/nao/data/behaviours/actioncommand.py``.
-For example here is the one for ``goalieDiveLeft``:
-
-.. code:: python
-
-    def goalieDiveLeft():
-        return _type_only_body_command(robot.ActionType.GOALIE_DIVE_LEFT)
-
-
-You will then be able to call your new action from a Python behaviour
-like so:
-
-.. code:: python
-
-    self.world.b_request.actions.body = actioncommand.goalieDiveLeft()
-
-The motion module will know which behaviour is running as
-MotionAdapter.cpp will read it from the blackboard, and then call upon
-the appropriate generator.
-
-.. code:: c
-
-    // Get the motion request from behaviours
-    int behaviourReadBuf = readFrom(behaviour, readBuf);
-    ActionCommand::All request = readFrom(behaviour, request[behaviourReadBuf]).actions;
-    ...
-    ...
-    ...
-    // Get the joints requested by whichever generator we're using
-    JointValues joints = generator->makeJoints(&request, &odometry, sensors, bodyModel, ball.x(), ball.y(), motionDebugInfo);
 
 **********
 Kinematics

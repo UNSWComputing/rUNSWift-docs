@@ -19,3 +19,8 @@ we transitioned to ros2 successfully, but nobody was an expert so there's still
 some things we didn't touch. Working with components, intra-process communication
 and custom RMW are all concepts we haven't touched. We also haven't moved to a 
 ROS2 like way of config files.
+
+Threads etc:
+In legacy, they locked threads for different tasks. Now that everything runs as 
+nodes and we didn't have a lot of knowledge or time to test, we haven't quite 
+settled on the most efficient way to run everything smoothly with regards to threads.
