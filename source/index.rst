@@ -21,12 +21,13 @@ Contents
 ========
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    :caption: Getting Started
 
    getting_started/work_in_progress
    getting_started/setup_and_workspace/index
    getting_started/working_with_the_robot/index
+   getting_started/tools/index
 
 .. toctree::
    :maxdepth: 4
@@ -37,7 +38,6 @@ Contents
    technical_documentation/motion/index
    technical_documentation/state_estimation/index
    technical_documentation/vision/index
-   technical_documentation/tools/index
 
 .. toctree::
    :maxdepth: 3
