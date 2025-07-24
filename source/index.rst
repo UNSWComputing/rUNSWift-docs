@@ -21,7 +21,7 @@ Contents
 ========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Getting Started
 
    getting_started/work_in_progress
@@ -30,7 +30,7 @@ Contents
    getting_started/style_guide
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Technical Documentation
 
    technical_documentation/architecture
@@ -41,7 +41,7 @@ Contents
    technical_documentation/tools/index
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: About
 
    about/publications/index

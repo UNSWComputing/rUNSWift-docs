@@ -7,7 +7,6 @@ The basic structure of the vision system is as follows.
 .. image:: /draw.io/vision.png
 
 .. toctree::
-   :maxdepth: 2
 
    adaptive_thresholding
    connected_component_analysis

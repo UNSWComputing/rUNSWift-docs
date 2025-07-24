@@ -3,7 +3,7 @@ Robot Calibration
 #################
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     calibration_camera_settings
     calibration_kinematics
