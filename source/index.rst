@@ -24,6 +24,7 @@ Contents
    :maxdepth: 2
    :caption: Getting Started
 
+   getting_started/work_in_progress
    getting_started/setup_and_workspace/index
    getting_started/working_with_the_robot/index
    getting_started/style_guide

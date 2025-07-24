@@ -5,7 +5,8 @@ NAO Setup
 .. note::
 
     In 2025, rUNSWift completely migrated to `ROS2 Humble <https://docs.ros.org/en/humble/index.html>`_. If you wish to see the old documentation for the
-    Ubuntu-based OS visit https://runswift.readthedocs.io/en/2024/setup/nao_setup.html
+    Ubuntu-based OS visit https://runswift.readthedocs.io/en/2024/setup/nao_setup.html, 
+    particularly https://runswift.readthedocs.io/en/2024/setup/nao_setup.html#what-s-different
 
 .. note::
 
@@ -21,13 +22,6 @@ The robots that return from repair will likely not need these instructions.
 .. note::
  **You do not need to do this if are just setting up your environment!**
 
-*****************
-What's different?
-*****************
-Our robots have traditionally been running NAOqi OS. However, we recently transitioned our robots (and our tooling/software) to be compatible with Ubuntu 22.04 as a base image.
-
-This offers several advantages. On top of being more familiar to most of us, it makes things a lot simpler from a technical perspective,
-alongside allowing us to pursue new technical projects with a better chance of success such as the ongoing research into a migration to ROS/ROS2.
 
 ***********************
 Build rUNSWift for ROS2
