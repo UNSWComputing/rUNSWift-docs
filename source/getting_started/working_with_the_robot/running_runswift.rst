@@ -1,76 +1,120 @@
 ################
-Running runswift
+Running the code
 ################
+
+You have two options, either run using systemd or run in an ssh terminal. 
+By default, all systemd services except foxglove will start on boot to be game ready.
+
+.. note::
+    This is different to *legacy* TODO add link
+
+*************
+Using systemd
+*************
 
 #. Open an ssh connection to the robot by running
 
     .. code-block:: bash
 
-        $ ssh nao@mario
-
-    .. note::
-        Replace mario with the name of the robot’s head you’re using
+        ssh nao@<robot>
 
     .. tip::
-        ``nao`` is the user name, and ``mario`` is the hostname of the robot.
+        ``nao`` is the user name, and ``<robot>`` is the hostname of the robot.
 
     .. note::
         For passwords, please :ref:`contact` us.
 
-#. **On the robot** (in the terminal with the ssh connection), run
+#. **On the robot** (in the terminal with the ssh connection)
+
+    To start a service
 
     .. code-block:: bash
 
-        $ runswift
+        sudo systemctl start <service>
+
+    To stop a service
+
+    .. code-block:: bash
+
+        sudo systemctl stop <service>
+    
+    .. note::
+        The list of services are:
+
+        - runswift_motion
+        - runswift_vision
+        - runswift_stateestimation
+        - runswift_comms
+        - runswift_behaviours
+        - runswift_hri
+        - runswift_startup
+        - runswift_errors
+        - foxglove
 
 #. Once the chest light is flashing green
-   **double press the chest** to stiffen the robot.
+   **press the chest** or hold the 3 head sensors for one second to stiffen the robot
 
 
 .. seealso::
     :ref:`button_presses` for ways to interact with the robot without a PC.
 
-*******
-Options
-*******
-
-Commonly used options are below:
-
-========================================= ======= ==================================================================================
-Option                                    Default Description
-========================================= ======= ==================================================================================
--T                                        18      Team Number (eg. 18)
------------------------------------------ ------- ----------------------------------------------------------------------------------
--n                                        2       Player Number (eg. 2)
------------------------------------------ ------- ----------------------------------------------------------------------------------
--s                                        Game    Name of top level body python behaviour skill to execute
------------------------------------------ ------- ----------------------------------------------------------------------------------
---stateestimation.initial_pose_type       GAME    Type of initial pose (GAME/UNPENALISED/SPECIFIED)
------------------------------------------ ------- ----------------------------------------------------------------------------------
---stateestimation.specified_initial_x     0       Initial x value in mm (if stateestimation.initial_pose_type == SPECIFIED)
------------------------------------------ ------- ----------------------------------------------------------------------------------
---stateestimation.specified_initial_y     0       Initial y value in mm (if stateestimation.initial_pose_type == SPECIFIED)
------------------------------------------ ------- ----------------------------------------------------------------------------------
---stateestimation.specified_initial_theta 0       Initial theta value in degrees (if stateestimation.initial_pose_type == SPECIFIED)
-========================================= ======= ==================================================================================
-
-.. seealso::
-
-    ``runswift --help`` for complete list of options
-
-*******
+~~~~~~~
 Example
-*******
+~~~~~~~
 
-To run a robot with
-
-*   FieldPlayer skill
-*   Starting from the centre of the field, facing opponent goal
+Often we want to use foxglove to use various tools. This particular example is 
+the process we use for kinematics calibration. First ssh in, then use:
 
 .. code-block:: bash
 
-    $ runswift -s FieldPlayer --stateestimation.initial_pose_type SPECIFIED
+    sudo systemctl stop runswift_behaviours
+    sudo systemctl start foxglove
+
+Then, you can connect to the robot using the foxglove web app at `http://<robot>:8765`
 
 
-.. tip::
-    Modify the options in ``runswift.cfg`` to make it easier if you have a lot of options!
+****************
+Using a terminal
+****************
+
+This method is useful for debugging since you can see the output of the code in the terminal.
+
+#. Open an ssh connection to the robot by running
+
+    .. code-block:: bash
+
+        ssh nao@<robot>
+
+    .. tip::
+        ``nao`` is the user name, and ``<robot>`` is the hostname of the robot.
+
+    .. note::
+        For passwords, please :ref:`contact` us.
+
+#. **On the robot** (in the terminal with the ssh connection)
+
+    * Since systemd starts services by default, we need to stop them
+
+    .. code-block:: bash
+
+        sudo systemctl stop runswift_motion
+        sudo systemctl stop runswift_vision
+        sudo systemctl stop runswift_stateestimation
+        sudo systemctl stop runswift_comms
+        sudo systemctl stop runswift_behaviours
+        sudo systemctl stop runswift_hri
+        sudo systemctl stop runswift_startup
+        sudo systemctl stop runswift_errors
+
+~~~~~~~
+Example
+~~~~~~~
+
+First, run the code block above to kill all services. Then ssh in and run:
+
+.. code-block:: bash
+
+    source robot_ws/install/setup.bash
+    ros2 launch motion_port motion_launch
+
+TODO check that's correct ^
