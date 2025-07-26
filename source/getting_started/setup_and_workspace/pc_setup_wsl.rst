@@ -1,6 +1,6 @@
-##########
+################################
 WSL & Ubuntu Native Instructions
-##########
+################################
 
 If you work on Windows, using the rUNSWift Docker image is the simplest way to get up and running.
 However, IsaacSim only works with WSL so I've written this for anyone who wants to follow my steps.

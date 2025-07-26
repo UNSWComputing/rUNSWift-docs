@@ -8,6 +8,8 @@ Introduction
 
 State Estimation's purpose is to estimate the position and velocity of the robot, ball and other robots on the field.
 
+.. _state-estimation-architecture:
+
 ************
 Architecture
 ************

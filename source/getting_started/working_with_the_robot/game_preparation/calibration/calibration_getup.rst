@@ -1,6 +1,6 @@
-###############
+#####
 Getup
-###############
+#####
 
 We fall over a lot, so we need to make sure the getup works reliably.
 

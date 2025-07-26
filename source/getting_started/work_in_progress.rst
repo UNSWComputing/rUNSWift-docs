@@ -1,6 +1,6 @@
-########
+################
 Work in Progress
-########
+################
 
 In 2024, rUNSWift underwent major changes in order to move to an Ubuntu-based 
 image. In 2025, rUNSWift underwent more major changes and moved to ROS2 Humble.
