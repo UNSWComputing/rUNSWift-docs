@@ -7,9 +7,9 @@ Working with the Robot
 
     nao_setup
     connecting_to_the_robot
-    game_preparation/index
-    networking
-    turning_on
     running_runswift
+    game_preparation/index
+    turning_on
     button_presses
     leds
+    networking
