@@ -1,0 +1,8 @@
+#####
+Tools
+#####
+
+.. toctree::
+
+   foxglove
+   simulation
