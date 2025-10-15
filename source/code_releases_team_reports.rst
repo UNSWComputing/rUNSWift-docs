@@ -2,7 +2,7 @@
 Code Release / Team Reports
 ###########################
 
-* `Team Description Paper 2025 <https://github.com/UNSWComputing/rUNSWift-2024-release/raw/main/SPL_2025_TDP_rUNSWift.pdf>`_
+* `Team Description Paper 2025 <https://github.com/UNSWComputing/rUNSWift-2024-release/raw/main/SPL_2025_TDP_rUNSWift.pdf>`_ / `Code Release 2025 <https://github.com/UNSWComputing/rUNSWift-2025-release>`_
 * `Team Description Paper 2024 <https://github.com/UNSWComputing/rUNSWift-2024-release/raw/main/SPL_2024_TDP_rUNSWift.pdf>`_ / `Code Release 2024 <https://github.com/UNSWComputing/rUNSWift-2024-release>`_
 * `Team Description Paper 2023 <https://spl.robocup.org/wp-content/uploads/SPL2023_TDP_rUNSWift.pdf>`_  / `Code Release 2023 <https://github.com/UNSWComputing/rUNSWift-2023-release>`_
 
